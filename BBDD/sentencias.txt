@@ -12,8 +12,6 @@ CREATE TABLE clientes (
     ultimo_inicio_sesion TIMESTAMP NULL
 );
 
-
-
 CREATE TABLE peliculas (
     pelicula_id INT PRIMARY KEY AUTO_INCREMENT,
     titulo VARCHAR(100) NOT NULL,
