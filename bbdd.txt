@@ -1,2 +1,0 @@
-usuario: a27421
-contraseña: 12345678

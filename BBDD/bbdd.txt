@@ -1,0 +1,2 @@
+usuario: sys (as sysbda)
+contraseña: 201005
