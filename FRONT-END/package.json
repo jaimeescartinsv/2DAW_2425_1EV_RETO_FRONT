@@ -1,11 +1,4 @@
 {
-  "devDependencies": {
-    "gulp": "^5.0.0"
-  },
-  "dependencies": {
-    "gulp-sass": "^5.1.0",
-    "sass": "^1.80.6"
-  },
   "name": "front-end",
   "version": "1.0.0",
   "main": "gulpfile.js",
@@ -14,5 +7,12 @@
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "gulp": "^5.0.0"
+  },
+  "dependencies": {
+    "gulp-sass": "^5.1.0",
+    "sass": "^1.80.6"
+  }
 }
