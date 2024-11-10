@@ -1,2 +1,5 @@
 
 /.vscode
+/BACK-END/bin
+/BACK-END/obj
+/FRONT-END/node_modules
