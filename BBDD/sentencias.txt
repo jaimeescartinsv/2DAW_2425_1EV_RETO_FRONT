@@ -1,0 +1,82 @@
+CREATE DATABASE cine;
+USE cine;
+
+CREATE TABLE clientes (
+    cliente_id INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    telefono VARCHAR(15),
+    direccion VARCHAR(255),
+    contrasena VARCHAR(255) NOT NULL, -- Almacenar la contraseña encriptada
+    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    ultimo_inicio_sesion TIMESTAMP NULL
+);
+
+CREATE TABLE peliculas (
+    pelicula_id INT PRIMARY KEY AUTO_INCREMENT,
+    titulo VARCHAR(100) NOT NULL,
+    genero VARCHAR(50),
+    duracion INT, -- en minutos
+    clasificacion VARCHAR(10),
+    sinopsis TEXT
+);
+
+CREATE TABLE salas (
+    sala_id INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(50) NOT NULL,
+    capacidad INT NOT NULL
+);
+
+CREATE TABLE funciones (
+    funcion_id INT PRIMARY KEY AUTO_INCREMENT,
+    pelicula_id INT,
+    sala_id INT,
+    fecha DATE,
+    hora_inicio TIME,
+    hora_fin TIME,
+    FOREIGN KEY (pelicula_id) REFERENCES peliculas(pelicula_id),
+    FOREIGN KEY (sala_id) REFERENCES salas(sala_id)
+);
+
+CREATE TABLE asientos (
+    asiento_id INT PRIMARY KEY AUTO_INCREMENT,
+    sala_id INT,
+    fila CHAR(1), -- Ej. A, B, C...
+    numero INT, -- Ej. 1, 2, 3...
+    FOREIGN KEY (sala_id) REFERENCES salas(sala_id)
+);
+
+CREATE TABLE reservas (
+    reserva_id INT PRIMARY KEY AUTO_INCREMENT,
+    funcion_id INT,
+    asiento_id INT,
+    cliente_id INT,
+    fecha_reserva TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (funcion_id) REFERENCES funciones(funcion_id),
+    FOREIGN KEY (asiento_id) REFERENCES asientos(asiento_id),
+    FOREIGN KEY (cliente_id) REFERENCES clientes(cliente_id)
+);
+
+-- Insertar Clientes
+INSERT INTO clientes (nombre, email, telefono, direccion, contrasena)
+VALUES ('Carlos López', 'carlos.lopez@example.com', '5551234567', 'Calle Falsa 123', SHA2('mi_contraseña_segura', 256));
+
+-- Insertar Películas
+INSERT INTO peliculas (titulo, genero, duracion, clasificacion, sinopsis)
+VALUES ('Inception', 'Ciencia Ficción', 148, 'PG-13', 'Un ladrón que roba secretos...');
+
+-- Insertar Salas
+INSERT INTO salas (nombre, capacidad)
+VALUES ('Sala 1', 150);
+
+-- Insertar Funciones
+INSERT INTO funciones (pelicula_id, sala_id, fecha, hora_inicio, hora_fin)
+VALUES (1, 1, '2024-11-05', '20:00:00', '22:30:00');
+
+-- Insertar Asientos
+INSERT INTO asientos (sala_id, fila, numero)
+VALUES (1, 'A', 1);
+
+-- Insertar Reserva
+INSERT INTO reservas (funcion_id, asiento_id, cliente_id)
+VALUES (1, 1, 1); -- Asumiendo que el cliente con ID 1 ya existe
