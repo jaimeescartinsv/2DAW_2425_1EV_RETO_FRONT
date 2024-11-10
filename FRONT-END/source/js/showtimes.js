@@ -1,6 +1,6 @@
 export async function fetchMovies() {
     try {
-        const response = await fetch('http://localhost:5000/api/movies');
+        const response = await fetch('https://localhost:7089/api/movies');
         return await response.json();
     } catch (error) {
         console.error('Error al cargar las películas:', error);
