@@ -1,7 +1,0 @@
-
-/.vscode
-/BACK-END/bin
-/BACK-END/obj
-/FRONT-END/node_modules
-/FRONT-END/package.json
-/FRONT-END/package-lock.json
