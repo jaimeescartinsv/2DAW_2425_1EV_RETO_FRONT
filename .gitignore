@@ -5,3 +5,5 @@
 /FRONT-END/node_modules
 /FRONT-END/package.json
 /FRONT-END/package-lock.json
+/BACK-END/bin
+/BACK-END/obj
