@@ -1,0 +1,6 @@
+.vscode
+BACK-END/bin
+BACK-END/obj
+BACK-END/Properties
+FRONT-END/node_modules
+FRONT-END/package.json
