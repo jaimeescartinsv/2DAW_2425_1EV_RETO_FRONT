@@ -1,27 +1,60 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cine Online - Compra de Entradas</title>
-    <link rel="stylesheet" href="/FRONT-END/dist/main.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muelmo Cines</title>
+  <link rel="stylesheet" href="/FRONT-END/dist/main.css">
+  <script src="/FRONT-END/source/js/index.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poller+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+
 </head>
-
 <body>
-    <header>
-        
-    </header>
-    <main>
-        <section id="movies"></section>
-        <section id="seat-selection" style="display: none;">
-            <h2>Seleccione sus asientos</h2>
-            <div id="seat-map"></div>
-            <button id="confirm-selection">Confirmar Selección</button>
-        </section>
-    </main>
-    <script src="/FRONT-END/source/js/app.js" type="module"></script>
-</body>
+  <header class="header">
+    <div class="logo">
+      <img src="/FRONT-END/source/images/logo.png" alt="Logo Muelmo Cines">
+      <h1>MUELMO CINES</h1>
+    </div>
+    <nav class="nav">
+      <a href="#">CINES</a>
+      <a href="#">PELÍCULAS</a>
+    </nav>
+    <div class="icons">
+      <span class="icon">📍</span>
+      <span class="icon">🔍</span>
+    </div>
+  </header>
 
+  <main class="main">
+    <h2>EL MEJOR CINE</h2>
+    <section class="carousel">
+      <button class="carousel-button left">◀</button>
+      <div class="carousel-container">
+        <div class="movie-card">
+          <h3>PELÍCULA</h3>
+          <div class="movie-image">
+            <img src="placeholder.png" alt="Película">
+          </div>
+          <button class="buy-button">¡Compra tus entradas!</button>
+        </div>
+        <div class="movie-card">
+          <h3>PELÍCULA</h3>
+          <div class="movie-image">
+            <img src="placeholder.png" alt="Película">
+          </div>
+          <button class="buy-button">¡Compra tus entradas!</button>
+        </div>
+        <div class="movie-card">
+          <h3>PELÍCULA</h3>
+          <div class="movie-image">
+            <img src="placeholder.png" alt="Película">
+          </div>
+          <button class="buy-button">¡Compra tus entradas!</button>
+        </div>
+      </div>
+      <button class="carousel-button right">▶</button>
+    </section>
+  </main>
+</body>
 </html>

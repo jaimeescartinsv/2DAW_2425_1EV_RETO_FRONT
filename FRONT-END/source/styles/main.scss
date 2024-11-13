@@ -1,7 +1,129 @@
-/* style.css*/
-
-body {
+* {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-}
+    box-sizing: border-box;
+  }
+
+
+  
+  
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f5f5f5;
+  }
+  
+  .header {
+    font-family: 'Poller One', sans-serif;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #fff;
+    border-bottom: 2px solid #000;
+  
+    .logo {
+      display: flex;
+      align-items: center;
+  
+      img {
+        height: 65px;
+        margin-right: 10px;
+      }
+  
+      h1 {
+        font-size: 24px;
+        font-weight: bold;
+      }
+    }
+  
+    .nav {
+      a {
+        margin: 0 15px;
+        text-decoration: none;
+        color: #000;
+        font-weight: bold;
+      }
+    }
+  
+    .icons {
+      .icon {
+        margin-left: 15px;
+        font-size: 20px;
+      }
+    }
+  }
+  
+  .main {
+    text-align: center;
+    padding: 20px;
+  
+    h2 {
+      font-family: 'Poller One', sans-serif;
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+  
+    .carousel {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  
+      .carousel-button {
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+      }
+  
+      .carousel-container {
+        display: flex;
+        overflow: hidden;
+        width: 70%;
+  
+        .movie-card {
+          background-color: #fff;
+          border: 2px solid #000;
+          padding: 10px;
+          margin: 0 10px;
+          width: 200px;
+          text-align: center;
+  
+          h3 {
+            font-family: 'Lilita One', sans-serif;
+            font-size: 18px;
+            margin-bottom: 10px;
+          }
+  
+          .movie-image {
+            width: 100%;
+            height: 150px;
+            background-color: #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+  
+            img {
+              width: 50px;
+              height: 50px;
+              opacity: 0.5;
+            }
+          }
+  
+          .buy-button {
+            margin-top: 10px;
+            padding: 8px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+  
