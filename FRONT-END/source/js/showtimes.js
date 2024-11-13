@@ -1,8 +1,14 @@
 export async function fetchMovies() {
     try {
-        const response = await fetch('http://localhost:5000/api/movies');  // Asegúrate de que la API esté funcionando
+        const response = await fetch('http://localhost:5000/api/movies');
         const movies = await response.json();
-        displayMovies(movies);
+        console.log('Respuesta de la API:', movies);
+        
+        if (Array.isArray(movies)) {
+            displayMovies(movies);
+        } else {
+            console.error('La respuesta de la API no es un array:', movies);
+        }
     } catch (error) {
         console.error('Error al cargar las películas:', error);
     }
