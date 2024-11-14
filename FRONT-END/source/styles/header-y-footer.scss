@@ -128,6 +128,7 @@ a {
   margin-top: auto; /* Esto asegura que el footer se quede al fondo */
 }
 
+/* Footer__top centrado en la parte inferior de la pantalla */
 .footer__top {
   background-color: $color-dark;
   color: $color-light;
@@ -138,9 +139,24 @@ a {
   max-width: 1200px;  /* Ajusta el tamaño máximo para hacerlo más pequeño que el ancho total de la pantalla */
   width: 90%;  /* Asegura que el footer-top no sea más grande que su contenedor */
   margin: 0 auto; /* Centrado horizontal */
-  margin-top: auto; /* Esto asegura que el footer__top esté al final del main */
+  
+  position: fixed;  /* Fija el footer-top en la parte inferior de la pantalla */
+  left: 50%;  /* Lo centra horizontalmente */
+  bottom: 0;  /* Lo coloca en la parte inferior */
+  transform: translateX(-50%);  /* Ajusta la posición para estar completamente centrado */
+  z-index: 100;  /* Asegura que el footer-top esté por encima del contenido */
+  transition: all 0.3s ease; /* Animación suave para transiciones */
 }
 
+/* Cambios cuando se alcanza el final del contenido */
+.footer__top-sticky {
+  position: sticky;
+  bottom: 0; /* Se queda justo encima del footer__bottom */
+  transform: translateX(-5%); /* Asegura que se quede centrado horizontalmente */
+  z-index: 10; /* Baja la prioridad al final del contenido */
+}
+
+/* Asegura que todo el contenido del footer se mantenga centrado */
 .footer__options {
   display: flex;
   justify-content: center;
@@ -216,8 +232,10 @@ a {
 
   /* Cambios para pantallas de ordenador */
   .footer__top {
-    padding: 20px;
-    border-radius: 15px; /* Más redondeado en pantallas grandes */
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 0px;
+    padding-right: 0px;
     max-width: 1400px; /* Aumenta un poco más el tamaño en pantallas grandes */
   }
 
