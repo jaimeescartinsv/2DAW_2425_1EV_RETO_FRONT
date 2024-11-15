@@ -20,3 +20,13 @@ window.addEventListener('scroll', function() {
     }
   });
   
+  document.querySelector('.header__menu-toggle').addEventListener('click', function () {
+    document.querySelector('.nav').classList.add('nav--menu-active');
+});
+
+document.querySelector('.nav__close-button').addEventListener('click', function () {
+    document.querySelector('.nav').classList.remove('nav--menu-active');
+});
+
+
+  

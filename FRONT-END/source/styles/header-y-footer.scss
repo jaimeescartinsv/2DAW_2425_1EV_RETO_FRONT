@@ -59,7 +59,7 @@ a {
   &__title {
     font-family: $font-family-poller;
     margin-left: 10px;
-    font-size: 24px;
+    font-size: 22px;
     text-decoration: none;
     color: #000;
   }
@@ -85,40 +85,48 @@ a {
   }
 }
 
-/* Menú desplegable */
+/* Menú deslizable */
 .nav {
-  display: none;  /* Menú oculto por defecto */
-  position: absolute;
-  top: 60px;
-  right: 10px;
+  display: flex; /* Cambiado de none para manejar mejor la animación */
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  right: -100%; /* Inicialmente fuera de la pantalla */
+  width: 300px;
+  height: 100%;
   background-color: $color-light;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
-  padding: 10px;
-  opacity: 0;  /* Inicialmente invisible */
-  transform: translateY(-20px);  /* Desplazado para animación */
-  transition: opacity $transition-duration ease, transform $transition-duration ease; /* Animación suave */
+  box-shadow: -4px 0 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  transition: right 0.5s ease-in-out; /* Animación suave */
+}
 
-  &--menu-active {
-    display: block;  /* Muestra el menú */
-    opacity: 1;
-    transform: translateY(0);  /* Vuelve a la posición original */
-  }
+.nav--menu-active {
+  right: 0; /* Desliza el menú hacia adentro */
+}
 
-  &__link {
-    display: block;
-    padding: 8px 12px;
-    color: #333;
-    text-decoration: none;
-  }
+.nav__link {
+  margin: 15px 0;
+  text-decoration: none;
+  color: #333;
+}
 
-  &__link:hover {
-    background-color: $color-hover;
-  }
+.nav__close-button {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
 
-  &__link--location img {
-    height: 20px;
-  }
+.nav__close-button:hover {
+  color: $color-hover;
+}
+
+/* Animación del botón hamburguesa (opcional, visual feedback) */
+.header__menu-toggle.active {
+  transform: rotate(90deg); /* Ejemplo de animación */
+  transition: transform 0.3s ease;
 }
 
 /* Footer */
