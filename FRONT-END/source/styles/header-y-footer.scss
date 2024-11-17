@@ -125,27 +125,26 @@ a {
 	margin-top: auto;
 }
 .footer__top {
-    background-color: #000;
-    color: #fff;
-    padding: 10px;
-    border-radius: 100px;
-    max-width: 1200px;
-    width: 90%;
-    margin: 0 auto;
-    position: fixed;
-    left: 50%;
-    bottom: 0;
-    transform: translateX(-50%);
-    z-index: 100;
-    transition: all 0.3s ease;
+	background-color: #000;
+	color: #fff;
+	padding: 10px;
+	border-radius: 100px;
+	max-width: 1200px;
+	width: 90%;
+	margin: 0 auto;
+	position: fixed;
+	left: 50%;
+	bottom: 0;
+	transform: translateX(-50%);
+	z-index: 100;
+	transition: all 0.3s ease;
 }
-
 .footer__top--sticky {
-    position: absolute;
-    bottom: calc(100% + 10px);
-    z-index: 10;
+	position: sticky;
+	bottom: 0;
+	transform: translateX(-5%);
+	z-index: 10;
 }
-
 .footer__options {
 	display: flex;
 	justify-content: center;

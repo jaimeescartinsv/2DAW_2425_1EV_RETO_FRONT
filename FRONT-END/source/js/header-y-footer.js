@@ -1,32 +1,32 @@
-// ABRIR MENÚ HAMBURGUESA
+// Función para activar/desactivar el menú hamburguesa
 document.querySelector('.header__menu-toggle').addEventListener('click', function() {
     document.querySelector('.nav').classList.toggle('nav--menu-active');
 });
 
-//ANIMACION MENÚ HAMBURGUESA???
-document.querySelector('.header__menu-toggle').addEventListener('click', function () {
-  document.querySelector('.nav').classList.add('nav--menu-active');
-});
 
-//CIERRE MENÚ HAMBURGUESA
-document.querySelector('.nav__close-button').addEventListener('click', function () {
-  document.querySelector('.nav').classList.remove('nav--menu-active');
-});
-
-
-
-//PARTE SECCIÓN RAPIDA (FOOTER__TOP)
 window.addEventListener('scroll', function() {
-  const footerTop = document.querySelector('.footer__top');
-  const footerBottom = document.querySelector('.footer__bottom');
-  const footerBottomTop = footerBottom.getBoundingClientRect().top;
-  const viewportHeight = window.innerHeight;
-
-  // Cuando el scroll llega al footer__bottom
-  if (footerBottomTop <= viewportHeight) {
-      footerTop.classList.add('footer__top--sticky');
-  } else {
-      footerTop.classList.remove('footer__top--sticky');
-  }
+    const footerTop = document.querySelector('.footer__top');
+    const footerBottom = document.querySelector('.footer__bottom');
+    const footerTopHeight = footerTop.offsetHeight;
+    const footerBottomTop = footerBottom.offsetTop;
+    const scrollPosition = window.scrollY + window.innerHeight;
+  
+    // Cuando el usuario hace scroll hacia abajo, mantener el footer-top centrado
+    if (scrollPosition < footerBottomTop) {
+      footerTop.classList.remove('footer__top-sticky');
+    } else {
+      // Al llegar al final del contenido, hacer que el footer-top se quede encima del footer__bottom
+      footerTop.classList.add('footer__top-sticky');
+    }
+  });
+  
+  document.querySelector('.header__menu-toggle').addEventListener('click', function () {
+    document.querySelector('.nav').classList.add('nav--menu-active');
 });
 
+document.querySelector('.nav__close-button').addEventListener('click', function () {
+    document.querySelector('.nav').classList.remove('nav--menu-active');
+});
+
+
+  
