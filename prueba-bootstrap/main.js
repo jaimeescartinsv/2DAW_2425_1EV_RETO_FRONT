@@ -5,7 +5,7 @@ async function fetchMovies() {
         console.log('Datos recibidos de la API:', movies);
 
         if (Array.isArray(movies)) {
-            const limitedMovies = movies.slice(12, 18); // Selecciona solo las primeras 6 películas
+            const limitedMovies = movies.slice(0, 21); // Selecciona solo las primeras 6 películas
             displayCarousel(limitedMovies);
         } else {
             console.error('La respuesta de la API no es un array:', movies);
@@ -22,7 +22,11 @@ function displayCarousel(movies) {
         return;
     }
 
-    const chunkSize = 3; // 3 películas por slide
+    const isMobile = window.innerWidth <= 768; // Detectar vista móvil
+    const chunkSize = isMobile ? 1 : 3; // 1 tarjeta por slide en móvil, 3 en pantallas mayores
+
+    carouselContent.innerHTML = ''; // Limpiar contenido previo
+
     for (let i = 0; i < movies.length; i += chunkSize) {
         const chunk = movies.slice(i, i + chunkSize);
         const carouselItem = document.createElement('div');
@@ -56,6 +60,11 @@ function displayCarousel(movies) {
         carouselContent.appendChild(carouselItem);
     }
 }
+
+// Detectar cambio de tamaño de la ventana y actualizar el carrusel
+window.addEventListener('resize', () => {
+    fetchMovies();
+});
 
 
 // Inicializar el carrusel al cargar la página
