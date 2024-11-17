@@ -1,0 +1,748 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	font-family: "Lilita One", sans-serif;
+}
+html {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	font-family: "Lilita One", sans-serif;
+}
+a {
+	text-decoration: none;
+}
+.main {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	padding-bottom: 70px
+}
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 25px;
+	width: 100%;
+}
+.header__logo {
+	display: flex;
+	align-items: center;
+}
+.header__logo-link {
+	display: flex;
+	align-items: center;
+}
+.header__logo-image {
+	height: 40px;
+	transition: transform 0.3s ease;
+	&:hover {
+		transform: scale(1.1);
+	}
+}
+.header__title {
+	font-family: "Poller One", sans-serif;
+	margin-left: 10px;
+	font-size: 22px;
+	text-decoration: none;
+	color: #000;
+	transition: transform 0.3s ease, color 0.3s ease;
+	&:hover {
+		transform: scale(1.1);
+	}
+}
+.header__icons {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+.header__icon-button {
+	background: none;
+	border: none;
+	cursor: pointer;
+}
+.header__icon {
+	height: 25px;
+}
+.header__menu-toggle {
+	display: flex;
+	align-items: center;
+	background: none;
+	border: none;
+	cursor: pointer;
+}
+.header__menu-toggle img {
+	height: 25px;
+}
+.nav {
+  z-index: 99;
+	display: flex;
+	flex-direction: column;
+	position: fixed;
+	top: 0;
+	right: -100%;
+	width: 300px;
+	height: 100%;
+	background-color: #fff;
+	box-shadow: -4px 0 8px rgba(0, 0, 0, 0.2);
+	padding: 20px;
+	transition: right 0.5s ease-in-out;
+}
+.nav--menu-active {
+	right: 0;
+}
+.nav__link {
+	margin: 15px 0;
+	text-decoration: none;
+	color: #333;
+	transition: transform 0.3s ease, color 0.3s ease;
+	&:hover {
+		transform: scale(1.1);
+	}
+}
+.nav__close-button {
+	align-self: flex-end;
+	background: none;
+	border: none;
+	font-size: 1.5rem;
+	cursor: pointer;
+	margin-bottom: 20px;
+	&:hover {
+		color: #f2f2f2;
+	}
+}
+.header__menu-toggle--active {
+	transform: rotate(90deg);
+	transition: transform 0.3s ease;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// SCSS para el carrusel
+.carousel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  margin: 20px 0;
+  position: relative;
+
+  &__track-container {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  &__track {
+    display: flex;
+
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  &__item {
+    min-width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  &__button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+
+    &--prev {
+      left: 10px;
+    }
+
+    &--next {
+      right: 10px;
+    }
+  }
+}
+
+.movie-card {
+  text-align: center;
+  border: 1px solid #000;
+  padding: 10px;
+  border-radius: 5px;
+
+  &__title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    object-fit: cover;
+  }
+
+  &__button {
+    display: block;
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #333;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// SCSS para la sección de Top Películas y cabecera destacada
+
+.featured {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  background-color: #000;
+  color: #fff;
+
+  &__content {
+    max-width: 800px;
+    margin-bottom: 20px;
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  &__description {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+
+  &__link {
+    color: #1e90ff;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+
+    &:hover {
+      color: #00bfff;
+    }
+  }
+
+  &__image-container {
+    max-width: 100%;
+  }
+
+  &__image {
+    width: 100%;
+    max-width: 800px;
+    border-radius: 10px;
+  }
+}
+
+.top-movies {
+  padding: 20px;
+  text-align: center;
+
+  &__title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  &__carousel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .carousel {
+    &__track-container {
+      overflow: hidden;
+      width: 100%;
+    }
+
+    &__track {
+      display: flex;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    &__item {
+      flex: 0 0 80%;
+      margin: 0 10px;
+    }
+
+    &__button {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #000;
+
+      &:hover {
+        color: #1e90ff;
+      }
+    }
+  }
+
+  .movie-card {
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+
+    &__image {
+      width: 100%;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    &__title {
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
+}
+
+
+
+
+
+
+//carrusel top movies
+
+.top-movies {
+  padding: 20px;
+  text-align: center;
+
+  &__title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  &__carousel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden; // Para asegurarse de que no se vean las películas a los lados
+  }
+
+  .top-movies {
+    &__track-container {
+      overflow: hidden;
+      width: 100%;
+    }
+
+    &__track {
+      display: flex;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    &__item {
+      flex: 0 0 80%;
+      margin: 0 10px;
+    }
+
+    &__button {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #000;
+
+      &:hover {
+        color: #1e90ff;
+      }
+    }
+  }
+
+  .movie-card {
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+
+    &__image {
+      width: 100%;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    &__title {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    &__button {
+      display: block;
+      background-color: #000;
+      color: #fff;
+      padding: 10px;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #333;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.footer {
+	color: #000;
+	text-align: center;
+	margin-top: auto;
+}
+.footer__top {
+	background-color: #000;
+	color: #fff;
+	padding: 10px;
+	border-radius: 100px;
+	max-width: 1200px;
+	width: 90%;
+	margin: 0 auto;
+	position: fixed;
+	left: 50%;
+	bottom: 0;
+	transform: translateX(-50%);
+	z-index: 100;
+	transition: none; // Elimina transiciones para evitar animaciones extrañas
+  }
+  
+  
+.footer__options {
+	display: flex;
+	justify-content: center;
+	gap: 60px;
+}
+.footer__option-text {
+	display: none;
+}
+.footer__option {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	transition: transform 0.3s ease, color 0.3s ease;
+	&:hover {
+		transform: scale(1.1);
+		color: #f2f2f2;
+	}
+}
+.footer__option-image {
+	height: 40px;
+	width: 40px;
+}
+.footer__option-image1 {
+	height: 40px;
+	width: 40px;
+}
+.footer__option-image2 {
+	height: 40px;
+	width: 47px;
+}
+.footer__bottom-new {
+	background-color: #fff;
+	color: #000;
+	padding: 10px;
+}
+.footer__nav {
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+	padding-top: 15px;
+}
+.footer__nav-link {
+	text-decoration: none;
+	color: #000;
+}
+.footer__logo {
+	height: 50px;
+	margin-top: 15px;
+}
+@media screen and (min-width: 768px) {
+	.header {
+		flex-direction: row;
+		justify-content: space-evenly;
+		gap: -90px;
+	}
+	.header__title {
+		margin-left: 45px;
+		font-size: 27px;
+	}
+	.header__logo-image {
+		transition: transform 0.3s ease;
+		width: 50px;
+		height: 55px;
+		&:hover {
+			transform: scale(1.1);
+		}
+	}
+	.main {
+
+		padding-bottom: 55px
+	}
+
+
+
+
+
+
+
+
+
+  .featured {
+    flex-direction: row;
+    justify-content: space-between;
+
+    &__content {
+      text-align: left;
+      margin-right: 20px;
+    }
+  }
+
+  .top-movies {
+    .carousel {
+      &__item {
+        flex: 0 0 20%;
+      }
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//carrusel arriba
+  .carousel {
+    justify-content: center;
+
+    &__track-container {
+      width: 80%;
+    }
+
+    &__item {
+      min-width: 100%;
+    }
+  }
+
+  .movie-card {
+    &__title {
+      font-size: 20px;
+    }
+
+    &__image {
+      max-height: 500px;
+    }
+
+    &__button {
+      font-size: 14px;
+    }
+  }
+
+
+
+
+
+
+
+
+//carrusel top movies
+.top-movies__carousel {
+  justify-content: center;
+}
+
+.top-movies__item {
+  flex: 0 0 30%;  // Mostrar 3 películas en pantallas grandes
+}
+
+.movie-card {
+  &__title {
+    font-size: 20px;
+  }
+
+  &__image {
+    max-height: 500px;
+  }
+
+  &__button {
+    font-size: 14px;
+  }
+}
+
+.top-movies__button--prev, .top-movies__button--next {
+  font-size: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	.nav {
+		top: 80px;
+		display: flex;
+		position: static;
+		flex-direction: row;
+		background: none;
+		box-shadow: none;
+		padding: 0;
+		width: auto;
+		height: auto;
+		gap: 20px;
+	}
+	.footer__options {
+		gap: 100px;
+	}
+	.header__menu-toggle {
+		display: none;
+	}
+	.nav__link {
+		margin: 0;
+		text-decoration: none;
+		color: #000;
+		font-size: 20px;
+	}
+	.nav__close-button {
+		display: none;
+	}
+	.footer__top {
+		padding-top: 10px;
+		padding-bottom: 10px;
+		padding-left: 0px;
+		padding-right: 0px;
+		max-width: 1400px;
+	}
+	.footer__logo {
+		height: 40px;
+	}
+	.footer__option-text {
+		display: inline;
+		text-decoration: none;
+		color: #fff;
+		font-size: 22px;
+	}
+	.footer__option-image,
+	.footer__option-image1,
+	.footer__option-image2 {
+		display: none;
+	}
+}
