@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginFormContainer = document.getElementById('loginFormContainer');
     const switchToLogin = document.getElementById('switchToLogin');
     const switchToRegister = document.getElementById('switchToRegister');
-
+    
     // Cambiar entre formularios
     switchToLogin.addEventListener('click', (e) => {
         e.preventDefault();
@@ -50,8 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert(`¡Bienvenido, ${usuario.nombre}!`);
                 // Guardar usuario en localStorage
                 localStorage.setItem('usuario', JSON.stringify(usuario));
-                // Redirigir al área de usuario
-                window.location.href = './user-dashboard.html';
+                // Redirigir al index.html
+                window.location.href = '../index/index.html';
             } else {
                 alert('Credenciales incorrectas. Intenta nuevamente.');
             }
@@ -64,21 +64,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // Manejar registro de usuario
     createUserForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-    
+
         const nombre = document.getElementById('createUsername').value;
         const correo = document.getElementById('createEmail').value;
         const contrasena = document.getElementById('createPassword').value;
-    
+
         // Generar un ID válido (Número aleatorio entre 1 y 1,000,000)
         const usuarioId = Math.floor(Math.random() * 1000000) + 1;
-    
+
         const nuevoUsuario = {
             usuarioId: usuarioId,
             nombre: nombre,
             correo: correo,
             contrasena: contrasena,
         };
-    
+
         try {
             const response = await fetch('http://localhost:5000/api/usuarios', {
                 method: 'POST',
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 body: JSON.stringify(nuevoUsuario),
             });
-    
+
             if (response.ok) {
                 alert('Usuario creado exitosamente. Ahora puedes iniciar sesión.');
                 // Cambiar al formulario de inicio de sesión automáticamente
