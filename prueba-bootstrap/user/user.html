@@ -14,15 +14,16 @@
         body {
             font-family: 'Poller One', sans-serif;
             margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         .form-container {
-            max-width: 500px;
+            max-width: 700px;
             padding: 30px;
             background-color: #343a40;
-            /* Mismo color que el navbar */
             color: #ffffff;
-            /* Texto claro para contraste */
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
         }
@@ -36,17 +37,22 @@
         .form-container .form-label,
         .form-container .form-text {
             color: #f8f9fa;
-            /* Color claro para texto adicional */
         }
 
         .form-container .form-text a {
             color: #0d6efd;
-            /* Color de enlace accesible */
             text-decoration: none;
         }
 
         .form-container .form-text a:hover {
             text-decoration: underline;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         footer {
@@ -89,7 +95,7 @@
         </div>
     </nav>
 
-    <div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="content">
         <div class="container">
             <div class="form-container mx-auto">
                 <h2>Crear Cuenta</h2>
