@@ -31,6 +31,8 @@ document.querySelectorAll('.seat').forEach(seat => {
 function updateSelectedSeats() {
     const selectedSeats = document.querySelectorAll('.seat.selected');
     const seatsList = document.getElementById('seats-list');
+    const continueBtn = document.getElementById('continue-btn'); // Referencia al botón CONTINUAR
+
     seatsList.innerHTML = ''; // Limpiar la lista
 
     selectedSeats.forEach(seat => {
@@ -39,6 +41,13 @@ function updateSelectedSeats() {
         listItem.textContent = `Asiento: ${seatName}`;
         seatsList.appendChild(listItem);
     });
+
+    // Si al menos un asiento está seleccionado, mostrar el botón CONTINUAR
+    if (selectedSeats.length > 0) {
+        continueBtn.style.display = 'block';
+    } else {
+        continueBtn.style.display = 'none'; // Ocultar el botón si no hay asientos seleccionados
+    }
 }
 
 // Funcionalidad del botón "Atrás"
@@ -71,4 +80,10 @@ window.addEventListener('scroll', function () {
         footerTop.style.bottom = 'auto';
         footerTop.style.top = `${footerOffsetTop - footerTopHeight}px`; // Ajusta justo encima del footer
     }
+});
+
+// Acción del botón "CONTINUAR"
+document.getElementById('continue-btn').addEventListener('click', function () {
+    // Redirigir al usuario a la siguiente página
+    window.location.href = '/FRONT-END/source/html/next-page.html';  // Reemplaza 'next-page.html' con el URL a donde deseas redirigir
 });
