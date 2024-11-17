@@ -80,13 +80,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (isExpanded) {
             userNav.innerHTML = `
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="../user/user.html">
                     Mi usuario
                 </a>
             `;
         } else {
             userNav.innerHTML = `
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="../user/user.html">
                     <i class="bi bi-person-circle"></i>
                 </a>
             `;
