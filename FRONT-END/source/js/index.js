@@ -130,20 +130,19 @@ document.addEventListener("DOMContentLoaded", () => {
 //CARRUSEL TOP PELICULAS
 
 document.addEventListener("DOMContentLoaded", () => {
-    const track = document.querySelector(".top-movies__track");
-    const prevButton = document.querySelector(".top-movies__button--prev");
-    const nextButton = document.querySelector(".top-movies__button--next");
+    const track = document.querySelector(".new-carousel__track");
+    const prevButton = document.querySelector(".new-carousel__button--prev");
+    const nextButton = document.querySelector(".new-carousel__button--next");
     const items = Array.from(track.children);
   
     let currentIndex = 0;
   
-    // Clonamos el primer y el último elemento para crear el efecto de bucle infinito
     const cloneItems = () => {
       const firstClone = items[0].cloneNode(true);
       const lastClone = items[items.length - 1].cloneNode(true);
   
-      track.appendChild(firstClone); // Clona al final
-      track.insertBefore(lastClone, items[0]); // Clona al principio
+      track.appendChild(firstClone);
+      track.insertBefore(lastClone, items[0]);
     };
   
     cloneItems();
@@ -154,45 +153,39 @@ document.addEventListener("DOMContentLoaded", () => {
       track.style.transform = `translateX(-${(currentIndex + 1) * width}px)`;
     };
   
-    // Función que asegura que al llegar a los clones el carrusel se reinicie
     const jumpToEdge = () => {
       const width = items[0].getBoundingClientRect().width;
-      // Si llegamos al último clon, movemos al primer elemento sin transición
+      track.style.transition = "none";
       if (currentIndex === items.length) {
         currentIndex = 0;
-        track.style.transition = "none"; // Sin transición para este salto
-        track.style.transform = `translateX(-${(currentIndex + 1) * width}px)`; // Vuelve al principio
-      } 
-      // Si llegamos al primer clon, movemos al último elemento sin transición
-      else if (currentIndex === -1) {
+        track.style.transform = `translateX(-${(currentIndex + 1) * width}px)`;
+      } else if (currentIndex === -1) {
         currentIndex = items.length - 1;
-        track.style.transition = "none"; // Sin transición para este salto
-        track.style.transform = `translateX(-${(currentIndex + 1) * width}px)`; // Vuelve al final
-      } else {
-        track.style.transition = "transform 0.3s ease-in-out"; // Restaura la transición
+        track.style.transform = `translateX(-${(currentIndex + 1) * width}px)`;
       }
     };
   
     nextButton.addEventListener("click", () => {
       currentIndex++;
       updateCarousel();
-      setTimeout(jumpToEdge, 300); // Llama al salto después de 300ms para la transición
+      setTimeout(jumpToEdge, 300);
     });
   
     prevButton.addEventListener("click", () => {
       currentIndex--;
       updateCarousel();
-      setTimeout(jumpToEdge, 300); // Llama al salto después de 300ms para la transición
+      setTimeout(jumpToEdge, 300);
     });
   
-    // Inicializa la posición del carrusel
+    // Configurar la posición inicial
     const initializeCarousel = () => {
       const width = items[0].getBoundingClientRect().width;
-      track.style.transform = `translateX(-${(currentIndex + 1) * width}px)`; // Mueve a la posición inicial
+      track.style.transform = `translateX(-${(currentIndex + 1) * width}px)`;
     };
   
     initializeCarousel();
   
-    window.addEventListener("resize", initializeCarousel); // Asegura que el carrusel se ajuste al redimensionar
+    // Asegura que el carrusel sea responsivo
+    window.addEventListener("resize", initializeCarousel);
   });
   
