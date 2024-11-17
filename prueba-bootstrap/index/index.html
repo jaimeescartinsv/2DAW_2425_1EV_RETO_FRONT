@@ -15,6 +15,10 @@
             font-family: 'Poller One', sans-serif;
         }
 
+        #featuredMoviesCarousel h2 {
+            font-size: 3rem;
+        }
+
         .carousel-control-prev-icon,
         .carousel-control-next-icon {
             display: inline-block;
@@ -76,6 +80,47 @@
             margin-top: auto;
             width: 100%;
         }
+
+        #cineSalas img {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        #cineSalas h2 {
+            font-size: 3rem;
+        }
+
+        #cineSalas h3 {
+            color: #0056b3;
+            margin-bottom: 1rem;
+        }
+
+        #cineSalas ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        #cineSalas ul li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        #cineSalas ul li::before {
+            content: "✔";
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-size: 1.2rem;
+        }
+
+        #aboutMuelmo h2 {
+            font-size: 3rem;
+        }
+
+        #aboutMuelmo h3 {
+            color: #0056b3;
+        }
+
 
         @media (max-width: 768px) {
             .carousel-inner .row {
@@ -146,6 +191,127 @@
                 <span class="carousel-control-next-icon ms-3" data-bs-target="#featuredMoviesCarousel"
                     data-bs-slide="next" role="button" aria-hidden="true"></span>
             </div>
+        </div>
+    </div>
+
+    <div class="container py-5" id="cineSalas">
+        <h2 class="text-center mb-4">Nuestras Salas</h2>
+        <div class="row align-items-center mb-5">
+            <div class="col-md-6">
+                <img src="https://www.cinesa.es/media/t0ufh3g5/sala-premium-isense-cinesa.jpg" alt="Sala estándar"
+                    class="img-fluid rounded">
+            </div>
+            <div class="col-md-6">
+                <h3>Sala ISENSE</h3>
+                <p>
+                    Nuestras salas exclusivas ISENSE te harán sentir parte de la película con su sonido Dolby Atmos® y
+                    pantallas impresionantemente reales. Vive un cine mucho más inmersivo en Muelmo Cines.
+                </p>
+                <ul>
+                    <li>Sonido envolvente</li>
+                    <li>Pantalla extragrande</li>
+                    <li>Proyector Full HD</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row align-items-center mb-5">
+            <div class="col-md-6 order-md-2">
+                <img src="https://www.cinesa.es/media/hozfkyqf/conoce-sala-imax-en-cinesa.jpg" alt="Sala premium"
+                    class="img-fluid rounded">
+            </div>
+            <div class="col-md-6 order-md-1">
+                <h3>Sala IMAX®</h3>
+                <p>
+                    Vive The IMAX Experience® en nuestras salas y disfruta de las mejores versiones de las películas
+                    gracias a sus imágenes únicas, diseño exclusivo y sonido definitivo.
+
+                    IMAX® te llevará a algo tan cercano a la realidad como jamás hayas experimentado.
+                </p>
+                <ul>
+                    <li>Imágenes únicas</li>
+                    <li>Diseño exclusivo</li>
+                    <li>Sonido definitivo</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <img src="https://www.cinesa.es/media/vetbkgfh/cinesa-sala-screenx.jpg" alt="Sala 3D/IMAX"
+                    class="img-fluid rounded">
+            </div>
+            <div class="col-md-6">
+                <h3>Sala SCREEN X</h3>
+                <p>
+                    ScreenX es la primera plataforma cinematográfica multi proyección del mundo, que te brindará una
+                    experiencia de visualización de 270 grados al expandir la pantalla central a las paredes laterales
+                    del auditorio.
+
+                    Podrás ver desde éxitos de taquilla llenos de acción, hasta ficción dramática, comedia y terror,
+                    musicales e incluso conciertos en vivo.*
+                </p>
+                <ul>
+                    <li>Expansión panorámica y narrativa en 270 grados.</li>
+                    <li>Tres perspectivas con imágenes envolventes.</li>
+                    <li>Pantalla 2K para vivir una experiencia más inmersiva.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="py-5" id="aboutMuelmo">
+        <div class="container">
+            <h2 class="text-center mb-4">Acerca de Muelmo Cines</h2>
+            <div class="row align-items-center mb-5">
+                <div class="col-md-6">
+                    <h3>Nuestra Historia</h3>
+                    <p>
+                        Fundado en 1995, Muelmo Cines ha sido un punto de encuentro para los amantes del cine durante
+                        más
+                        de 25 años. Con una pasión inigualable por ofrecer experiencias cinematográficas inolvidables,
+                        hemos
+                        crecido hasta convertirnos en uno de los cines favoritos de la comunidad.
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <img src="https://via.placeholder.com/600x400" alt="Historia de Muelmo Cines"
+                        class="img-fluid rounded">
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-md-6 order-md-2">
+                    <h3>Nuestra Misión y Valores</h3>
+                    <p>
+                        En Muelmo Cines, nuestra misión es simple: ofrecer a nuestros clientes una experiencia
+                        cinematográfica
+                        inolvidable.
+                    </p>
+                    <ul>
+                        <li><strong>Innovación:</strong> Constantemente actualizamos nuestras instalaciones para ofrecer
+                            la mejor tecnología en sonido e imagen.</li>
+                        <li><strong>Comunidad:</strong> Nos enorgullecemos de ser parte de la comunidad local y apoyarla
+                            en cada paso.</li>
+                        <li><strong>Pasión:</strong> Creemos en el poder del cine para inspirar, entretener y conectar a
+                            las personas.</li>
+                    </ul>
+                </div>
+                <div class="col-md-6 order-md-1">
+                    <img src="https://via.placeholder.com/600x400" alt="Misión y Valores" class="img-fluid rounded">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-light py-5">
+        <div class="container text-center">
+            <h2 class="mb-4">Suscríbete a nuestro boletín</h2>
+            <form>
+                <div class="row">
+                    <div class="col-md-6 offset-md-3">
+                        <input type="email" class="form-control mb-3" placeholder="Tu correo electrónico">
+                        <button type="submit" class="btn btn-primary">Suscribirme</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 

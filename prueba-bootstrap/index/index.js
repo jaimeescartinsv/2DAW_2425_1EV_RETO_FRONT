@@ -5,7 +5,7 @@ async function fetchMovies() {
         console.log('Datos recibidos de la API:', movies);
 
         if (movies.length > 0) { // Verificar si hay películas disponibles
-            const limitedMovies = movies.slice(0, 21); // Selecciona solo las primeras 6 películas
+            const limitedMovies = movies.slice(0, 6); // Selecciona solo las primeras 6 películas
             displayCarousel(limitedMovies);
         } else {
             console.error('La respuesta de la API no contiene películas:', movies);
