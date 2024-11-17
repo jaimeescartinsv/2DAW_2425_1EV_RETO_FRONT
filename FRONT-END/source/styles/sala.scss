@@ -81,8 +81,8 @@ a {
 	height: 25px;
 }
 .nav {
-	z-index: 99;
 	display: flex;
+    z-index: 99;
 	flex-direction: column;
 	position: fixed;
 	top: 0;
@@ -121,6 +121,244 @@ a {
 	transform: rotate(90deg);
 	transition: transform 0.3s ease;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//PARTE PELICULA EXACTA
+.movie-header {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    background-image: url('path-to-your-background-image.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 40px;
+    color: rgb(0, 0, 0);
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.movie-header__logo-image {
+    height: 60px;
+}
+
+.movie-header__details {
+    text-align: right;
+    max-width: 60%;
+}
+
+.movie-header__title {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.movie-header__session-info {
+    font-size: 16px;
+    color: #000000;
+}
+
+.cinema {
+    display: block;
+    font-weight: bold;
+}
+
+.session-time {
+    margin-top: 5px;
+}
+
+.movie-header__logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//SALA Y SELECCION DE ASIENTOS
+.seating-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#back-btn {
+    display: none;
+    background-color: #4caf50;
+    border: none;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+}
+
+h1 {
+    text-align: center;
+}
+
+.status-legends {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.legend {
+    font-size: 14px;
+}
+
+.selected {
+    background-color: #4caf50;
+    padding: 5px 10px;
+}
+
+.unavailable {
+    background-color: #9e9e9e;
+    padding: 5px 10px;
+}
+
+.wheelchair {
+    background-color: #2196f3;
+    padding: 5px 10px;
+}
+
+.accompanied {
+    background-color: #ff9800;
+    padding: 5px 10px;
+}
+
+.blocked {
+    background-color: #f44336;
+    padding: 5px 10px;
+}
+
+.screen {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.seating-chart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.label {
+    margin-right: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.seats {
+    display: flex;
+    gap: 10px;
+}
+
+.seat {
+    width: 40px;
+    height: 40px;
+    background-color: #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.seat.available { background-color: #4caf50; }
+.seat.selected { background-color: #ffeb3b; }
+.seat.unavailable { background-color: #9e9e9e; }
+.seat.wheelchair { background-color: #2196f3; }
+.seat.accompanied { background-color: #ff9800; }
+.seat.blocked { background-color: #f44336; }
+
+.seat:hover {
+    transform: scale(1.1);
+}
+
+#selected-seats {
+    margin-top: 30px;
+    font-size: 18px;
+    color: #000000;
+}
+
+#seats-list {
+    list-style: none;
+    padding: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .footer {
 	color: #000;
 	text-align: center;
@@ -215,6 +453,7 @@ a {
 		padding-bottom: 55px
 	}
 	.nav {
+
 		top: 80px;
 		display: flex;
 		position: static;

@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MUELMO CINES - HYF</title>
-    <link rel="stylesheet" href="/FRONT-END/dist/header-y-footer.css">
+    <title>MUELMO CINES - SALA</title>
+    <link rel="stylesheet" href="/FRONT-END/dist/sala.css">
     <link href="https://fonts.googleapis.com/css2?family=Poller+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
 </head>
@@ -34,8 +34,107 @@
       </header>
 
     <main class="main">
-        <!-- Contenido principal aquí -->
 
+        <div class="movie-header">
+            <div class="movie-header__logo">
+                <img src="logo-cinesa.png" alt="Logo Cinesa" class="movie-header__logo-image">
+            </div>
+            <div class="movie-header__details">
+                <h2 class="movie-header__title">VENOM: EL ÚLTIMO BAILE</h2>
+                <p class="movie-header__session-info">
+                    <span class="cinema">Cine: Grancasa</span>
+                    <span class="session-time">Sesión: 17 nov, 19:50</span>
+                </p>
+            </div>
+        </div>
+
+        
+
+        <!-- boton para mas tarde????? -->
+        <div class="seating-header">
+            <button id="back-btn">← Atrás</button>
+            <h1>ELIGE TUS ASIENTOS</h1>
+        </div>
+        
+        <div class="status-legends">
+            <span class="legend selected">Seleccionada</span>
+            <span class="legend unavailable">No disponible</span>
+            <span class="legend wheelchair">Espacio Silla Ruedas</span>
+            <span class="legend accompanied">Acompañante</span>
+            <span class="legend blocked">Bloqueada</span>
+        </div>
+        
+        <div class="screen">
+            <span>Pantalla</span>
+        </div>
+        
+        <div class="seating-chart">
+            <!-- Fila A -->
+            <div class="row">
+                <span class="label">A</span>
+                <div class="seats">
+                    <div class="seat available" data-seat="A1"></div>
+                    <div class="seat available" data-seat="A2"></div>
+                    <div class="seat available" data-seat="A3"></div>
+                    <div class="seat available" data-seat="A4"></div>
+                    <div class="seat available" data-seat="A5"></div>
+                    <div class="seat wheelchair" data-seat="A6"></div>
+                    <div class="seat unavailable" data-seat="A7"></div>
+                    <div class="seat accompanied" data-seat="A8"></div>
+                </div>
+            </div>
+            <!-- Fila B -->
+            <div class="row">
+                <span class="label">B</span>
+                <div class="seats">
+                    <div class="seat available" data-seat="B1"></div>
+                    <div class="seat available" data-seat="B2"></div>
+                    <div class="seat available" data-seat="B3"></div>
+                    <div class="seat available" data-seat="B4"></div>
+                    <div class="seat available" data-seat="B5"></div>
+                    <div class="seat available" data-seat="B6"></div>
+                    <div class="seat available" data-seat="B7"></div>
+                    <div class="seat available" data-seat="B8"></div>
+                </div>
+            </div>
+            <!-- Fila C -->
+            <div class="row">
+                <span class="label">C</span>
+                <div class="seats">
+                    <div class="seat available" data-seat="C1"></div>
+                    <div class="seat available" data-seat="C2"></div>
+                    <div class="seat available" data-seat="C3"></div>
+                    <div class="seat available" data-seat="C4"></div>
+                    <div class="seat available" data-seat="C5"></div>
+                    <div class="seat available" data-seat="C6"></div>
+                    <div class="seat available" data-seat="C7"></div>
+                    <div class="seat available" data-seat="C8"></div>
+                </div>
+            </div>
+            <!-- Fila D -->
+            <div class="row">
+                <span class="label">D</span>
+                <div class="seats">
+                    <div class="seat available" data-seat="D1"></div>
+                    <div class="seat available" data-seat="D2"></div>
+                    <div class="seat available" data-seat="D3"></div>
+                    <div class="seat available" data-seat="D4"></div>
+                    <div class="seat available" data-seat="D5"></div>
+                    <div class="seat available" data-seat="D6"></div>
+                    <div class="seat available" data-seat="D7"></div>
+                    <div class="seat available" data-seat="D8"></div>
+                </div>
+            </div>
+            <!-- More rows can be added here -->
+        </div>
+        
+        <!-- Selected Seats Information -->
+        <div id="selected-seats">
+            <h3>Asientos seleccionados:</h3>
+            <ul id="seats-list"></ul>
+        </div>
+        
+        
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc egestas eleifend sollicitudin. Vivamus sodales ultrices ligula, interdum sagittis justo cursus consequat. Quisque dapibus elit quis nisi elementum dapibus. Nunc elementum efficitur elit nec tempor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus vestibulum nunc felis, sit amet lobortis felis hendrerit eu. Vivamus a consectetur libero. Sed commodo vel ex et dictum. In consectetur venenatis eros. Donec posuere nibh erat, id elementum eros vestibulum non. Mauris scelerisque sodales orci vel mattis.
 
@@ -120,7 +219,7 @@ Vestibulum at bibendum turpis. Curabitur tincidunt pharetra velit, ut accumsan m
 
     </footer>
     
-    <script src="/FRONT-END/source/js/header-y-footer.js"></script>
+    <script src="/FRONT-END/source/js/sala.js"></script>
 </body>
 
 </html>
