@@ -4,11 +4,11 @@ async function fetchMovies() {
         const movies = await response.json();
         console.log('Datos recibidos de la API:', movies);
 
-        if (Array.isArray(movies)) {
+        if (movies.length > 0) { // Verificar si hay películas disponibles
             const limitedMovies = movies.slice(0, 21); // Selecciona solo las primeras 6 películas
             displayCarousel(limitedMovies);
         } else {
-            console.error('La respuesta de la API no es un array:', movies);
+            console.error('La respuesta de la API no contiene películas:', movies);
         }
     } catch (error) {
         console.error('Error al cargar las películas:', error);
@@ -65,7 +65,6 @@ function displayCarousel(movies) {
 window.addEventListener('resize', () => {
     fetchMovies();
 });
-
 
 // Inicializar el carrusel al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
