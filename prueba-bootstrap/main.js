@@ -1,12 +1,12 @@
-// main.js
 async function fetchMovies() {
     try {
-        const response = await fetch('http://localhost:5000/api/peliculas'); // Cambia la URL según tu entorno
+        const response = await fetch('http://localhost:5000/api/peliculas');
         const movies = await response.json();
         console.log('Datos recibidos de la API:', movies);
 
         if (Array.isArray(movies)) {
-            displayCarousel(movies);
+            const limitedMovies = movies.slice(12, 18); // Selecciona solo las primeras 6 películas
+            displayCarousel(limitedMovies);
         } else {
             console.error('La respuesta de la API no es un array:', movies);
         }
