@@ -22,7 +22,7 @@ a {
 	flex: 1;
 	display: flex;
 	flex-direction: column;
-	padding-bottom: 60px
+	padding-bottom: 70px
 }
 .header {
 	display: flex;
@@ -181,7 +181,7 @@ a {
 	display: flex;
 	justify-content: center;
 	gap: 20px;
-	padding-top: 30px;
+	padding-top: 15px;
 }
 .footer__nav-link {
 	text-decoration: none;
@@ -208,6 +208,10 @@ a {
 		&:hover {
 			transform: scale(1.1);
 		}
+	}
+	.main {
+
+		padding-bottom: 55px
 	}
 	.nav {
 		top: 80px;

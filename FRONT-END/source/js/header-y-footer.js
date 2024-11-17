@@ -4,6 +4,8 @@ document.querySelector('.header__menu-toggle').addEventListener('click', functio
 });
 
 
+
+
 window.addEventListener('scroll', function () {
   const footerTop = document.querySelector('.footer__top');
   const footer = document.querySelector('.footer');
