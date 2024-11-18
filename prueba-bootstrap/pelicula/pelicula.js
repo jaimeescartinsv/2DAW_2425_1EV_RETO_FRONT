@@ -58,12 +58,4 @@ document.addEventListener("DOMContentLoaded", function () {
             alert(`¡Entradas para "${movieTitle}" seleccionadas!`);
         });
     }
-
-    // Lógica para el botón de "Volver al listado"
-    const btnBack = document.getElementById('btnBack');
-    if (btnBack) {
-        btnBack.addEventListener('click', () => {
-            window.location.href = '../index/index.html';
-        });
-    }
 });

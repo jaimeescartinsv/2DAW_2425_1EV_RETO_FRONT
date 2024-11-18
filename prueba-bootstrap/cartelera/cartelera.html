@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartelera</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poller+One&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poller One', sans-serif;
+        }
+
+        .card-title {
+            margin-bottom: 0.5rem;
+        }
+
+        .movie-card img {
+            object-fit: cover;
+            height: auto;
+            width: 100%;
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .movie-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .movie-card .card-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .movie-card .btn {
+            align-self: center;
+            margin-top: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../index/index.html">
+                <img src="./logo-white.png" alt="Logo" width="100" style="padding: 15px;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index/index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="cartelera.html">Cartelera</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="precios.html">Precios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contacto.html">Contacto</a>
+                    </li>
+                    <li class="nav-item" id="userNav">
+                        <a class="nav-link" href="../user/user.html">
+                            <i class="bi bi-person-circle"></i>
+                            Mi usuario
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="bg-dark text-white text-center py-5">
+        <div class="container">
+            <h1 class="display-4">Cartelera</h1>
+            <p class="lead">Descubre todas las películas disponibles en nuestras salas</p>
+        </div>
+    </div>
+
+    <div class="container py-5">
+        <div class="row" id="movieGrid">
+            <!-- Películas generadas dinámicamente -->
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p>&copy; 2024 Muelmo Cines. Todos los derechos reservados.</p>
+            <ul class="list-unstyled d-flex justify-content-center">
+                <li class="ms-3"><a class="text-white" href="#"><i class="bi bi-facebook"></i> Facebook</a></li>
+                <li class="ms-3"><a class="text-white" href="#"><i class="bi bi-twitter"></i> Twitter</a></li>
+                <li class="ms-3"><a class="text-white" href="#"><i class="bi bi-instagram"></i> Instagram</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Función para cargar la cartelera desde la API
+            async function fetchMovies() {
+                try {
+                    const response = await fetch('http://localhost:5000/api/peliculas');
+                    const movies = await response.json();
+
+                    if (movies.length > 0) {
+                        displayMovies(movies);
+                    } else {
+                        console.error('No hay películas disponibles en la API.');
+                    }
+                } catch (error) {
+                    console.error('Error al cargar las películas:', error);
+                }
+            }
+
+            // Función para mostrar las películas en la cuadrícula
+            function displayMovies(movies) {
+                const movieGrid = document.getElementById('movieGrid');
+                if (!movieGrid) {
+                    console.error('Contenedor de la cartelera no encontrado.');
+                    return;
+                }
+
+                movieGrid.innerHTML = ''; // Limpiar contenido previo
+
+                movies.forEach(movie => {
+                    const col = document.createElement('div');
+                    col.classList.add('col-md-4', 'mb-4');
+
+                    col.innerHTML = `
+                        <div class="card movie-card h-100">
+                            <img src="${movie.imageUrl || 'https://via.placeholder.com/300x400'}" class="card-img-top" alt="${movie.title}">
+                            <div class="card-body">
+                                <h5 class="card-title">${movie.title || 'Título no disponible'}</h5>
+                                <p class="card-text">${movie.description || 'Sin descripción disponible.'}</p>
+                                <p class="card-text"><strong>Duración:</strong> ${movie.duration || 'N/A'} minutos</p>
+                                <a href="../pelicula/pelicula.html" class="btn btn-primary w-100" onclick="viewMovie(${movie.peliculaId})">Ver más</a>
+                            </div>
+                        </div>
+                    `;
+                    movieGrid.appendChild(col);
+                });
+            }
+
+            // Función para guardar el ID de la película seleccionada en localStorage
+            window.viewMovie = function (peliculaId) {
+                localStorage.setItem('selectedMovieId', peliculaId);
+            };
+
+            // Cargar la cartelera al cargar la página
+            fetchMovies();
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
