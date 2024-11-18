@@ -64,21 +64,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // Manejar registro de usuario
     createUserForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-
+    
         const nombre = document.getElementById('createUsername').value;
         const correo = document.getElementById('createEmail').value;
         const contrasena = document.getElementById('createPassword').value;
-
+    
         // Generar un ID válido (Número aleatorio entre 1 y 1,000,000)
         const usuarioId = Math.floor(Math.random() * 1000000) + 1;
-
+    
         const nuevoUsuario = {
             usuarioId: usuarioId,
             nombre: nombre,
             correo: correo,
             contrasena: contrasena,
         };
-
+    
         try {
             const response = await fetch('http://localhost:5000/api/usuarios', {
                 method: 'POST',
@@ -87,16 +87,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 body: JSON.stringify(nuevoUsuario),
             });
-
+    
             if (response.ok) {
                 alert('Usuario creado exitosamente. Ahora puedes iniciar sesión.');
                 // Cambiar al formulario de inicio de sesión automáticamente
                 createUserForm.parentElement.style.display = 'none';
                 loginFormContainer.style.display = 'block';
             } else {
-                const error = await response.json();
-                console.error('Error al crear usuario:', error);
-                alert(`Error al crear usuario: ${error.title}`);
+                // Obtener y mostrar el mensaje de error del backend
+                const errorData = await response.json();
+                const errorMessage = errorData.detail || errorData.title || "Ocurrió un error.";
+                alert(errorMessage);
             }
         } catch (error) {
             console.error('Error:', error);
