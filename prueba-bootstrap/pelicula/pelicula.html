@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -13,6 +13,11 @@
     <style>
         body {
             font-family: 'Poller One', sans-serif;
+        }
+
+        .movie-banner img {
+            object-fit: cover;
+            height: 300px;
         }
 
         .movie-poster img {
@@ -33,6 +38,10 @@
         .btn-purchase {
             margin-top: 20px;
             font-size: 1.2rem;
+        }
+
+        .btn-back {
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -72,6 +81,10 @@
         </div>
     </nav>
 
+    <div class="movie-banner">
+        <img src="https://via.placeholder.com/1920x600" alt="Cartel de la película" class="img-fluid w-100" id="movieBanner">
+    </div>
+
     <div class="container py-5">
         <div class="row align-items-center">
             <div class="col-md-4 movie-poster">
@@ -79,16 +92,16 @@
             </div>
             <div class="col-md-8 movie-details">
                 <h1 id="movieTitle">Título de la Película</h1>
-                <p><strong>Director:</strong> <span id="movieDirector">Christopher Nolan</span></p>
-                <p><strong>Duración:</strong> <span id="movieDuration">120 minutos</span></p>
-                <p><strong>Género:</strong> <span id="movieGenre">Acción</span></p>
-                <p><strong>Clasificación:</strong> <span id="movieRating">PG-13</span></p>
+                <p><strong>Director:</strong> <span id="movieDirector"></span></p>
+                <p><strong>Duración:</strong> <span id="movieDuration"></span></p>
+                <p><strong>Género:</strong> <span id="movieGenre"></span></p>
+                <p><strong>Clasificación:</strong> <span id="movieRating"></span></p>
                 <p><strong>Sinopsis:</strong></p>
                 <p id="movieDescription">
-                    Una emocionante aventura llena de acción que te llevará al límite. Sigue la historia de un héroe
-                    mientras lucha por salvar el mundo.
+                    
                 </p>
                 <button class="btn btn-primary btn-lg btn-purchase" id="btnPurchaseTickets">Comprar Entradas</button>
+                <button class="btn btn-secondary btn-lg btn-back" id="btnBack">Volver al listado</button>
             </div>
         </div>
     </div>
@@ -104,29 +117,8 @@
         </div>
     </footer>
 
-    <script>
-        // Ejemplo de cómo cargar datos dinámicamente
-        const movie = {
-            title: "Interstellar",
-            duration: "169 minutos",
-            genre: "Ciencia Ficción, Drama",
-            rating: "PG-13",
-            description: "Un grupo de exploradores viajan a través de un agujero de gusano en el espacio para intentar asegurar la supervivencia de la humanidad.",
-            poster: "https://via.placeholder.com/500x750"
-        };
-
-        document.getElementById('movieTitle').textContent = movie.title;
-        document.getElementById('movieDuration').textContent = movie.duration;
-        document.getElementById('movieGenre').textContent = movie.genre;
-        document.getElementById('movieRating').textContent = movie.rating;
-        document.getElementById('movieDescription').textContent = movie.description;
-        document.getElementById('moviePoster').src = movie.poster;
-
-        document.getElementById('btnPurchaseTickets').addEventListener('click', () => {
-            alert(`¡Entradas para "${movie.title}" seleccionadas!`);
-        });
-    </script>
     <script src="../main.js"></script>
+    <script src="./pelicula.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
