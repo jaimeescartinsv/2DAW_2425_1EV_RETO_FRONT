@@ -94,6 +94,25 @@
     </div>
 
     <div class="container py-5">
+        <!-- Barra de búsqueda -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="search-bar position-relative">
+                    <input type="text" id="searchByName" class="form-control" placeholder="Buscar por nombre...">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <select id="searchByGenre" class="form-select">
+                    <option value="">Buscar por género...</option>
+                    <option value="Acción">Acción</option>
+                    <option value="Comedia">Comedia</option>
+                    <option value="Drama">Drama</option>
+                    <option value="Terror">Terror</option>
+                    <option value="Ciencia Ficción">Ciencia Ficción</option>
+                </select>
+            </div>
+        </div>
+
         <div class="row" id="movieGrid">
             <!-- Películas generadas dinámicamente -->
         </div>
@@ -110,62 +129,7 @@
         </div>
     </footer>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Función para cargar la cartelera desde la API
-            async function fetchMovies() {
-                try {
-                    const response = await fetch('http://localhost:5000/api/peliculas');
-                    const movies = await response.json();
-
-                    if (movies.length > 0) {
-                        displayMovies(movies);
-                    } else {
-                        console.error('No hay películas disponibles en la API.');
-                    }
-                } catch (error) {
-                    console.error('Error al cargar las películas:', error);
-                }
-            }
-
-            // Función para mostrar las películas en la cuadrícula
-            function displayMovies(movies) {
-                const movieGrid = document.getElementById('movieGrid');
-                if (!movieGrid) {
-                    console.error('Contenedor de la cartelera no encontrado.');
-                    return;
-                }
-
-                movieGrid.innerHTML = ''; // Limpiar contenido previo
-
-                movies.forEach(movie => {
-                    const col = document.createElement('div');
-                    col.classList.add('col-md-4', 'mb-4');
-
-                    col.innerHTML = `
-                        <div class="card movie-card h-100">
-                            <img src="${movie.imageUrl || 'https://via.placeholder.com/300x400'}" class="card-img-top" alt="${movie.title}">
-                            <div class="card-body">
-                                <h5 class="card-title">${movie.title || 'Título no disponible'}</h5>
-                                <p class="card-text">${movie.description || 'Sin descripción disponible.'}</p>
-                                <p class="card-text"><strong>Duración:</strong> ${movie.duration || 'N/A'} minutos</p>
-                                <a href="../pelicula/pelicula.html" class="btn btn-primary w-100" onclick="viewMovie(${movie.peliculaId})">Ver más</a>
-                            </div>
-                        </div>
-                    `;
-                    movieGrid.appendChild(col);
-                });
-            }
-
-            // Función para guardar el ID de la película seleccionada en localStorage
-            window.viewMovie = function (peliculaId) {
-                localStorage.setItem('selectedMovieId', peliculaId);
-            };
-
-            // Cargar la cartelera al cargar la página
-            fetchMovies();
-        });
-    </script>
+    <script src="./cartelera.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
