@@ -70,26 +70,3 @@ window.addEventListener('resize', () => {
 document.addEventListener('DOMContentLoaded', () => {
     fetchMovies();
 });
-
-document.addEventListener('DOMContentLoaded', () => {
-    const toggleButton = document.querySelector('.navbar-toggler');
-    const userNav = document.getElementById('userNav');
-
-    toggleButton.addEventListener('click', () => {
-        const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
-
-        if (isExpanded) {
-            userNav.innerHTML = `
-                <a class="nav-link" href="../user/user.html">
-                    Mi usuario
-                </a>
-            `;
-        } else {
-            userNav.innerHTML = `
-                <a class="nav-link" href="../user/user.html">
-                    <i class="bi bi-person-circle"></i>
-                </a>
-            `;
-        }
-    });
-});
