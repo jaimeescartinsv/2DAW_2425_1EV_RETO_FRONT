@@ -49,7 +49,7 @@ function displayCarousel(movies) {
                         <h5 class="card-title">${movie.title || 'Título no disponible'}</h5>
                         <p class="card-text">${movie.description || 'Descripción no disponible.'}</p>
                         <p><strong>Duración:</strong> ${movie.duration || 'N/A'} minutos</p>
-                        <a href="#" class="btn btn-primary mt-auto">Ver Más</a>
+                        <button class="btn btn-primary mt-auto view-more-btn" data-movie-id="${movie.peliculaId}">Ver más</button>
                     </div>
                 </div>
             `;
@@ -59,7 +59,18 @@ function displayCarousel(movies) {
         carouselItem.appendChild(row);
         carouselContent.appendChild(carouselItem);
     }
+
+    // Añadir eventos a los botones "Ver más"
+    const viewMoreButtons = document.querySelectorAll('.view-more-btn');
+    viewMoreButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            const peliculaId = event.target.getAttribute('data-movie-id'); // Obtener el ID de la película
+            localStorage.setItem('selectedMovieId', peliculaId); // Guardar el ID en localStorage
+            window.location.href = '../pelicula/pelicula.html';
+        });
+    });
 }
+
 
 // Detectar cambio de tamaño de la ventana y actualizar el carrusel
 window.addEventListener('resize', () => {

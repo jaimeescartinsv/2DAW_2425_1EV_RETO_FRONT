@@ -8,72 +8,62 @@ document.addEventListener("DOMContentLoaded", function () {
         const movieDescription = document.getElementById('movieDescription');
         const moviePoster = document.getElementById('moviePoster');
         const movieBanner = document.getElementById('movieBanner');
-        const movieDirector = document.getElementById('movieDirector'); // Agregar el campo de director
+        const movieDirector = document.getElementById('movieDirector');
 
-        // Verifica si los elementos existen antes de intentar modificarlos
         if (movieTitle && movieDuration && movieGenre && movieRating && movieDescription && moviePoster && movieBanner && movieDirector) {
-            movieTitle.innerHTML = pelicula.title;  // `title` en lugar de `movieTitle`
-            movieDuration.innerHTML = `${pelicula.duration} minutos`; // `duration`
-            movieGenre.innerHTML = pelicula.genero; // `genero`
-            movieRating.innerHTML = pelicula.clasificacion; // `clasificacion`
-            movieDescription.innerHTML = pelicula.description;  // `description`
-            moviePoster.src = pelicula.imageUrl;  // `imageUrl`
-            movieBanner.src = pelicula.cartelUrl;  // `cartelUrl`
-            movieDirector.innerHTML = pelicula.director; // Asignar el valor del director
+            movieTitle.innerHTML = pelicula.title;
+            movieDuration.innerHTML = `${pelicula.duration} minutos`;
+            movieGenre.innerHTML = pelicula.genero || 'No especificado';
+            movieRating.innerHTML = pelicula.clasificacion || 'Sin clasificar';
+            movieDescription.innerHTML = pelicula.description || 'No disponible.';
+            moviePoster.src = pelicula.imageUrl || 'https://via.placeholder.com/300x400';
+            movieBanner.src = pelicula.cartelUrl || 'https://via.placeholder.com/1920x600';
+            movieDirector.innerHTML = pelicula.director || 'Desconocido';
         } else {
-            console.error("No se encontraron los elementos del DOM.");
+            console.error("No se encontraron los elementos del DOM para renderizar la película.");
         }
     }
 
-    // Función para obtener el ID de la película manualmente (por ejemplo, "1")
-    function getMovieId() {
-        return "3"; // Aquí puedes cambiar el ID manualmente según lo que necesites
+    // Obtener el ID de la película desde localStorage
+    const selectedMovieId = localStorage.getItem('selectedMovieId');
+    if (selectedMovieId) {
+        // Hacer una solicitud para obtener los datos de la película
+        fetch(`http://localhost:5000/api/peliculas/${selectedMovieId}`)
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Error en la solicitud a la API.');
+                }
+            })
+            .then(pelicula => {
+                if (pelicula) {
+                    renderPeliculas(pelicula); // Renderizar la película seleccionada
+                } else {
+                    console.error("Película no encontrada en la API.");
+                }
+            })
+            .catch(error => {
+                console.error("Error al obtener los datos de la película:", error);
+            });
+    } else {
+        console.error("No se encontró ningún ID de película en localStorage.");
     }
-
-    // Función para obtener los detalles de la película desde un API o base de datos
-    function fetchPeliculas() {
-        const movieId = getMovieId(); // Obtiene el ID manualmente
-        
-        if (!movieId) {
-            console.error("No se proporcionó un ID de película.");
-            return;
-        }
-
-        // Hacer la solicitud fetch para obtener los datos de la película desde el endpoint de tu API
-        fetch(`http://localhost:5000/api/peliculas/${movieId}`, {
-            method: 'GET',
-            headers: {
-                'Accept': 'text/plain' // Incluye el encabezado Accept correcto
-            }
-        })
-        .then(response => {
-            if (response.ok) {
-                return response.json(); // Convierte la respuesta a JSON si es válida
-            } else {
-                throw new Error('Error en la solicitud');
-            }
-        })
-        .then(pelicula => {
-            if (pelicula) {
-                // Llamar a renderPeliculas para actualizar el DOM con los datos de la película
-                renderPeliculas(pelicula);
-            } else {
-                console.error("Película no encontrada.");
-            }
-        })
-        .catch(error => {
-            console.error("Error al obtener los datos de la película:", error);
-        });
-    }
-
-    // Llamar a la función para cargar los detalles de la película
-    fetchPeliculas();
 
     // Lógica para el botón de compra de entradas
     const btnPurchaseTickets = document.getElementById('btnPurchaseTickets');
     if (btnPurchaseTickets) {
         btnPurchaseTickets.addEventListener('click', () => {
-            alert(`¡Entradas para "${document.getElementById('movieTitle').innerHTML}" seleccionadas!`);
+            const movieTitle = document.getElementById('movieTitle').innerHTML;
+            alert(`¡Entradas para "${movieTitle}" seleccionadas!`);
+        });
+    }
+
+    // Lógica para el botón de "Volver al listado"
+    const btnBack = document.getElementById('btnBack');
+    if (btnBack) {
+        btnBack.addEventListener('click', () => {
+            window.location.href = '../index/index.html';
         });
     }
 });
