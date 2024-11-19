@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const apiUrlCines = "http://localhost:5000/api/cines";
     const apiUrlSesiones = "http://localhost:5000/api/sesiones/cine";
     const peliculaId = localStorage.getItem("selectedMovieId");
+    let cinesMap = {}; // Mapa para almacenar los cines por ID
 
     // Función para renderizar el listado de cines
     function renderCines(cines) {
@@ -13,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (cines.length > 0) {
                 cines.forEach(cine => {
+                    cinesMap[cine.cineId] = cine.nombre; // Guardar cine en el mapa
                     const option = document.createElement("option");
                     option.value = cine.cineId;
                     option.textContent = cine.nombre;
@@ -47,8 +49,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Función para renderizar las sesiones
-    function renderSesiones(sesiones) {
+    function renderSesiones(sesiones, cineId) {
         const sessionsContainer = document.getElementById("sessionsContainer");
+        const cineNombre = cinesMap[cineId]; // Obtener el nombre del cine desde el mapa
 
         if (!sessionsContainer) {
             console.error("No se encontró el contenedor para renderizar las sesiones.");
@@ -100,6 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             minute: "2-digit",
                         })}</h5>
                         <p class="mb-0">Sala: ${sesion.salaId}</p>
+                        <p class="mb-0">Cine: ${cineNombre}</p>
                     </div>
                     <span class="badge bg-primary">Sesión ID: ${sesion.sesionId}</span>
                 `;
@@ -114,8 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function cargarSesiones(cineId) {
         const sessionsContainer = document.getElementById("sessionsContainer");
 
-        // Limpiar el contenedor de sesiones
-        sessionsContainer.innerHTML = "";
+        sessionsContainer.innerHTML = '<p class="text-warning">Cargando sesiones...</p>';
 
         if (!peliculaId) {
             console.error("No se encontró ningún ID de película en localStorage.");
@@ -132,13 +135,14 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .then(sesiones => {
                 if (sesiones && sesiones.length > 0) {
-                    renderSesiones(sesiones);
+                    renderSesiones(sesiones, cineId);
                 } else {
                     sessionsContainer.innerHTML = '<p class="text-danger">No hay sesiones disponibles para este cine y película.</p>';
                 }
             })
             .catch(error => {
                 console.error("Error al obtener las sesiones:", error);
+                sessionsContainer.innerHTML = '<p class="text-danger">Hubo un error al cargar las sesiones.</p>';
             });
     }
 
