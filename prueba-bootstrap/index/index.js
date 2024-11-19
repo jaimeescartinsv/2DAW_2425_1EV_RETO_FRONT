@@ -60,7 +60,6 @@ function displayCarousel(movies) {
         carouselContent.appendChild(carouselItem);
     }
 
-    // Añadir eventos a los botones "Ver más"
     const viewMoreButtons = document.querySelectorAll('.view-more-btn');
     viewMoreButtons.forEach(button => {
         button.addEventListener('click', (event) => {

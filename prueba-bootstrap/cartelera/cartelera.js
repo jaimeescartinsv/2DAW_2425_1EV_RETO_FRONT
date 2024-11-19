@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log('Datos recibidos de la API:', movies);
             if (movies.length > 0) {
                 allMovies = movies;
-                filteredMovies = [...allMovies]; // Inicialmente todas las películas
+                filteredMovies = allMovies.slice();
                 totalPages = Math.ceil(filteredMovies.length / moviesPerPage);
                 displayMoviesForPage(currentPage);
             } else {
@@ -68,12 +68,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const genreInput = document.getElementById("searchByGenre").value;
 
         if (searchInput === "") {
-            // Si el campo de búsqueda está vacío, aplicar filtro por género si está seleccionado
             if (genreInput !== "") {
-                searchMoviesByGenre(); // Aplicar filtro de género
+                searchMoviesByGenre();
             } else {
-                // Si no hay género seleccionado, mostrar todas las películas
-                filteredMovies = [...allMovies];
+                filteredMovies = allMovies.slice();
                 totalPages = Math.ceil(filteredMovies.length / moviesPerPage);
                 displayMoviesForPage(1);
             }
@@ -81,27 +79,25 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         try {
-            // Buscar dentro del contexto del género seleccionado
-            let filteredByGenre = [...allMovies];
+            let filteredByGenre = allMovies.slice();
             if (genreInput !== "") {
                 filteredByGenre = allMovies.filter(movie =>
                     movie.genero && movie.genero.toLowerCase().includes(genreInput.toLowerCase())
                 );
             }
 
-            // Filtrar las películas por título dentro del género seleccionado (si aplica)
             filteredMovies = filteredByGenre.filter(movie =>
                 movie.title && movie.title.toLowerCase().includes(searchInput.toLowerCase())
             );
 
             if (filteredMovies.length > 0) {
                 totalPages = Math.ceil(filteredMovies.length / moviesPerPage);
-                displayMoviesForPage(1); 
+                displayMoviesForPage(1);
             } else {
                 console.error("No se encontraron películas con ese título y categoría.");
                 filteredMovies = [];
                 totalPages = 0;
-                displayMovies([]); 
+                displayMovies([]);
                 updatePagination(totalPages, 1);
             }
         } catch (error) {
@@ -115,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const genreInput = document.getElementById("searchByGenre").value;
 
         if (genreInput === "") {
-            filteredMovies = [...allMovies];
+            filteredMovies = allMovies.slice();
             totalPages = Math.ceil(filteredMovies.length / moviesPerPage);
             displayMoviesForPage(1);
             return;
@@ -142,7 +138,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Función para mostrar un mensaje
+    // Función para mostrar el mensaje
     function showMessage(message) {
         const messageContainer = document.getElementById("messageContainer");
         if (messageContainer) {
@@ -159,7 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Función para actualizar los botones de paginación
+    // Función para actualizar los botones de página
     function updatePagination(totalPages, currentPage) {
         const paginationContainer = document.getElementById("pagination");
         paginationContainer.innerHTML = "";

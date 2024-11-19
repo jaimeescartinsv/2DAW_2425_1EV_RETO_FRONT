@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const usuarios = await response.json();
-            console.log('Usuarios retornados por la API:', usuarios); // Verificar los datos retornados
+            console.log('Usuarios retornados por la API:', usuarios);
 
             // Verificar credenciales
             const usuario = usuarios.find(u =>
