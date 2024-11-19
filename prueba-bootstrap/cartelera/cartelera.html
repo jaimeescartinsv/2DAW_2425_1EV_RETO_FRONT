@@ -48,6 +48,33 @@
             align-self: center;
             margin-top: auto;
         }
+
+        .pagination {
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .search-bar {
+            position: relative;
+        }
+
+        .search-bar i {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            color: gray;
+        }
+
+        .search-bar input {
+            padding-left: 30px;
+        }
+
+        .message {
+            text-align: center;
+            margin-top: 20px;
+            color: #6c757d;
+        }
     </style>
 </head>
 
@@ -98,6 +125,7 @@
         <div class="row mb-4">
             <div class="col-md-6">
                 <div class="search-bar position-relative">
+                    <i class="bi bi-search"></i>
                     <input type="text" id="searchByName" class="form-control" placeholder="Buscar por nombre...">
                 </div>
             </div>
@@ -113,9 +141,20 @@
             </div>
         </div>
 
+        <!-- Contenedor de mensajes -->
+        <div id="messageContainer" class="message"></div>
+
+        <!-- Cuadrícula de películas -->
         <div class="row" id="movieGrid">
             <!-- Películas generadas dinámicamente -->
         </div>
+
+        <!-- Paginación -->
+        <nav>
+            <ul class="pagination" id="pagination">
+                <!-- Botones generados dinámicamente -->
+            </ul>
+        </nav>
     </div>
 
     <footer class="bg-dark text-white py-4">
