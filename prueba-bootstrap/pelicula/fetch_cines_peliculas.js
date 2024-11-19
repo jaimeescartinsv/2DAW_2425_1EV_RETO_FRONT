@@ -1,8 +1,52 @@
 document.addEventListener("DOMContentLoaded", function () {
+    const apiUrlCines = "http://localhost:5000/api/cines";
     const apiUrlSesiones = "http://localhost:5000/api/sesiones/cine";
-    const cineId = 1;
-    
-    // Función para renderizar las sesiones en el DOM
+    const peliculaId = localStorage.getItem("selectedMovieId");
+
+    // Función para renderizar el listado de cines
+    function renderCines(cines) {
+        const cinemaSelect = document.getElementById("cinemaSelect");
+        const cinemaError = document.getElementById("cinemaError");
+
+        if (cinemaSelect) {
+            cinemaSelect.innerHTML = '<option value="" selected>Selecciona un cine</option>';
+
+            if (cines.length > 0) {
+                cines.forEach(cine => {
+                    const option = document.createElement("option");
+                    option.value = cine.cineId;
+                    option.textContent = cine.nombre;
+                    cinemaSelect.appendChild(option);
+                });
+                cinemaError.style.display = "none";
+            } else {
+                cinemaError.textContent = "No hay cines disponibles.";
+                cinemaError.style.display = "block";
+            }
+        } else {
+            console.error("No se encontró el elemento 'cinemaSelect' en el DOM.");
+        }
+    }
+
+    // Función para cargar el listado de cines
+    function cargarCines() {
+        fetch(apiUrlCines)
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error("Error al cargar el listado de cines.");
+                }
+            })
+            .then(cines => {
+                renderCines(cines);
+            })
+            .catch(error => {
+                console.error("Error al obtener los cines desde la API:", error);
+            });
+    }
+
+    // Función para renderizar las sesiones
     function renderSesiones(sesiones) {
         const sessionsContainer = document.getElementById("sessionsContainer");
 
@@ -22,12 +66,10 @@ document.addEventListener("DOMContentLoaded", function () {
         // Limpiar el contenedor
         sessionsContainer.innerHTML = '<h3 class="mb-3">Sesiones Disponibles</h3>';
 
-        // Crear los elementos dinámicos
         for (const [fecha, sesiones] of Object.entries(groupedSessions)) {
             const daySection = document.createElement("div");
             daySection.classList.add("day-section", "mb-4");
 
-            // Encabezado con la fecha
             const dateHeader = document.createElement("h4");
             dateHeader.classList.add("text-dark", "mb-3");
             dateHeader.textContent = new Date(fecha).toLocaleDateString("es-ES", {
@@ -37,7 +79,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
             daySection.appendChild(dateHeader);
 
-            // Crear las tarjetas de sesiones
             sesiones.forEach(sesion => {
                 const sessionCard = document.createElement("div");
                 sessionCard.classList.add(
@@ -65,35 +106,54 @@ document.addEventListener("DOMContentLoaded", function () {
                 daySection.appendChild(sessionCard);
             });
 
-            // Agregar la sección al contenedor principal
             sessionsContainer.appendChild(daySection);
         }
     }
 
-    // Obtener el ID de la película desde localStorage
-    const peliculaId = localStorage.getItem("selectedMovieId");
+    // Función para cargar las sesiones según el cine seleccionado
+    function cargarSesiones(cineId) {
+        const sessionsContainer = document.getElementById("sessionsContainer");
 
-    if (peliculaId) {
-        // Realizar el fetch para obtener las sesiones
+        // Limpiar el contenedor de sesiones
+        sessionsContainer.innerHTML = "";
+
+        if (!peliculaId) {
+            console.error("No se encontró ningún ID de película en localStorage.");
+            return;
+        }
+
         fetch(`${apiUrlSesiones}/${cineId}/pelicula/${peliculaId}`)
             .then(response => {
                 if (response.ok) {
                     return response.json();
                 } else {
-                    throw new Error("Error en la solicitud a la API.");
+                    throw new Error("Error en la solicitud de sesiones.");
                 }
             })
             .then(sesiones => {
                 if (sesiones && sesiones.length > 0) {
-                    renderSesiones(sesiones); // Renderizar las sesiones obtenidas
+                    renderSesiones(sesiones);
                 } else {
-                    console.error("No se encontraron sesiones para la película.");
+                    sessionsContainer.innerHTML = '<p class="text-danger">No hay sesiones disponibles para este cine y película.</p>';
                 }
             })
             .catch(error => {
                 console.error("Error al obtener las sesiones:", error);
             });
-    } else {
-        console.error("No se encontró ningún ID de película en localStorage.");
     }
+
+    // Event Listener para el cambio de cine
+    document.getElementById("cinemaSelect").addEventListener("change", function () {
+        const selectedCineId = this.value;
+
+        if (selectedCineId) {
+            cargarSesiones(selectedCineId);
+        } else {
+            const sessionsContainer = document.getElementById("sessionsContainer");
+            sessionsContainer.innerHTML = '<p class="text-warning">Por favor, selecciona un cine para ver las sesiones.</p>';
+        }
+    });
+
+    // Inicializar la carga de cines
+    cargarCines();
 });

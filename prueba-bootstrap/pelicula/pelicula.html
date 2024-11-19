@@ -109,69 +109,28 @@
                 <p><strong>Género:</strong> <span id="movieGenre"></span></p>
                 <p><strong>Clasificación:</strong> <span id="movieRating"></span></p>
                 <p><strong>Sinopsis:</strong></p>
-                <ul id="movieDescription" class="list-unstyled"></ul>
+                <p id="movieDescription"></p>
             </div>
         </div>
     </div>
 
     <div class="container py-5">
         <h2 class="mb-4">Horarios Disponibles</h2>
-    
-        <!-- Selector de cines -->
+
         <form id="scheduleForm">
             <div class="mb-3">
                 <select id="cinemaSelect" class="form-select">
                     <option value="" selected>Selecciona un cine</option>
-                    <option value="1">Cinepolis - Centro</option>
-                    <option value="2">Cinepolis - Norte</option>
-                    <option value="3">Cinepolis - Sur</option>
                 </select>
                 <div id="cinemaError" class="text-danger mt-2" style="display: none;">Error al cargar los cines.</div>
             </div>
         </form>
-    
-        <!-- Contenedor para mostrar las sesiones -->
+
         <div id="sessionsContainer" class="mt-4">
-            <h3 class="mb-3">Sesiones Disponibles</h3>
-    
-            <!-- Ejemplo de sesiones -->
-            <div class="day-section mb-4">
-                <h4 class="text-dark mb-3">1 de Diciembre, 2024</h4>
-                <div class="session-card d-flex justify-content-between align-items-center p-3 mb-3 bg-light text-dark rounded">
-                    <div>
-                        <h5 class="mb-0">16:00</h5>
-                        <p class="mb-0">Sala: 1</p>
-                    </div>
-                    <span class="badge bg-primary">Sesión ID: 1</span>
-                </div>
-                <div class="session-card d-flex justify-content-between align-items-center p-3 mb-3 bg-light text-dark rounded">
-                    <div>
-                        <h5 class="mb-0">18:30</h5>
-                        <p class="mb-0">Sala: 1</p>
-                    </div>
-                    <span class="badge bg-primary">Sesión ID: 2</span>
-                </div>
-            </div>
-    
-            <div class="day-section mb-4">
-                <h4 class="text-dark mb-3">2 de Diciembre, 2024</h4>
-                <div class="session-card d-flex justify-content-between align-items-center p-3 mb-3 bg-light text-dark rounded">
-                    <div>
-                        <h5 class="mb-0">16:00</h5>
-                        <p class="mb-0">Sala: 2</p>
-                    </div>
-                    <span class="badge bg-primary">Sesión ID: 3</span>
-                </div>
-                <div class="session-card d-flex justify-content-between align-items-center p-3 mb-3 bg-light text-dark rounded">
-                    <div>
-                        <h5 class="mb-0">20:00</h5>
-                        <p class="mb-0">Sala: 2</p>
-                    </div>
-                    <span class="badge bg-primary">Sesión ID: 4</span>
-                </div>
-            </div>
+            <!-- Aquí se cargarán dinámicamente las sesiones -->
+            <p class="text-warning">Por favor, selecciona un cine para ver las sesiones.</p>
         </div>
-    </div>    
+    </div>
 
     <footer class="bg-dark text-white py-4">
         <div class="container text-center">
@@ -186,8 +145,7 @@
 
     <script src="../main.js"></script>
     <script src="./fetch_pelicula.js"></script>
-    <script src="./fetch_cines.js"></script>
-    <script src="./fetch_sesiones.js"></script>
+    <script src="./fetch_cines_peliculas.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
