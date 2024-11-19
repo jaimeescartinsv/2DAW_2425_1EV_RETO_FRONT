@@ -9,10 +9,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const moviePoster = document.getElementById('moviePoster');
         const movieBanner = document.getElementById('movieBanner');
         const movieDirector = document.getElementById('movieDirector');
+        const movieActors = document.getElementById('movieActors');
 
-        if (movieTitle && movieDuration && movieGenre && movieRating && movieDescription && moviePoster && movieBanner && movieDirector) {
-            movieTitle.innerHTML = pelicula.title;
-            movieDuration.innerHTML = `${pelicula.duration} minutos`;
+        if (movieTitle && movieDuration && movieGenre && movieRating && movieDescription && moviePoster && movieBanner && movieDirector && movieActors) {
+            movieTitle.innerHTML = pelicula.title || 'Título no disponible';
+            movieActors.innerHTML = pelicula.actores || 'No hay información disponible sobre los actores.';
+            movieDuration.innerHTML = `${pelicula.duration || 'N/A'} minutos`;
             movieGenre.innerHTML = pelicula.genero || 'No especificado';
             movieRating.innerHTML = pelicula.clasificacion || 'Sin clasificar';
             movieDescription.innerHTML = pelicula.description || 'No disponible.';
