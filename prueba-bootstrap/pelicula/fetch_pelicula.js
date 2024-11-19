@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const apiUrlCines = "http://localhost:5000/api/cines";
     const apiUrlPeliculas = "http://localhost:5000/api/peliculas";
 
     // Función para renderizar los datos de la película
@@ -29,61 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Función para renderizar el listado de cines
-    function renderCines(cines) {
-        const cinemaSelect = document.getElementById("cinemaSelect");
-        const cinemaError = document.getElementById("cinemaError");
-
-        if (cinemaSelect) {
-            cinemaSelect.innerHTML = '<option value="" selected>Selecciona un cine</option>';
-
-            if (cines.length > 0) {
-                cines.forEach(cine => {
-                    const option = document.createElement("option");
-                    option.value = cine.id;
-                    option.textContent = cine.nombre;
-                    cinemaSelect.appendChild(option);
-                });
-                cinemaError.style.display = "none";
-            } else {
-                cinemaError.textContent = "No hay cines disponibles.";
-                cinemaError.style.display = "block";
-            }
-        } else {
-            console.error("No se encontró el elemento 'cinemaSelect' en el DOM.");
-        }
-    }
-
-    // Función para cargar listado de cines
-    function cargarCines() {
-        fetch(apiUrlCines)
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    throw new Error('Error al cargar el listado de cines.');
-                }
-            })
-            .then(cines => {
-                renderCines(cines);
-            })
-            .catch(error => {
-                console.error("Error al obtener los cines desde la API:", error);
-            });
-    }
-
-    // Obtener listado de cines al cargar la página
-    cargarCines();
-
-    // Función para volver a seleccionar "Selecciona un cine"
-    function resetCinemaSelection() {
-        const cinemaSelect = document.getElementById("cinemaSelect");
-        if (cinemaSelect) {
-            cinemaSelect.selectedIndex = 0;
-        }
-    }
-
-    // Obtener el ID de la película desde localStorage
+    // Obtener el ID de la película desde localStorage y cargar los datos
     const selectedMovieId = localStorage.getItem('selectedMovieId');
     if (selectedMovieId) {
         fetch(`${apiUrlPeliculas}/${selectedMovieId}`)
@@ -106,15 +51,5 @@ document.addEventListener("DOMContentLoaded", function () {
             });
     } else {
         console.error("No se encontró ningún ID de película en localStorage.");
-    }
-
-    // Añadir un evento de cambio al select de cine para permitir restablecer la selección
-    const cinemaSelect = document.getElementById("cinemaSelect");
-    if (cinemaSelect) {
-        cinemaSelect.addEventListener('change', function () {
-            if (!cinemaSelect.value) {
-                resetCinemaSelection();
-            }
-        });
     }
 });
