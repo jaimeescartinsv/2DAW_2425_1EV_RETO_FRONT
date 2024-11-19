@@ -115,13 +115,11 @@
         <form id="scheduleForm">
             <div class="mb-3">
                 <select id="cinemaSelect" class="form-select">
-                    <option value="" disabled selected>Selecciona un cine</option>
+                    <option value="" selected>Selecciona un cine</option> <!-- Asegúrate de que esté habilitado y seleccionado por defecto -->
+                    <!-- Opciones dinámicas de cines -->
                 </select>
                 <!-- Contenedor para mostrar errores si los cines no se cargan -->
                 <div id="cinemaError" class="text-danger mt-2" style="display: none;">Error al cargar los cines.</div>
-            </div>
-            <div id="scheduleList" class="mt-4">
-                <!-- Horarios dinámicos -->
             </div>
         </form>
     </div>

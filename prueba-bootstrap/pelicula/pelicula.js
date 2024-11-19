@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const cinemaError = document.getElementById("cinemaError");
 
         if (cinemaSelect) {
-            cinemaSelect.innerHTML = '<option value="" disabled selected>Selecciona un cine</option>';
+            cinemaSelect.innerHTML = '<option value="" selected>Selecciona un cine</option>';
 
             if (cines.length > 0) {
                 cines.forEach(cine => {
@@ -75,6 +75,14 @@ document.addEventListener("DOMContentLoaded", function () {
     // Obtener listado de cines al cargar la página
     cargarCines();
 
+    // Función para volver a seleccionar "Selecciona un cine"
+    function resetCinemaSelection() {
+        const cinemaSelect = document.getElementById("cinemaSelect");
+        if (cinemaSelect) {
+            cinemaSelect.selectedIndex = 0;
+        }
+    }
+
     // Obtener el ID de la película desde localStorage
     const selectedMovieId = localStorage.getItem('selectedMovieId');
     if (selectedMovieId) {
@@ -98,5 +106,15 @@ document.addEventListener("DOMContentLoaded", function () {
             });
     } else {
         console.error("No se encontró ningún ID de película en localStorage.");
+    }
+
+    // Añadir un evento de cambio al select de cine para permitir restablecer la selección
+    const cinemaSelect = document.getElementById("cinemaSelect");
+    if (cinemaSelect) {
+        cinemaSelect.addEventListener('change', function () {
+            if (!cinemaSelect.value) {
+                resetCinemaSelection();
+            }
+        });
     }
 });
