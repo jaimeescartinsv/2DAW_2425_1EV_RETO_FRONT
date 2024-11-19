@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     let allMovies = [];
-    let moviesPerPage = 6; // Número de películas por página
+    let filteredMovies = [];
+    let moviesPerPage = 6;
     let currentPage = 1;
     let totalPages = 0;
 
@@ -12,7 +13,8 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log('Datos recibidos de la API:', movies);
             if (movies.length > 0) {
                 allMovies = movies;
-                totalPages = Math.ceil(allMovies.length / moviesPerPage);
+                filteredMovies = [...allMovies]; // Inicialmente todas las películas
+                totalPages = Math.ceil(filteredMovies.length / moviesPerPage);
                 displayMoviesForPage(currentPage);
             } else {
                 console.error("No hay películas disponibles en la API.");
@@ -32,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        movieGrid.innerHTML = ""; // Limpiar contenido previo
+        movieGrid.innerHTML = "";
 
         if (movies.length === 0) {
             showMessage("No se encontraron películas.");
@@ -63,28 +65,79 @@ document.addEventListener("DOMContentLoaded", function () {
     // Función para buscar películas por título
     async function searchMoviesByTitle() {
         const searchInput = document.getElementById("searchByName").value.trim();
+        const genreInput = document.getElementById("searchByGenre").value;
 
         if (searchInput === "") {
-            totalPages = Math.ceil(allMovies.length / moviesPerPage);
-            displayMoviesForPage(1); // Mostrar todas las películas si el campo está vacío
+            // Si el campo de búsqueda está vacío, aplicar filtro por género si está seleccionado
+            if (genreInput !== "") {
+                searchMoviesByGenre(); // Aplicar filtro de género
+            } else {
+                // Si no hay género seleccionado, mostrar todas las películas
+                filteredMovies = [...allMovies];
+                totalPages = Math.ceil(filteredMovies.length / moviesPerPage);
+                displayMoviesForPage(1);
+            }
             return;
         }
 
         try {
-            const response = await fetch(`http://localhost:5000/api/peliculas/buscar-por-titulo?title=${encodeURIComponent(searchInput)}`);
-            if (response.ok) {
-                const filteredMovies = await response.json();
-                displayMovies(filteredMovies);
+            // Buscar dentro del contexto del género seleccionado
+            let filteredByGenre = [...allMovies];
+            if (genreInput !== "") {
+                filteredByGenre = allMovies.filter(movie =>
+                    movie.genero && movie.genero.toLowerCase().includes(genreInput.toLowerCase())
+                );
+            }
+
+            // Filtrar las películas por título dentro del género seleccionado (si aplica)
+            filteredMovies = filteredByGenre.filter(movie =>
+                movie.title && movie.title.toLowerCase().includes(searchInput.toLowerCase())
+            );
+
+            if (filteredMovies.length > 0) {
                 totalPages = Math.ceil(filteredMovies.length / moviesPerPage);
-                updatePagination(totalPages, 1);
+                displayMoviesForPage(1); 
             } else {
-                console.error("No se encontraron películas con ese título.");
-                displayMovies([]);
+                console.error("No se encontraron películas con ese título y categoría.");
+                filteredMovies = [];
                 totalPages = 0;
+                displayMovies([]); 
                 updatePagination(totalPages, 1);
             }
         } catch (error) {
             console.error("Error al buscar películas por título:", error);
+            showMessage("Error al buscar películas. Por favor, intenta más tarde.");
+        }
+    }
+
+    // Función para buscar películas por género
+    async function searchMoviesByGenre() {
+        const genreInput = document.getElementById("searchByGenre").value;
+
+        if (genreInput === "") {
+            filteredMovies = [...allMovies];
+            totalPages = Math.ceil(filteredMovies.length / moviesPerPage);
+            displayMoviesForPage(1);
+            return;
+        }
+
+        try {
+            const response = await fetch(
+                `http://localhost:5000/api/peliculas/buscar-por-género?genero=${encodeURIComponent(genreInput)}`
+            );
+            if (response.ok) {
+                filteredMovies = await response.json();
+                totalPages = Math.ceil(filteredMovies.length / moviesPerPage);
+                displayMoviesForPage(1);
+            } else {
+                console.error(`No se encontraron películas con el género: ${genreInput}.`);
+                filteredMovies = [];
+                totalPages = 0;
+                displayMovies([]);
+                updatePagination(totalPages, 1);
+            }
+        } catch (error) {
+            console.error("Error al buscar películas por género:", error);
             showMessage("Error al buscar películas. Por favor, intenta más tarde.");
         }
     }
@@ -109,13 +162,12 @@ document.addEventListener("DOMContentLoaded", function () {
     // Función para actualizar los botones de paginación
     function updatePagination(totalPages, currentPage) {
         const paginationContainer = document.getElementById("pagination");
-        paginationContainer.innerHTML = ""; // Limpiar contenido previo
+        paginationContainer.innerHTML = "";
 
         for (let i = 1; i <= totalPages; i++) {
             const li = document.createElement("li");
             li.classList.add("page-item");
 
-            // Resaltar la página activa
             if (i === currentPage) {
                 li.classList.add("active");
             }
@@ -127,7 +179,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             a.addEventListener("click", (e) => {
                 e.preventDefault();
-                displayMoviesForPage(i); // Mostrar películas de la página seleccionada
+                displayMoviesForPage(i);
             });
 
             li.appendChild(a);
@@ -140,10 +192,10 @@ document.addEventListener("DOMContentLoaded", function () {
         currentPage = page;
         const startIndex = (page - 1) * moviesPerPage;
         const endIndex = startIndex + moviesPerPage;
-        const moviesToShow = allMovies.slice(startIndex, endIndex);
+        const moviesToShow = filteredMovies.slice(startIndex, endIndex);
 
         displayMovies(moviesToShow);
-        updatePagination(totalPages, page); // Actualizar botones de paginación con la página actual resaltada
+        updatePagination(totalPages, page);
     }
 
     // Función para guardar el ID de la película seleccionada en localStorage
@@ -153,5 +205,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     fetchMovies();
 
+    // Evento para buscar películas por título
     document.getElementById("searchByName").addEventListener("input", searchMoviesByTitle);
+
+    // Evento para buscar películas por género
+    document.getElementById("searchByGenre").addEventListener("change", searchMoviesByGenre);
 });
