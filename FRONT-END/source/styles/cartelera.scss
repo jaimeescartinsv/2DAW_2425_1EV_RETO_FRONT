@@ -156,7 +156,11 @@ a {
     }
   }
   
-
+  .titulo-cart{
+    justify-content: center;
+    display: flex;
+    font-size: 40px;
+  }
 
 
 
@@ -241,7 +245,7 @@ a {
     &__button {
       display: block;
       margin: 10px auto;
-      background-color: #ff4500;
+      background-color: #007bff;
       color: #fff;
       border: none;
       border-radius: 5px;
@@ -253,7 +257,7 @@ a {
       transition: background-color 0.3s ease;
   
       &:hover {
-        background-color: #000000;
+        background-color: #479efa;
       }
     }
   }
