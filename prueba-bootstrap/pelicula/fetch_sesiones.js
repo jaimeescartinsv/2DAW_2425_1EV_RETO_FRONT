@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (selectedCineId) {
             cargarSesiones(selectedCineId);
-            console.log(`Seleccionado cine con ID ID: ${selectedCineId}`)
+            console.log(`Seleccionado cine con ID: ${selectedCineId}`)
         } else {
             const sesionesContainer = document.getElementById("sesionesContainer");
             sesionesContainer.innerHTML = '<p class="text-warning">Por favor, selecciona un cine para ver las sesiones.</p>';
