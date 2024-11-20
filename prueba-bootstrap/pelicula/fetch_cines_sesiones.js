@@ -98,12 +98,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 sessionCard.innerHTML = `
                     <div>
-                        <h5 class="mb-0">${new Date(sesion.horaDeInicio).toLocaleTimeString("es-ES", {
+                        <h5 class="mb-0 cine-nombre">${cineNombre}</h5>
+                        <h5 class="mb-0">Hora: ${new Date(sesion.horaDeInicio).toLocaleTimeString("es-ES", {
                             hour: "2-digit",
                             minute: "2-digit",
                         })}</h5>
-                        <p class="mb-0">Sala: ${sesion.salaId}</p>
-                        <p class="mb-0">Cine: ${cineNombre}</p>
+                        <h5 class="mb-0">Sala: ${sesion.salaId}</h5>
                     </div>
                     <span class="badge bg-primary">Sesión ID: ${sesion.sesionId}</span>
                 `;
