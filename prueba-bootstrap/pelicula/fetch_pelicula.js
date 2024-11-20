@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(pelicula => {
                 if (pelicula) {
                     renderPeliculas(pelicula); // Renderizar la película seleccionada
+                    console.log(`Renderizado película con ID: ${selectedPeliculaId}`)
                 } else {
                     console.error("Película no encontrada en la API.");
                 }

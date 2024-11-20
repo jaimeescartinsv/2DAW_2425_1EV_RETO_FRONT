@@ -64,7 +64,9 @@ document.addEventListener("DOMContentLoaded", function () {
                         })}</h5>
                         <h5 class="mb-0">Sala: ${sesion.salaId}</h5>
                     </div>
-                    <span class="badge bg-primary">Sesión ID: ${sesion.sesionId}</span>
+                    <div>
+                        <button class="btn btn-primary w-100" onclick="comprarEntradas(${sesion.sesionId})">Comprar Entradas</button>
+                    </div>
                 `;
                 DiaSection.appendChild(sesionCard);
             });
@@ -111,9 +113,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (selectedCineId) {
             cargarSesiones(selectedCineId);
+            console.log(`Seleccionado cine con ID ID: ${selectedCineId}`)
         } else {
             const sesionesContainer = document.getElementById("sesionesContainer");
             sesionesContainer.innerHTML = '<p class="text-warning">Por favor, selecciona un cine para ver las sesiones.</p>';
         }
     });
+
+    // Función para redirigir a la compra de entradas
+    window.comprarEntradas = function (sesionId) {
+        console.log(`Redirigiendo a la compra de entradas para la sesión ID: ${sesionId}`);
+        //window.location.href = ``;
+    };
 });
