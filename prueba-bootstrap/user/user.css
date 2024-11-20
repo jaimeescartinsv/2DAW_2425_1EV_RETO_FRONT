@@ -1,0 +1,48 @@
+body {
+    font-family: 'Poller One', sans-serif;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container {
+    max-width: 700px;
+    padding: 30px;
+    background-color: #343a40;
+    color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.form-container h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.form-container .form-label,
+.form-container .form-text {
+    color: #f8f9fa;
+}
+
+.form-container .form-text a {
+    color: #0d6efd;
+    text-decoration: none;
+}
+
+.form-container .form-text a:hover {
+    text-decoration: underline;
+}
+
+.content {
+    padding: 30px;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer {
+    margin-top: auto;
+}

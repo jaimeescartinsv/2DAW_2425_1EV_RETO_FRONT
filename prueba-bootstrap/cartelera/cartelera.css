@@ -1,0 +1,72 @@
+body {
+    font-family: 'Poller One', sans-serif;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    min-height: 60px;
+}
+
+.pelicula-card img {
+    object-fit: cover;
+    height: auto;
+    width: 100%;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.pelicula-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.pelicula-card .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.pelicula-card .btn {
+    align-self: center;
+    margin-top: auto;
+}
+
+.pagination {
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.search-bar {
+    position: relative;
+}
+
+.search-bar i {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: gray;
+}
+
+.search-bar input {
+    padding-left: 30px;
+}
+
+.message {
+    text-align: center;
+    margin-top: 20px;
+    color: #6c757d;
+}
+
+@media (max-width: 768px) {
+    .col-md-6 {
+        margin-bottom: 1rem;
+    }
+}

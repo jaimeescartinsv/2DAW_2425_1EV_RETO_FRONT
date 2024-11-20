@@ -1,0 +1,142 @@
+body {
+    font-family: 'Poller One', sans-serif;
+}
+
+#featuredMoviesCarousel h2 {
+    font-size: 3rem;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-size: contain;
+    filter: invert(1);
+    cursor: pointer;
+}
+
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+    transform: scale(1.1);
+}
+
+.carousel-controls {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.carousel-inner .row {
+    padding: 0 15px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.card img {
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+    height: 100%;
+    width: 100%;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    min-height: 60px;
+}
+
+.card-text {
+    flex-grow: 1;
+    margin-bottom: 1rem;
+}
+
+.card p {
+    margin-bottom: 1rem;
+}
+
+.card-body .btn {
+    align-self: center;
+    margin-top: auto;
+    width: 100%;
+}
+
+#cineSalas img {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+#cineSalas h2 {
+    font-size: 3rem;
+}
+
+#cineSalas h3 {
+    color: #0056b3;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+#cineSalas ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#cineSalas ul li {
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+#cineSalas ul li::before {
+    content: "✔";
+    position: absolute;
+    left: 0;
+    color: #28a745;
+    font-size: 1.2rem;
+}
+
+#aboutMuelmo img {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+#aboutMuelmo h2 {
+    font-size: 3rem;
+}
+
+#aboutMuelmo h3 {
+    color: #0056b3;
+}
+
+
+@media (max-width: 768px) {
+    .carousel-inner .row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .carousel-inner .col-md-4 {
+        max-width: 100%;
+        flex: 0 0 100%;
+    }
+}
