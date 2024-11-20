@@ -196,7 +196,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Función para guardar el ID de la película seleccionada en localStorage
     window.viewMovie = function (peliculaId) {
-        localStorage.setItem("selectedMovieId", peliculaId);
+        localStorage.setItem("selectedPeliculaId", peliculaId);
     };
 
     fetchMovies();

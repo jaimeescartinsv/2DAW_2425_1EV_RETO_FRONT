@@ -1,21 +1,21 @@
-async function fetchMovies() {
+async function fetchPeliculas() {
     try {
         const response = await fetch('http://localhost:5000/api/peliculas');
-        const movies = await response.json();
-        console.log('Datos recibidos de la API:', movies);
+        const peliculas = await response.json();
+        console.log('Datos recibidos de la API:', peliculas);
 
-        if (movies.length > 0) { // Verificar si hay películas disponibles
-            const limitedMovies = movies.slice(0, 6); // Selecciona solo las primeras 6 películas
-            displayCarousel(limitedMovies);
+        if (peliculas.length > 0) { // Verificar si hay películas disponibles
+            const peliculasDestacadas = peliculas.slice(0, 6); // Selecciona solo las primeras 6 películas
+            displayCarousel(peliculasDestacadas);
         } else {
-            console.error('La respuesta de la API no contiene películas:', movies);
+            console.error('La respuesta de la API no contiene películas:', peliculas);
         }
     } catch (error) {
         console.error('Error al cargar las películas:', error);
     }
 }
 
-function displayCarousel(movies) {
+function displayCarousel(peliculas) {
     const carouselContent = document.getElementById('carouselContent');
     if (!carouselContent) {
         console.error('Contenedor del carrusel no encontrado.');
@@ -27,8 +27,8 @@ function displayCarousel(movies) {
 
     carouselContent.innerHTML = ''; // Limpiar contenido previo
 
-    for (let i = 0; i < movies.length; i += chunkSize) {
-        const chunk = movies.slice(i, i + chunkSize);
+    for (let i = 0; i < peliculas.length; i += chunkSize) {
+        const chunk = peliculas.slice(i, i + chunkSize);
         const carouselItem = document.createElement('div');
         carouselItem.classList.add('carousel-item');
         if (i === 0) {
@@ -38,18 +38,18 @@ function displayCarousel(movies) {
         const row = document.createElement('div');
         row.classList.add('row', 'justify-content-center', 'align-items-stretch');
 
-        chunk.forEach(movie => {
+        chunk.forEach(pelicula => {
             const col = document.createElement('div');
             col.classList.add('col-md-4', 'd-flex');
 
             col.innerHTML = `
                 <div class="card h-100">
-                    <img src="${movie.imageUrl || 'https://via.placeholder.com/300x400'}" class="card-img-top" alt="${movie.title}">
+                    <img src="${pelicula.imageUrl || 'https://via.placeholder.com/300x400'}" class="card-img-top" alt="${pelicula.title}">
                     <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">${movie.title || 'Título no disponible'}</h5>
-                        <p class="card-text">${movie.description || 'Descripción no disponible.'}</p>
-                        <p><strong>Duración:</strong> ${movie.duration || 'N/A'} minutos</p>
-                        <button class="btn btn-primary mt-auto view-more-btn" data-movie-id="${movie.peliculaId}">Ver más</button>
+                        <h5 class="card-title">${pelicula.title || 'Título no disponible'}</h5>
+                        <p class="card-text">${pelicula.description || 'Descripción no disponible.'}</p>
+                        <p><strong>Duración:</strong> ${pelicula.duration || 'N/A'} minutos</p>
+                        <button class="btn btn-primary mt-auto view-more-btn" data-pelicula-id="${pelicula.peliculaId}">Ver más</button>
                     </div>
                 </div>
             `;
@@ -63,8 +63,8 @@ function displayCarousel(movies) {
     const viewMoreButtons = document.querySelectorAll('.view-more-btn');
     viewMoreButtons.forEach(button => {
         button.addEventListener('click', (event) => {
-            const peliculaId = event.target.getAttribute('data-movie-id'); // Obtener el ID de la película
-            localStorage.setItem('selectedMovieId', peliculaId); // Guardar el ID en localStorage
+            const peliculaId = event.target.getAttribute('data-pelicula-id'); // Obtener el ID de la película
+            localStorage.setItem('selectedPeliculaId', peliculaId); // Guardar el ID en localStorage
             window.location.href = '../pelicula/pelicula.html';
         });
     });
@@ -73,10 +73,10 @@ function displayCarousel(movies) {
 
 // Detectar cambio de tamaño de la ventana y actualizar el carrusel
 window.addEventListener('resize', () => {
-    fetchMovies();
+    fetchPeliculas();
 });
 
 // Inicializar el carrusel al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
-    fetchMovies();
+    fetchPeliculas();
 });

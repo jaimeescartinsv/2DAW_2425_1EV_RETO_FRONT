@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const apiUrlCines = "http://localhost:5000/api/cines";
     const apiUrlSesiones = "http://localhost:5000/api/sesiones/cine";
-    const peliculaId = localStorage.getItem("selectedMovieId");
+    const peliculaId = localStorage.getItem("selectedPeliculaId");
     let cinesMap = {}; // Mapa para almacenar los cines por ID
 
     // Función para renderizar el listado de cines

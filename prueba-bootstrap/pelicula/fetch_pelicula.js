@@ -29,9 +29,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Obtener el ID de la película desde localStorage y cargar los datos
-    const selectedMovieId = localStorage.getItem('selectedMovieId');
-    if (selectedMovieId) {
-        fetch(`${apiUrlPeliculas}/${selectedMovieId}`)
+    const selectedPeliculaId = localStorage.getItem('selectedPeliculaId');
+    if (selectedPeliculaId) {
+        fetch(`${apiUrlPeliculas}/${selectedPeliculaId}`)
             .then(response => {
                 if (response.ok) {
                     return response.json();
