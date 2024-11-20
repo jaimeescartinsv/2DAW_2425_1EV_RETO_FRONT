@@ -21,7 +21,7 @@
             min-height: 60px;
         }
 
-        .movie-card img {
+        .pelicula-card img {
             object-fit: cover;
             height: auto;
             width: 100%;
@@ -30,7 +30,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        .movie-card {
+        .pelicula-card {
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
@@ -40,13 +40,13 @@
             overflow: hidden;
         }
 
-        .movie-card .card-body {
+        .pelicula-card .card-body {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
-        .movie-card .btn {
+        .pelicula-card .btn {
             align-self: center;
             margin-top: auto;
         }
@@ -133,11 +133,11 @@
             <div class="col-md-6">
                 <div class="search-bar position-relative">
                     <i class="bi bi-search"></i>
-                    <input type="text" id="searchByName" class="form-control" placeholder="Buscar por nombre...">
+                    <input type="text" id="buscarPorTitulo" class="form-control" placeholder="Buscar por título...">
                 </div>
             </div>
             <div class="col-md-6">
-                <select id="searchByGenre" class="form-select">
+                <select id="buscarPorGenero" class="form-select">
                     <option value="">Buscar por género...</option>
                     <option value="Acción">Acción</option>
                     <option value="Comedia">Comedia</option>
@@ -148,14 +148,14 @@
             </div>
         </div>
 
-        <div id="messageContainer" class="message"></div>
+        <div id="contenedorMensaje" class="message"></div>
 
-        <div class="row" id="movieGrid">
+        <div class="row" id="contenedorPeliculas">
             <!-- Películas generadas dinámicamente -->
         </div>
 
         <nav>
-            <ul class="pagination" id="pagination">
+            <ul class="pagination" id="paginacion">
                 <!-- Botones generados dinámicamente -->
             </ul>
         </nav>
