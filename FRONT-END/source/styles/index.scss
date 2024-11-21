@@ -161,19 +161,20 @@ a {
 
   &__track {
     display: flex;
-    transition: transform 0.3s ease-in-out; // Transición suave al deslizar
+    transition: transform 0.5s ease-in-out; // Animación suave para el movimiento
     padding: 0;
     margin: 0;
     list-style: none;
   }
 
   &__item {
-    flex: 0 0 100%; // Asegura que cada elemento ocupe todo el ancho del carrusel
+    flex: 0 0 100%; // Cada tarjeta ocupa el 100% del ancho en móvil
     margin: 0;
     box-sizing: border-box;
 
     @media (min-width: 768px) {
-      flex: 0 0 33.33%; // En pantallas grandes, se muestran 3 elementos
+      flex: 0 0 33.33%; // En pantallas grandes, se muestran 3 tarjetas por fila
+      padding: 10px; // Añade espacio entre las tarjetas
     }
 
     article.movie-card {
@@ -185,17 +186,19 @@ a {
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       border-radius: 8px;
       background-color: #fff;
+      max-width: 300px; // Limita el ancho máximo de las tarjetas en escritorio
+      margin: 0 auto; // Centra las tarjetas dentro del carrusel
+
+      &__image {
+        width: 100%; // La imagen ocupa todo el ancho de la tarjeta
+        height: auto; // Ajusta la altura automáticamente
+        object-fit: cover; // Evita distorsión y asegura que la imagen llene el espacio
+        border-radius: 4px;
+      }
 
       &__title {
         font-size: 18px;
         margin-bottom: 10px;
-      }
-
-      &__image {
-        max-width: 100%;
-        height: auto;
-        margin-bottom: 10px;
-        border-radius: 4px;
       }
 
       &__button {
@@ -216,7 +219,7 @@ a {
   }
 
   &__button {
-    background: rgba(0, 0, 0, 0.5); // Botones con fondo semitransparente
+    background: rgba(0, 0, 0, 0.5); // Fondo semitransparente para visibilidad
     border: none;
     color: #fff;
     font-size: 24px;
@@ -226,7 +229,7 @@ a {
     transform: translateY(-50%);
     z-index: 10;
     padding: 10px;
-    border-radius: 10%;
+    border-radius: 50%;
 
     &--prev {
       left: 10px;
@@ -241,7 +244,6 @@ a {
     }
   }
 }
-
 
 .movie-card {
   text-align: center;

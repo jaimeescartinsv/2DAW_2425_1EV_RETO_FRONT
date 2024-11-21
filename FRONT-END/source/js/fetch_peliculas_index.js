@@ -24,10 +24,13 @@ function displayCarousel(peliculas) {
 
     carouselContent.innerHTML = '';
 
-    peliculas.forEach((pelicula, index) => {
+    // Crear duplicados al principio y al final
+    const duplicatedPeliculas = [...peliculas, ...peliculas, ...peliculas];
+
+    duplicatedPeliculas.forEach((pelicula, index) => {
         const listItem = document.createElement('li');
         listItem.classList.add('carousel__item');
-        listItem.dataset.index = index; // Agregar un índice para facilitar el seguimiento
+        listItem.dataset.index = index;
 
         listItem.innerHTML = `
             <article class="movie-card">
@@ -44,25 +47,56 @@ function displayCarousel(peliculas) {
         carouselContent.appendChild(listItem);
     });
 
-    updateCarouselPosition(0); // Inicializar la posición
+    // Ajustar el `track` para comenzar en la primera copia "real"
+    const offset = -peliculas.length * 100; // Posicionar en la primera iteración real
+    carouselContent.style.transform = `translateX(${offset}%)`;
+
+    currentIndex = peliculas.length; // Configurar el índice inicial
+    trackSize = peliculas.length; // Guardar el tamaño real
 }
 
-let currentIndex = 0; // Índice de la película actualmente visible
+let currentIndex = 0;
+let trackSize = 0;
 
 function updateCarouselPosition(index) {
     const carouselContent = document.querySelector('.carousel__track');
-    const items = document.querySelectorAll('.carousel__item');
-    const totalItems = items.length;
+    const totalItems = document.querySelectorAll('.carousel__item').length;
 
+    currentIndex = index;
+
+    // Detectar si estamos en el límite izquierdo o derecho del bucle
     if (index < 0) {
-        currentIndex = totalItems - 1; // Volver al final si se retrocede desde el inicio
-    } else if (index >= totalItems) {
-        currentIndex = 0; // Volver al inicio si se avanza desde el final
-    } else {
-        currentIndex = index;
+        currentIndex = trackSize - 1; // Salto al final de la sección real
+        carouselContent.style.transition = 'none'; // Desactivar transición para el salto
+        const offset = -currentIndex * 100;
+        carouselContent.style.transform = `translateX(${offset}%)`;
+
+        // Rehabilitar la transición para el próximo movimiento
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                carouselContent.style.transition = 'transform 0.5s ease-in-out';
+                updateCarouselPosition(currentIndex - 1);
+            });
+        });
+        return;
+    } else if (index >= trackSize * 2) {
+        currentIndex = trackSize; // Salto al inicio de la sección real
+        carouselContent.style.transition = 'none'; // Desactivar transición para el salto
+        const offset = -currentIndex * 100;
+        carouselContent.style.transform = `translateX(${offset}%)`;
+
+        // Rehabilitar la transición para el próximo movimiento
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                carouselContent.style.transition = 'transform 0.5s ease-in-out';
+                updateCarouselPosition(currentIndex + 1);
+            });
+        });
+        return;
     }
 
-    const offset = -currentIndex * 100; // Desplazar el `track` en función del índice
+    // Mover al nuevo índice
+    const offset = -currentIndex * 100;
     carouselContent.style.transform = `translateX(${offset}%)`;
 }
 
