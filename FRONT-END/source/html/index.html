@@ -48,31 +48,8 @@
     <section class="carousel">
       <button class="carousel__button carousel__button--prev" aria-label="Anterior">&#8249;</button>
       <div class="carousel__track-container">
-        <ul class="carousel__track">
-          <li class="carousel__item">
-            <article class="movie-card">
-              <h2 class="movie-card__title">PELÍCULA</h2>
-              <img src="/FRONT-END/source/images/placeholder-image.png" alt="Película 1" class="movie-card__image" />
-              <button class="movie-card__button" onclick="location.href='/comprar-entradas.html';">¡Compra tus
-                entradas!</button>
-            </article>
-          </li>
-          <li class="carousel__item">
-            <article class="movie-card">
-              <h2 class="movie-card__title">PELÍCULA</h2>
-              <img src="/FRONT-END/source/images/placeholder-image.png" alt="Película 2" class="movie-card__image" />
-              <button class="movie-card__button" onclick="location.href='/comprar-entradas.html';">¡Compra tus
-                entradas!</button>
-            </article>
-          </li>
-          <li class="carousel__item">
-            <article class="movie-card">
-              <h2 class="movie-card__title">PELÍCULA</h2>
-              <img src="/FRONT-END/source/images/placeholder-image.png" alt="Película 3" class="movie-card__image" />
-              <button class="movie-card__button" onclick="location.href='/comprar-entradas.html';">¡Compra tus
-                entradas!</button>
-            </article>
-          </li>
+        <ul class="carousel__track" id="carouselContent">
+          <!-- Los elementos del carrusel se generarán dinámicamente aquí -->
         </ul>
       </div>
       <button class="carousel__button carousel__button--next" aria-label="Siguiente">&#8250;</button>
@@ -249,6 +226,7 @@
   </footer>
 
   <script src="/FRONT-END/source/js/index.js"></script>
+  <script src="/FRONT-END/source/js/fetch_peliculas_index.js"></script>
 </body>
 
 </html>
