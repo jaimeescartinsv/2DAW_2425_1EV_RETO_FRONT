@@ -121,6 +121,158 @@ a {
 	transform: rotate(90deg);
 	transition: transform 0.3s ease;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Variables de colores y fuentes
+$primary-color: #000; // Fondo principal (negro)
+$secondary-color: #fff; // Texto (blanco)
+$highlight-color: #1a73e8; // Azul para bordes y botones
+$text-color: $secondary-color; // Texto en blanco
+$font-stack: "Lilita One", sans-serif;
+$font-title: "Poller One", sans-serif;
+
+// Estilo principal del formulario de login
+.auth {
+  background-color: $primary-color;
+  border-radius: 15px; // Bordes redondeados
+  padding: 30px;
+  max-width: 400px;
+  width: 90%;
+  margin: 20px auto;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+
+  &__title {
+    font-size: 1.8rem;
+    color: $text-color;
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: $font-title;
+    font-weight: bold;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    &-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      .auth__label {
+        font-size: 1rem;
+        color: $text-color;
+      }
+
+      .auth__input {
+        width: 100%;
+        padding: 10px;
+        border-radius: 10px; // Bordes redondeados para los campos
+        border: 1px solid lighten($text-color, 50%);
+        font-size: 1rem;
+        background-color: $primary-color;
+        color: $text-color;
+
+        &:focus {
+          outline: none;
+          border-color: $highlight-color;
+          box-shadow: 0 0 5px $highlight-color;
+        }
+      }
+    }
+
+    &-checkbox-group {
+      display: flex;
+      align-items: center;
+
+      .auth__checkbox {
+        margin-right: 10px;
+        accent-color: $highlight-color;
+      }
+
+      .auth__checkbox-label {
+        font-size: 0.9rem;
+        color: $text-color;
+      }
+    }
+  }
+
+  &__button {
+    background-color: $highlight-color;
+    color: $primary-color;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 15px; // Bordes redondeados del botón
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: darken($highlight-color, 10%);
+    }
+  }
+
+  &__recaptcha {
+    margin: 20px 0;
+    text-align: center;
+  }
+
+  &__links {
+    text-align: center;
+    margin-top: 20px;
+
+    .auth__link {
+      color: $highlight-color;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .footer {
 	color: #000;
 	text-align: center;
@@ -226,6 +378,71 @@ a {
 		height: auto;
 		gap: 20px;
 	}
+
+
+
+
+
+
+
+
+
+
+	// Media queries para pantallas grandes
+	@media (min-width: 768px) {
+	  .auth {
+		padding: 40px;
+	
+		&__title {
+		  font-size: 2rem;
+		}
+	
+		&__form {
+		  gap: 20px;
+	
+		  &-group {
+			.auth__input {
+			  padding: 12px;
+			  font-size: 1.1rem;
+			}
+		  }
+	
+		  &__button {
+			padding: 14px 25px;
+			font-size: 1.1rem;
+		  }
+		}
+	  }
+	}
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 	.footer__options {
 		gap: 100px;
 	}

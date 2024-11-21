@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MUELMO CINES - Película</title>
-    <link rel="stylesheet" href="/FRONT-END/dist/peli-info.css">
+    <title>MUELMO CINES - Login</title>
+    <link rel="stylesheet" href="/FRONT-END/dist/login.css">
     <link href="https://fonts.googleapis.com/css2?family=Poller+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
 </head>
@@ -34,39 +34,48 @@
       </header>
 
     <main class="main">
+        <section class="auth">
+            <h2 class="auth__title">Iniciar Sesión</h2>
+            <form class="auth__form" action="#" method="POST" id="login-form">
+                <!-- Email -->
+                <div class="auth__form-group">
+                    <label for="email" class="auth__label">Correo electrónico</label>
+                    <input type="email" id="email" class="auth__input" placeholder="Introduce tu correo" required>
+                </div>
+                <!-- Contraseña -->
+                <div class="auth__form-group">
+                    <label for="password" class="auth__label">Contraseña</label>
+                    <input type="password" id="password" class="auth__input" placeholder="Introduce tu contraseña" required>
+                </div>
+                <!-- Checkbox "Recuérdame" -->
+                <div class="auth__form-checkbox-group">
+                    <label class="auth__checkbox-label">
+                        <input type="checkbox" class="auth__checkbox">
+                        Recuérdame
+                    </label>
+                </div>
+
+                <!-- Botón de Iniciar Sesión -->
+                <button type="submit" class="auth__button">Iniciar Sesión</button>
+            </form>
+            <p class="auth__links">
+                <a href="/FRONT-END/source/html/register.html" class="auth__link">¿No tienes una cuenta? Regístrate aquí</a>
+            </p>
+        </section>
 
 
 
-        
-        <div class="movie__banner">
-            <img src="/FRONT-END/source/images/istockphoto-1372681569-612x612.jpg" alt="Banner de la película" class="movie__banner-image">
-          </div>
-    <section class="movie">
-      
-      <div class="movie__details">
-        <img src="/FRONT-END/source/images/450_1000.jpg" alt="Póster de la película" class="movie__poster">
-        <div class="movie__info">
-          <h1 class="movie__title">Título de la Película</h1>
-          <p class="movie__director"><strong>Director:</strong> Nombre del director</p>
-          <p class="movie__actors"><strong>Actores:</strong> Nombres de los actores</p>
-          <p class="movie__duration"><strong>Duración:</strong> XX minutos</p>
-          <p class="movie__genre"><strong>Género:</strong> Acción, Drama</p>
-          <p class="movie__rating"><strong>Clasificación:</strong> PG-13</p>
-          <p class="movie__synopsis"><strong>Sinopsis:</strong> Breve descripción de la película.</p>
-        </div>
-      </div>
-      <div class="movie__schedule">
-        <h2 class="movie__schedule-title">Horarios Disponibles</h2>
-        <select class="movie__cinema-select" name="cinema">
-          <option value="">Selecciona un cine</option>
-          <option value="cine1">Cine 1</option>
-          <option value="cine2">Cine 2</option>
-        </select>
-        <p class="movie__schedule-warning">Por favor, selecciona un cine para ver las sesiones.</p>
-      </div>
-    </section>
 
-     
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -89,12 +98,6 @@
     </main>
 
 
-
-
-
-
-
-
     <footer class="footer">
        
         <div class="footer__bottom">
@@ -111,7 +114,7 @@
 
     </footer>
     
-    <script src="/FRONT-END/source/js/peli-info.js"></script>
+    <script src="/FRONT-END/source/js/login.js"></script>
 </body>
 
 </html>
