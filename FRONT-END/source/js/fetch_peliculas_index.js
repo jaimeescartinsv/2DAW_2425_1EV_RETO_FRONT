@@ -32,13 +32,16 @@ function displayCarousel(peliculas) {
         listItem.classList.add('carousel__item');
         listItem.dataset.index = index;
 
+        // Verificar si la película tiene un ID válido
+        const peliculaId = pelicula.peliculaId || 'sin-id';
+
         listItem.innerHTML = `
             <article class="movie-card">
                 <h2 class="movie-card__title">${pelicula.title || 'Título no disponible'}</h2>
                 <img src="${pelicula.imageUrl || '/FRONT-END/source/images/placeholder-image.png'}" 
                      alt="${pelicula.title}" 
                      class="movie-card__image" />
-                <button class="movie-card__button" onclick="location.href='/comprar-entradas.html';">
+                <button class="movie-card__button" data-id="${peliculaId}">
                     ¡Compra tus entradas!
                 </button>
             </article>
@@ -53,6 +56,20 @@ function displayCarousel(peliculas) {
 
     currentIndex = peliculas.length; // Configurar el índice inicial
     trackSize = peliculas.length; // Guardar el tamaño real
+
+    // Añadir eventos para almacenar el ID en localStorage y redirigir
+    document.querySelectorAll('.movie-card__button').forEach(button => {
+        button.addEventListener('click', (e) => {
+            const movieId = e.currentTarget.getAttribute('data-id');
+            if (movieId) {
+                localStorage.setItem('selectedMovieId', movieId);
+                console.log(`ID de la película almacenado en localStorage: ${movieId}`);
+                window.location.href = '/comprar-entradas.html'; // Redirigir a la página sin incluir el ID en la URL
+            } else {
+                console.error('No se encontró un ID válido para la película.');
+            }
+        });
+    });
 }
 
 let currentIndex = 0;
