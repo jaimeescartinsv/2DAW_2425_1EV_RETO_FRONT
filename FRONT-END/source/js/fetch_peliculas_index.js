@@ -62,9 +62,9 @@ function displayCarousel(peliculas) {
         button.addEventListener('click', (e) => {
             const movieId = e.currentTarget.getAttribute('data-id');
             if (movieId) {
-                localStorage.setItem('selectedMovieId', movieId);
+                localStorage.setItem('selectedPeliculaId', movieId);
                 console.log(`ID de la película almacenado en localStorage: ${movieId}`);
-                window.location.href = '/comprar-entradas.html'; // Redirigir a la página sin incluir el ID en la URL
+                window.location.href = 'peli-info.html'; // Redirigir a la página sin incluir el ID en la URL
             } else {
                 console.error('No se encontró un ID válido para la película.');
             }
