@@ -124,7 +124,33 @@ a {
 
 
 
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-top: 20px;
+}
 
+.pagination-button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.pagination-button.active {
+    background-color: #007BFF;
+    color: white;
+    font-weight: bold;
+    cursor: default;
+}
+
+.pagination-button:hover:not(.active) {
+    background-color: #ddd;
+}
 
 
 
@@ -244,6 +270,7 @@ a {
   
     &__button {
       display: block;
+	  width: 50%;
       margin: 10px auto;
       background-color: #007bff;
       color: #fff;
