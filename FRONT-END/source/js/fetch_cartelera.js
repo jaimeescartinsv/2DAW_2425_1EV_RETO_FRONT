@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <h2 class="movie-card__title">${pelicula.title || "Título no disponible"}</h2>
                 <p class="movie-card__description">${pelicula.description || "Sin descripción disponible."}</p>
                 <p class="movie-card__duration"><strong>Duración:</strong> ${pelicula.duration || "N/A"} minutos</p>
-                <a class="movie-card__button" href="peli-info.html?peliculaId=${pelicula.peliculaId}" onclick="verPelicula(${pelicula.peliculaId})">Ver más</a>
+                <a class="movie-card__button" href="peli-info.html" onclick="verPelicula(${pelicula.peliculaId})">Ver más</a>
             `;
             contenedorPeliculas.appendChild(card);
         });
