@@ -133,7 +133,7 @@ a {
             width: 100%;
             height: auto;
             object-fit: cover; /* Mantiene las proporciones de la imagen */
-            max-height: 200px; /* Limita la altura del banner */
+            height: 300px; /* Limita la altura del banner */
         }
     }
 	&__details img {
