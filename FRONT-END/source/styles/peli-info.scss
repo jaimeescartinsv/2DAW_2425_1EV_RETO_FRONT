@@ -174,11 +174,14 @@ a {
             margin-bottom: 16px;
         }
         .movie__cinema-select {
-            width: 100%;
-            max-width: 300px;
+			font-family: "Poller One", sans-serif;
+            max-width: 100%;
             padding: 8px;
             margin-bottom: 16px;
             border-radius: 10px;
+        }
+		.movie__cinema-select option {
+            font-family: "Poller One", sans-serif;
         }
         .movie__schedule-warning {
             font-size: 1rem;
