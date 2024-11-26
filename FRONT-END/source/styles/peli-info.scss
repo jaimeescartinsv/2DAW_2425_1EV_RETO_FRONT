@@ -166,8 +166,9 @@ a {
         }
     }
     &__schedule {
-        text-align: center;
-        margin-top: 32px;
+		display: flex;
+		flex-direction: column;
+        margin-top: 50px;
         h2 {
             font-size: 1.5rem;
             margin-bottom: 16px;
