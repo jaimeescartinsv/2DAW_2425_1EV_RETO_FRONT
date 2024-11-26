@@ -365,10 +365,7 @@ h1 {
 }
 
 /* Hover sin aumentar el tamaño */
-.seat:hover {
-    background-color: #d3d3d3; /* Cambia el color al pasar el cursor */
-    transform: none; /* Desactiva el escalado */
-}
+
 
 /* Lista de asientos seleccionados */
 #selected-seats {
@@ -409,7 +406,10 @@ h1 {
 
 
 
+.space-filas{
+	height: 20px;
 
+}
 
 
 
@@ -546,6 +546,35 @@ h1 {
 		width: 40px;
 		height: 40px;
 	}
+
+	.seats {
+
+		gap: 15px;
+	}
+
+
+	.space-filas{
+		height: 30px;
+	
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
