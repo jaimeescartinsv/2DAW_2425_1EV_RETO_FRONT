@@ -247,15 +247,13 @@ a {
     &__title {
       font-size: 1.5rem;
       font-weight: bold;
-      text-align: center;
       color: #222;
-      margin: 10px 0;
+      margin: 10px 15px;
     }
   
     &__description {
       font-size: 1rem;
       color: #555;
-      text-align: justify;
       padding: 0 15px;
       margin-bottom: 10px;
     }
@@ -263,14 +261,14 @@ a {
     &__duration {
       font-size: 1rem;
       font-weight: bold;
-      text-align: center;
+	  padding: 0 15px;
       color: #444;
       margin-bottom: 10px;
     }
   
     &__button {
       display: block;
-	  width: 50%;
+	  width: 90%;
       margin: 10px auto;
       background-color: #007bff;
       color: #fff;
