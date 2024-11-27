@@ -3,9 +3,6 @@ document.querySelector('.header__menu-toggle').addEventListener('click', functio
     document.querySelector('.nav').classList.toggle('nav--menu-active');
 });
 
-
-
-
 window.addEventListener('scroll', function () {
   const footerTop = document.querySelector('.footer__top');
   const footer = document.querySelector('.footer');
@@ -28,17 +25,7 @@ window.addEventListener('scroll', function () {
   }
 });
 
-
-
-
-
-
-
-
-
-
-  
-  document.querySelector('.header__menu-toggle').addEventListener('click', function () {
+document.querySelector('.header__menu-toggle').addEventListener('click', function () {
     document.querySelector('.nav').classList.add('nav--menu-active');
 });
 
@@ -47,4 +34,3 @@ document.querySelector('.nav__close-button').addEventListener('click', function 
 });
 
 
-  

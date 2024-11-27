@@ -13,29 +13,29 @@
 <body>
     <header class="header">
         <div class="header__logo">
-          <a href="/FRONT-END/source/html/index.html" class="header__logo-link">
-            <img src="/FRONT-END/source/images/logo.png" alt="Logo Muelmo Cines" class="header__logo-image">
-            <h1 class="header__title">MUELMO CINES</h1>
-          </a>
+            <a href="/FRONT-END/source/html/index.html" class="header__logo-link">
+                <img src="/FRONT-END/source/images/logo.png" alt="Logo Muelmo Cines" class="header__logo-image">
+                <h1 class="header__title">MUELMO CINES</h1>
+            </a>
         </div>
         <div class="header__icons">
-          <!-- Menú hamburguesa (visible en móviles) -->
-          <button class="header__icon-button header__menu-toggle">
-            <img src="/FRONT-END/source/images/menu.svg" alt="Menú hamburguesa" class="header__icon">
-          </button>
+            <!-- Menú hamburguesa (visible en móviles) -->
+            <button class="header__icon-button header__menu-toggle">
+                <img src="/FRONT-END/source/images/menu.svg" alt="Menú hamburguesa" class="header__icon">
+            </button>
         </div>
         <!-- Menú de navegación -->
         <nav class="nav">
-          <button class="nav__close-button" aria-label="Cerrar menú">&times;</button>
-          <a class="nav__link" href="/FRONT-END/source/html/cartelera.html">CARTELERA</a>
-          <a class="nav__link" href="#">DESTACADAS</a>
-          <a class="nav__link" href="#">ENCUÉNTRANOS</a>
+            <button class="nav__close-button" aria-label="Cerrar menú">&times;</button>
+            <a class="nav__link" href="/FRONT-END/source/html/cartelera.html">CARTELERA</a>
+            <a class="nav__link" href="#">DESTACADAS</a>
+            <a class="nav__link" href="#">ENCUÉNTRANOS</a>
         </nav>
-      </header>
+    </header>
 
     <main class="main">
         <section class="auth">
-            <h2 class="auth__title">Iniciar Sesión</h2>
+            <h2 class="auth__title" id="auth-title">Iniciar Sesión</h2>
             <form class="auth__form" action="#" method="POST" id="login-form">
                 <!-- Email -->
                 <div class="auth__form-group">
@@ -58,48 +58,57 @@
                 <!-- Botón de Iniciar Sesión -->
                 <button type="submit" class="auth__button">Iniciar Sesión</button>
             </form>
-            <p class="auth__links">
-                <a href="/FRONT-END/source/html/register.html" class="auth__link">¿No tienes una cuenta? Regístrate aquí</a>
+            <p class="auth__links" id="login-link">
+                <a href="javascript:void(0);" class="auth__link" id="toggle-register">¿No tienes una cuenta? Regístrate aquí</a>
+            </p>
+
+            <!-- Formulario de registro (oculto inicialmente) -->
+            <form class="auth__form" action="#" method="POST" id="register-form" style="display: none;">
+                <!-- Nombre completo -->
+                <div class="auth__form-group">
+                    <label for="fullname" class="auth__label">Nombre completo</label>
+                    <input type="text" id="fullname" class="auth__input" placeholder="Introduce tu nombre completo" required>
+                </div>
+                <!-- Correo electrónico -->
+                <div class="auth__form-group">
+                    <label for="email-register" class="auth__label">Correo electrónico</label>
+                    <input type="email" id="email-register" class="auth__input" placeholder="Introduce tu correo" required>
+                </div>
+                <!-- Contraseña -->
+                <div class="auth__form-group">
+                    <label for="password-register" class="auth__label">Contraseña</label>
+                    <input type="password" id="password-register" class="auth__input" placeholder="Introduce tu contraseña" required>
+                </div>
+                <!-- Confirmar contraseña -->
+                <div class="auth__form-group">
+                    <label for="confirm-password" class="auth__label">Confirmar Contraseña</label>
+                    <input type="password" id="confirm-password" class="auth__input" placeholder="Confirma tu contraseña" required>
+                </div>
+
+                <!-- Botón de Registro -->
+                <button type="submit" class="auth__button">Registrarse</button>
+            </form>
+            <p class="auth__links" id="register-link" style="display: none;">
+                <a href="javascript:void(0);" class="auth__link" id="toggle-login">¿Ya tienes cuenta? Inicia sesión aquí</a>
             </p>
         </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <div class="footer__top">
-          <div class="footer__options">
-              <a href="/FRONT-END/source/html/index.html" class="footer__option"><p class="footer__option-text">PELÍCULAS</p>
-                  <img class="footer__option-image1" src="/FRONT-END/source/images/peli-icono.png" alt="Películas">
-              </a>
-              <a href="#" class="footer__option"><p class="footer__option-text">CINES</p>
-                  <img class="footer__option-image2" src="/FRONT-END/source/images/cine.png" alt="Cines">
-              </a>
-              <a href="#" class="footer__option"><p class="footer__option-text">CUENTA</p>
-                  <img class="footer__option-image" src="/FRONT-END/source/images/user.png" alt="Cuenta">
-              </a>
-          </div>
-      </div>
+            <div class="footer__options">
+                <a href="/FRONT-END/source/html/index.html" class="footer__option"><p class="footer__option-text">PELÍCULAS</p>
+                    <img class="footer__option-image1" src="/FRONT-END/source/images/peli-icono.png" alt="Películas">
+                </a>
+                <a href="#" class="footer__option"><p class="footer__option-text">CINES</p>
+                    <img class="footer__option-image2" src="/FRONT-END/source/images/cine.png" alt="Cines">
+                </a>
+                <a href="#" class="footer__option"><p class="footer__option-text">CUENTA</p>
+                    <img class="footer__option-image" src="/FRONT-END/source/images/user.png" alt="Cuenta">
+                </a>
+            </div>
+        </div>
     </main>
 
-
     <footer class="footer">
-       
         <div class="footer__bottom">
             <nav class="footer__nav">
                 <a href="#" class="footer__nav-link">Sobre nosotros</a>
@@ -109,11 +118,37 @@
             </nav>
         </div>
         <a href="/FRONT-END/source/html/index.html" class="footer__logo-link">
-          <img src="/FRONT-END/source/images/logo.png" alt="Logo Muelmo Cines" class="footer__logo">
-      </a>
-
+            <img src="/FRONT-END/source/images/logo.png" alt="Logo Muelmo Cines" class="footer__logo">
+        </a>
     </footer>
-    
+
+    <script>
+        // Función para alternar entre login y registro
+        const toggleLogin = document.getElementById('toggle-login');
+        const toggleRegister = document.getElementById('toggle-register');
+        const loginForm = document.getElementById('login-form');
+        const registerForm = document.getElementById('register-form');
+        const authTitle = document.getElementById('auth-title');
+        const loginLink = document.getElementById('login-link');
+        const registerLink = document.getElementById('register-link');
+
+        toggleRegister.addEventListener('click', () => {
+            loginForm.style.display = 'none';
+            registerForm.style.display = 'flex';
+            authTitle.textContent = 'Registrarse';
+            loginLink.style.display = 'none'; // Oculta el enlace de inicio de sesión
+            registerLink.style.display = 'flex'; // Muestra el enlace de registro
+        });
+
+        toggleLogin.addEventListener('click', () => {
+            registerForm.style.display = 'none';
+            loginForm.style.display = 'flex';
+            authTitle.textContent = 'Iniciar Sesión';
+            loginLink.style.display = 'flex'; // Muestra el enlace de inicio de sesión
+            registerLink.style.display = 'none'; // Oculta el enlace de registro
+        });
+    </script>
+
     <script src="/FRONT-END/source/js/login.js"></script>
 </body>
 
