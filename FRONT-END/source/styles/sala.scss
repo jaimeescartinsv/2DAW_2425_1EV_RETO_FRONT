@@ -1,4 +1,5 @@
 * {
+	font-family: "Poller One", sans-serif;
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
@@ -7,22 +8,25 @@ body {
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
-	font-family: "Lilita One", sans-serif;
+	font-family: "Poller One", sans-serif;
 }
 html {
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
-	font-family: "Lilita One", sans-serif;
+	font-family: "Poller One", sans-serif;
 }
 a {
 	text-decoration: none;
 }
 .main {
+	padding-right: 50px;
+	padding-left: 50px;
+	align-items: center;
 	flex: 1;
 	display: flex;
 	flex-direction: column;
-	padding-bottom: 5px
+	padding-bottom: 55px
 }
 .header {
 	display: flex;
@@ -141,7 +145,9 @@ a {
 	transition: transform 0.3s ease;
 }
 
-
+.movie-banner {
+	width: 100%;
+}
 
 .movie-banner img {
     object-fit: cover;
@@ -224,15 +230,19 @@ h1 {
     text-align: center;
 }
 .status-legends {
+	width: 100%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     margin-bottom: 20px;
+	gap: 50px;
 }
 
 .legend {
+	text-align: center;
     font-size: 14px;
-	padding: 5px;
+	padding: 8px;
 	border-radius: 5px;
+	width: 150px;
 }
 
 #selectedSeats {
@@ -242,7 +252,7 @@ h1 {
 /* Estilo para asientos seleccionados */
 .selected {
     background-color: #4caf50; /* Amarillo para seleccionados */
-    padding: 5px
+    padding: 8px
 }
 
 /* Otros tipos de asientos en las leyendas */
@@ -260,7 +270,7 @@ h1 {
 
 .blocked {
     background-color: #f44336;
-
+	padding: 8px;
 }
 
 /* Estilo para la pantalla */
@@ -375,6 +385,69 @@ h1 {
 
 
 
+#selectedSeats {
+    margin-bottom: 20px; // Espacio entre el texto y el formulario
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#ticketFormContainer {
+    flex-direction: column;
+    background-color: #f8f9fa; // Fondo claro
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#ticketForm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#ticketForm label {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+#ticketForm input[type="text"],
+#ticketForm input[type="email"] {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    transition: border-color 0.3s;
+
+    &:focus {
+        border-color: #007bff;
+        outline: none;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+}
+
+#ticketForm button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+        background-color: #0056b3;
+    }
+
+    &:active {
+        background-color: #003f7f;
+    }
+}
+
 
 
 
@@ -477,7 +550,8 @@ h1 {
 		}
 	}
 	.main {
-
+		padding-right: 50px;
+		padding-left: 50px;
 		padding-bottom: 55px
 	}
 	.nav {

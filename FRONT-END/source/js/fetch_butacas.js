@@ -1,6 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
     const apiUrlPeliculas = "http://localhost:5000/api/peliculas";
     const apiUrlSesiones = "http://localhost:5000/api/sesiones";
+    const apiUrlTickets = "http://localhost:5000/api/tickets";
+    const continueButton = document.getElementById("continue-btn");
+    const ticketFormContainer = document.getElementById("ticketFormContainer");
+    const ticketForm = document.getElementById("ticketForm");
 
     // Renderizar título y banner de la película
     function renderBannerAndTitle(pelicula) {
@@ -45,14 +49,14 @@ document.addEventListener("DOMContentLoaded", function () {
     function renderButacas(sesion) {
         const butacasContainer = document.querySelector('.seating-chart');
         butacasContainer.innerHTML = ""; // Limpiar el contenedor
-    
+
         const rows = 12; // Número de filas
         const cols = 17; // Número de columnas
         const pasillosVerticales = [5, 11]; // Columnas de los pasillos verticales
         const pasillosHorizontales = [5, 10]; // Filas de los pasillos horizontales
-    
+
         let butacaIndex = 0; // Índice de la butaca
-    
+
         for (let row = 0; row < rows; row++) {
             // Comprobar si esta fila es un pasillo horizontal
             if (pasillosHorizontales.includes(row)) {
@@ -61,10 +65,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 butacasContainer.appendChild(pasilloHorizontal);
                 continue; // Pasar a la siguiente fila
             }
-    
+
             const rowContainer = document.createElement('div');
             rowContainer.classList.add('row');
-    
+
             for (let col = 0; col < cols; col++) {
                 // Espacio para pasillos verticales
                 if (pasillosVerticales.includes(col)) {
@@ -73,64 +77,63 @@ document.addEventListener("DOMContentLoaded", function () {
                     rowContainer.appendChild(pasilloVertical);
                     continue;
                 }
-    
+
                 // Crear butaca
                 const butaca = sesion.butacas[butacaIndex];
                 if (!butaca) continue;
-    
+
                 const button = document.createElement('button');
                 button.classList.add('seat');
                 button.dataset.butacaId = butaca.butacaId;
-    
+
                 if (butaca.estado === "Disponible") {
                     button.classList.add('btn-outline-secondary');
                 } else {
                     button.classList.add('btn-danger');
                     button.disabled = true;
                 }
-    
+
                 rowContainer.appendChild(button);
                 butacaIndex++;
             }
-    
+
             butacasContainer.appendChild(rowContainer);
         }
-    
+
         handleSeatSelection();
     }
 
     // Función para manejar la selección de butacas
     function handleSeatSelection() {
-        const selectedSeatsText = document.getElementById('selectedSeats');
-        const continueButton = document.getElementById('continue-btn'); // Botón de continuar
-        const seats = document.querySelectorAll('.seat');
-    
+        const selectedSeatsText = document.getElementById("selectedSeats");
+        const ticketFormContainer = document.getElementById("ticketFormContainer");
+        const seats = document.querySelectorAll(".seat");
+
         seats.forEach(seat => {
-            seat.addEventListener('click', () => {
-                seat.classList.toggle('btn-success');
-                seat.classList.toggle('btn-outline-secondary');
-    
+            seat.addEventListener("click", () => {
+                seat.classList.toggle("btn-success");
+                seat.classList.toggle("btn-outline-secondary");
+
                 updateSelectedSeats();
             });
         });
-    
+
         function updateSelectedSeats() {
             const selectedSeats = Array.from(seats)
-                .filter(seat => seat.classList.contains('btn-success'))
+                .filter(seat => seat.classList.contains("btn-success"))
                 .map(seat => seat.dataset.butacaId);
-    
+
             // Guardar los IDs de las butacas seleccionadas en localStorage
-            localStorage.setItem('selectedButacaIds', JSON.stringify(selectedSeats));
-    
+            localStorage.setItem("selectedButacaIds", JSON.stringify(selectedSeats));
+
             // Actualizar texto con las butacas seleccionadas
-            selectedSeatsText.textContent = `Butacas seleccionadas: ${selectedSeats.length ? selectedSeats.map(id => `B${id}`).join(', ') : 'Ninguna'}`;
-    
-            // Mostrar u ocultar el botón de continuar
-            if (selectedSeats.length > 0) {
-                continueButton.style.display = 'block'; // Mostrar el botón
-            } else {
-                continueButton.style.display = 'none'; // Ocultar el botón
-            }
+            selectedSeatsText.textContent = `Butacas seleccionadas: ${selectedSeats.length
+                ? selectedSeats.map(id => `B${id}`).join(", ")
+                : "Ninguna"
+                }`;
+
+            // Mostrar el formulario si hay al menos una butaca seleccionada
+            ticketFormContainer.style.display = selectedSeats.length > 0 ? "flex" : "none";
         }
     }
 
@@ -184,4 +187,61 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(error => {
             console.error("Error al obtener los datos de la película:", error);
         });
+
+    // Mostrar formulario al hacer clic en "Continuar"
+    continueButton.addEventListener("click", () => {
+        ticketFormContainer.style.display = "flex"; // Mostrar el formulario
+        continueButton.style.display = "none"; // Ocultar el botón "Continuar"
+    });
+
+    // Manejar el envío del formulario
+    ticketForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const nombre = document.getElementById("nombre").value;
+        const email = document.getElementById("email").value;
+
+        // Obtener datos necesarios para crear el ticket
+        const selectedSesionId = localStorage.getItem("selectedSesionId");
+        const selectedSeats = JSON.parse(localStorage.getItem("selectedButacaIds")) || [];
+
+        if (!selectedSesionId || selectedSeats.length === 0) {
+            alert("No se han seleccionado asientos o sesión válida.");
+            return;
+        }
+
+        // Crear tickets para cada butaca seleccionada
+        const tickets = selectedSeats.map(butacaId => ({
+            sesionId: parseInt(selectedSesionId, 10),
+            nombreInvitado: nombre,
+            emailCompra: email,
+            butacaId: parseInt(butacaId, 10),
+            fechaDeCompra: new Date().toISOString(),
+        }));
+
+        // Enviar cada ticket a la API
+        const ticketPromises = tickets.map(ticket =>
+            fetch(`${apiUrlTickets}/crear`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(ticket),
+            })
+        );
+
+        Promise.all(ticketPromises)
+            .then(responses => {
+                if (responses.some(response => !response.ok)) {
+                    throw new Error("Hubo un error al crear algunos tickets.");
+                }
+                alert("¡Tickets creados con éxito!");
+                // Redirigir o limpiar la selección
+                localStorage.removeItem("selectedButacaIds");
+            })
+            .catch(error => {
+                console.error("Error al crear los tickets:", error);
+                alert("Hubo un problema al procesar los tickets. Inténtalo nuevamente.");
+            });
+    });
 });

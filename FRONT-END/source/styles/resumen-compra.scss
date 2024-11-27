@@ -2,20 +2,21 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Poller One", sans-serif;
 }
 
 body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    font-family: "Lilita One", sans-serif;
+    font-family: "Poller One", sans-serif;
 }
 
 html {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    font-family: "Lilita One", sans-serif;
+    font-family: "Poller One", sans-serif;
 }
 
 a {
@@ -156,11 +157,6 @@ a {
 
 .resumen-compra {
     width: 100%;
-
-
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .resumen-compra__header {
@@ -206,6 +202,7 @@ a {
 }
 
 .resumen-compra__total {
+    margin-bottom: 20px;
     font-size: 18px;
     font-weight: bold;
     color: #000000;
@@ -254,7 +251,7 @@ a {
 }
 
 .resumen-compra__cupon button:hover {
-    background-color: #0088cc;
+    background-color: #007BFF;
 }
 
 .resumen-compra__footer {
@@ -266,9 +263,17 @@ a {
 
 
 
+.resumen-compra__infoCont {
+    padding: 20px;
+}
 
+.resumen-compra__contenido {
+    padding: 20px;
+}
 
-
+.resumen-compra__dato {
+    padding: 0.5rem;
+}
 
 
 
@@ -452,11 +457,7 @@ a {
 
     .resumen-compra {
         width: 100%;
-
         align-items: center;
-        border-radius: 10px;
-        padding: 20px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
     .resumen-compra__header {
@@ -473,7 +474,8 @@ a {
 
     .resumen-compra__imagen {
         width: 100%;
-        height: auto;
+        height: 300px;
+        object-fit: cover;
         margin-bottom: 20px;
     }
 
@@ -502,6 +504,7 @@ a {
     }
 
     .resumen-compra__total {
+        margin-bottom: 20px;
         font-size: 18px;
         font-weight: bold;
         margin-top: 10px;
@@ -565,15 +568,12 @@ a {
         margin-right: 140px;
     }
 
-    .resumen-compra__infoIn {}
-
     .resumen-compra__infoCont {
-
         gap: 50px;
         justify-content: center;
         display: flex;
         align-items: center;
-        flex-direction: row;
+        flex-direction: column;
 
     }
 
