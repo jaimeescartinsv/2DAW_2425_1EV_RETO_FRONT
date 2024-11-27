@@ -143,54 +143,21 @@ a {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-//PARTE PELICULA EXACTA
-.movie-header {
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
-    justify-content: space-between;
-    background-image: url('path-to-your-background-image.jpg');
-    background-size: cover;
-    background-position: center;
-
-	padding-top: 40px;
-	padding-left: 40px;
-	padding-right: 90px;
-	padding-bottom: 40px;
-    color: rgb(0, 0, 0);
-    margin-bottom: 30px;
-    position: relative;
+.movie-banner img {
+    object-fit: cover;
+    height: 300px;
+	width: 100%;
 }
 
-.movie-header__logo-image {
-    height: 60px;
+.movie-details {
+	margin: 2rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
-.movie-header__details {
-    text-align: right;
-    max-width: 60%;
-}
-
-.movie-header__title {
-    font-size: 36px;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.movie-header__session-info {
-    font-size: 16px;
-    color: #000000;
+#movieTitle {
+	margin-bottom: 1rem;
 }
 
 .cinema {
@@ -260,6 +227,12 @@ h1 {
 
 .legend {
     font-size: 14px;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+#selectedSeats {
+	text-align: center;
 }
 
 /* Estilo para asientos seleccionados */
@@ -289,11 +262,11 @@ h1 {
 /* Estilo para la pantalla */
 /* Estilo para la sección de la pantalla */
 .screen {
-    width: 80%; /* Ajusta el ancho de la pantalla */
+    width: 35%; /* Ajusta el ancho de la pantalla */
     height: 30px; /* Altura de la pantalla */
     background-color: #333; /* Color oscuro para simular una pantalla */
     border-radius: 15px; /* Bordes redondeados para dar forma de pantalla */
-    margin: 20px auto; /* Centrar y dar espacio inferior */
+    margin: 50px auto; /* Centrar y dar espacio inferior */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -302,6 +275,7 @@ h1 {
     font-size: 14px;
     text-transform: uppercase;
     font-weight: bold;
+	text-align: center;
 }
 
 
@@ -310,85 +284,60 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 10px;
+	margin-bottom: 50px;
+
+    .row {
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+
+        .seat {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+
+            &.btn-outline-secondary {
+                background-color: #fff;
+                color: #000;
+
+                &:hover {
+                    background-color: #ddd;
+                }
+            }
+
+            &.btn-danger {
+                background-color: #e74c3c;
+                cursor: not-allowed;
+            }
+
+            &.btn-success {
+                background-color: #2ecc71;
+                color: #fff;
+            }
+        }
+    }
 }
 
-.row {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px; /* Espaciado entre filas */
+// Pasillos
+.pasillo-horizontal {
+    height: 30px;
+    width: 100%;
 }
 
-/* Etiquetas de fila */
-.label {
-    margin-right: 15px;
-    font-size: 18px;
-    font-weight: bold;
+.pasillo-vertical {
+    width: 20px;
+    height: 100%;
 }
-
-/* Espaciado entre asientos */
-.seats {
-    display: flex;
-    gap: 5px; /* Reducir espacio entre asientos */
-}
-
-/* Tamaño uniforme para todos los asientos */
-.seat {
-    width: 20px; /* Tamaño uniforme */
-    height: 20px; /* Tamaño uniforme */
-    background-color: #eeeeee;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease; /* Cambia solo el color */
-}
-
-/* Asientos disponibles */
-.seat.available {
-    background-color: #a5a5a5;
-}
-
-/* Asientos seleccionados */
-.seat.selected {
-    background-color: #4caf50; /* Amarillo */
-}
-
-/* Otros tipos de asientos */
-.seat.unavailable {
-    background-color: #9e9e9e; /* Gris */
-}
-
-.seat.wheelchair {
-    background-color: #2196f3; /* Azul */
-}
-
-.seat.accompanied {
-    background-color: #ff9800; /* Naranja */
-}
-
-.seat.blocked {
-    background-color: #f44336; /* Rojo */
-}
-
-/* Hover sin aumentar el tamaño */
-
-
-/* Lista de asientos seleccionados */
-#selected-seats {
-    margin-top: 30px;
-    font-size: 18px;
-    color: #000000;
-}
-
-#seats-list {
-    list-style: none;
-    padding: 0;
-}
-
-
 
 .continue-btn {
     background-color: #4caf50;
     color: white;
-    padding: 15px 30px;
+    padding: 10px 20px;
+	font-family: "Poller One", sans-serif;
     font-size: 16px;
     border: none;
     border-radius: 5px;

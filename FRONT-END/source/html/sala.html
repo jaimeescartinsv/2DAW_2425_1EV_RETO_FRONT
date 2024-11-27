@@ -19,18 +19,15 @@
             </a>
         </div>
         <div class="header__icons">
-            <!-- Menú hamburguesa (visible en móviles) -->
             <button class="header__icon-button header__menu-toggle">
                 <img src="/FRONT-END/source/images/menu.svg" alt="Menú hamburguesa" class="header__icon">
             </button>
         </div>
-        <!-- Menú de navegación -->
         <nav class="nav">
             <button class="nav__close-button" aria-label="Cerrar menú">&times;</button>
-            <a class="nav__link" href="/FRONT-END/source/html/index.html">CARTELERA</a>
+            <a class="nav__link" href="/FRONT-END/source/html/cartelera.html">CARTELERA</a>
             <a class="nav__link" href="#">DESTACADAS</a>
             <a class="nav__link" href="#">ENCUÉNTRANOS</a>
-
             <a class="nav__link--dist1" href="#">PELÍCULAS</a>
             <a class="nav__link--dist" href="#">CINES</a>
             <a class="nav__link--dist" href="#">CUENTA</a>
@@ -39,22 +36,18 @@
 
     <main class="main">
 
-        <div class="movie-header">
-            <div class="movie-header__logo">
-                <img src="logo-cinesa.png" alt="Logo Cinesa" class="movie-header__logo-image">
-            </div>
-            <div class="movie-header__details">
-                <h2 class="movie-header__title">VENOM: EL ÚLTIMO BAILE</h2>
-                <p class="movie-header__session-info">
-                    <span class="cinema">Cine: Grancasa</span>
-                    <span class="session-time">Sesión: 17 nov, 19:50</span>
-                </p>
-            </div>
+        <!-- Banner dinámico -->
+        <div class="movie-banner">
+            <img src="https://via.placeholder.com/1920x600" alt="Cartel de la película">
         </div>
 
+        <!-- Título y detalles de la sesión -->
+        <div class="movie-details">
+            <h1 id="movieTitle">Título de la Película</h1>
+            <p id="sessionDetails"></p>
+        </div>
 
-
-        <!-- boton para mas tarde????? -->
+        <!-- Elección de asientos -->
         <div class="seating-header">
             <button id="back-btn">← Atrás</button>
             <h1>ELIGE TUS ASIENTOS</h1>
@@ -69,297 +62,17 @@
             <span>Pantalla</span>
         </div>
 
-        <div class="seating-chart">
-            <!-- Fila A -->
-            <div class="row">
-                <div class="seats">
-                    <div class="seat available" data-seat="A1"></div>
-                    <div class="seat available" data-seat="A2"></div>
-                    <div class="seat available" data-seat="A3"></div>
-                    <div class="seat available" data-seat="A4"></div>
-                    <div class="seat available" data-seat="A5"></div>
-                    <br>
+        <!-- Contenedor dinámico de butacas -->
+        <div class="seating-chart"></div>
 
-                    <div class="seat available" data-seat="A6"></div>
-                    <div class="seat available" data-seat="A7"></div>
-                    <div class="seat available" data-seat="A8"></div>
-                    <div class="seat blocked" data-seat="A9"></div>
-                    <div class="seat available" data-seat="A10"></div>
-                    <br>
-                    <div class="seat available" data-seat="A11"></div>
-                    <div class="seat available" data-seat="A12"></div>
-                    <div class="seat available" data-seat="A13"></div>
-                    <div class="seat available" data-seat="A14"></div>
-                    <div class="seat available" data-seat="A15"></div>
-                </div>
-            </div>
-            <!-- Fila B -->
-            <div class="row">
-                <div class="seats">
-                    <div class="seat available" data-seat="B1"></div>
-                    <div class="seat available" data-seat="B2"></div>
-                    <div class="seat available" data-seat="B3"></div>
-                    <div class="seat available" data-seat="B4"></div>
-                    <div class="seat available" data-seat="B5"></div>
-                    <br>
-                    <div class="seat available" data-seat="B6"></div>
-                    <div class="seat available" data-seat="B7"></div>
-                    <div class="seat available" data-seat="B8"></div>
-                    <div class="seat available" data-seat="B9"></div>
-                    <div class="seat available" data-seat="B10"></div>
-                    <br>
-                    <div class="seat available" data-seat="B11"></div>
-                    <div class="seat available" data-seat="B12"></div>
-                    <div class="seat available" data-seat="B13"></div>
-                    <div class="seat available" data-seat="B14"></div>
-                    <div class="seat available" data-seat="B15"></div>
-                </div>
-            </div>
-            <!-- Fila C -->
-            <div class="row">
-                <div class="seats">
-                    <div class="seat available" data-seat="C1"></div>
-                    <div class="seat available" data-seat="C2"></div>
-                    <div class="seat available" data-seat="C3"></div>
-                    <div class="seat available" data-seat="C4"></div>
-                    <div class="seat available" data-seat="C5"></div>
-                    <br>
-                    <div class="seat available" data-seat="C6"></div>
-                    <div class="seat available" data-seat="C7"></div>
-                    <div class="seat available" data-seat="C8"></div>
-                    <div class="seat available" data-seat="C9"></div>
-                    <div class="seat available" data-seat="C10"></div>
-                    <br>
-                    <div class="seat available" data-seat="C11"></div>
-                    <div class="seat available" data-seat="C12"></div>
-                    <div class="seat available" data-seat="C13"></div>
-                    <div class="seat available" data-seat="C14"></div>
-                    <div class="seat available" data-seat="C15"></div>
-                </div>
-            </div>
-            <!-- Fila D -->
-            <div class="row">
-                <div class="seats">
-                    <div class="seat available" data-seat="D1"></div>
-                    <div class="seat available" data-seat="D2"></div>
-                    <div class="seat available" data-seat="D3"></div>
-                    <div class="seat available" data-seat="D4"></div>
-                    <div class="seat available" data-seat="D5"></div>
-                    <br>
-                    <div class="seat available" data-seat="D6"></div>
-                    <div class="seat available" data-seat="D7"></div>
-                    <div class="seat available" data-seat="D8"></div>
-                    <div class="seat available" data-seat="D9"></div>
-                    <div class="seat available" data-seat="D10"></div>
-                    <br>
-                    <div class="seat available" data-seat="D11"></div>
-                    <div class="seat available" data-seat="D12"></div>
-                    <div class="seat available" data-seat="D13"></div>
-                    <div class="seat available" data-seat="D14"></div>
-                    <div class="seat available" data-seat="D15"></div>
-                </div>
-            </div>
+        <p id="selectedSeats">Butacas seleccionadas: Ninguna</p>
 
-
-            <div class="row">
-                <div class="seats">
-                    <div class="seat available" data-seat="E1"></div>
-                    <div class="seat available" data-seat="E2"></div>
-                    <div class="seat available" data-seat="E3"></div>
-                    <div class="seat available" data-seat="E4"></div>
-                    <div class="seat available" data-seat="E5"></div>
-                    <br>
-                    <div class="seat available" data-seat="E6"></div>
-                    <div class="seat available" data-seat="E7"></div>
-                    <div class="seat available" data-seat="E8"></div>
-                    <div class="seat available" data-seat="E9"></div>
-                    <div class="seat available" data-seat="E10"></div>
-                    <br>
-                    <div class="seat available" data-seat="E11"></div>
-                    <div class="seat available" data-seat="E12"></div>
-                    <div class="seat available" data-seat="E13"></div>
-                    <div class="seat available" data-seat="E14"></div>
-                    <div class="seat available" data-seat="E15"></div>
-                </div>
-            </div>
-
-            <div class="space-filas" ></div>
-
-
-            <div class="row">
-                <div class="seats">
-                    <div class="seat available" data-seat="G1"></div>
-                    <div class="seat available" data-seat="G2"></div>
-                    <div class="seat available" data-seat="G3"></div>
-                    <div class="seat available" data-seat="G4"></div>
-                    <div class="seat available" data-seat="G5"></div>
-                    <br>
-                    <div class="seat available" data-seat="G6"></div>
-                    <div class="seat available" data-seat="G7"></div>
-                    <div class="seat available" data-seat="G8"></div>
-                    <div class="seat available" data-seat="G9"></div>
-                    <div class="seat available" data-seat="G10"></div>
-                    <br>
-                    <div class="seat available" data-seat="G11"></div>
-                    <div class="seat available" data-seat="G12"></div>
-                    <div class="seat available" data-seat="G13"></div>
-                    <div class="seat available" data-seat="G14"></div>
-                    <div class="seat available" data-seat="G15"></div>
-                </div>
-            </div>
-
-
-            <!-- Fila H -->
-            <div class="row">
-                <div class="seats">
-                    <div class="seat available" data-seat="H1"></div>
-                    <div class="seat available" data-seat="H2"></div>
-                    <div class="seat available" data-seat="H3"></div>
-                    <div class="seat available" data-seat="H4"></div>
-                    <div class="seat available" data-seat="H5"></div>
-                    <br>
-                    <div class="seat available" data-seat="H6"></div>
-                    <div class="seat available" data-seat="H7"></div>
-                    <div class="seat available" data-seat="H8"></div>
-                    <div class="seat available" data-seat="H9"></div>
-                    <div class="seat available" data-seat="H10"></div>
-                    <br>
-                    <div class="seat available" data-seat="H11"></div>
-                    <div class="seat available" data-seat="H12"></div>
-                    <div class="seat available" data-seat="H13"></div>
-                    <div class="seat available" data-seat="H14"></div>
-                    <div class="seat available" data-seat="H15"></div>
-                </div>
-            </div>
-
-            <!-- Fila I -->
-            <div class="row">
-                <div class="seats">
-                    <div class="seat available" data-seat="I1"></div>
-                    <div class="seat available" data-seat="I2"></div>
-                    <div class="seat available" data-seat="I3"></div>
-                    <div class="seat available" data-seat="I4"></div>
-                    <div class="seat available" data-seat="I5"></div>
-                    <br>
-                    <div class="seat available" data-seat="I6"></div>
-                    <div class="seat available" data-seat="I7"></div>
-                    <div class="seat available" data-seat="I8"></div>
-                    <div class="seat available" data-seat="I9"></div>
-                    <div class="seat available" data-seat="I10"></div>
-                    <br>
-                    <div class="seat available" data-seat="I11"></div>
-                    <div class="seat available" data-seat="I12"></div>
-                    <div class="seat available" data-seat="I13"></div>
-                    <div class="seat available" data-seat="I14"></div>
-                    <div class="seat available" data-seat="I15"></div>
-                </div>
-            </div>
-
-            <!-- Fila J -->
-            <div class="row">
-                <div class="seats">
-                    <div class="seat available" data-seat="J1"></div>
-                    <div class="seat available" data-seat="J2"></div>
-                    <div class="seat available" data-seat="J3"></div>
-                    <div class="seat available" data-seat="J4"></div>
-                    <div class="seat available" data-seat="J5"></div>
-                    <br>
-                    <div class="seat available" data-seat="J6"></div>
-                    <div class="seat available" data-seat="J7"></div>
-                    <div class="seat available" data-seat="J8"></div>
-                    <div class="seat available" data-seat="J9"></div>
-                    <div class="seat available" data-seat="J10"></div>
-                    <br>
-                    <div class="seat available" data-seat="J11"></div>
-                    <div class="seat available" data-seat="J12"></div>
-                    <div class="seat available" data-seat="J13"></div>
-                    <div class="seat available" data-seat="J14"></div>
-                    <div class="seat available" data-seat="J15"></div>
-                </div>
-            </div>
-
-
-            <div style="height: 20px;"></div>
-
-
-            <!-- Fila K -->
-            <div class="row">
-                <div class="seats">
-                    <div class="seat available" data-seat="K1"></div>
-                    <div class="seat available" data-seat="K2"></div>
-                    <div class="seat available" data-seat="K3"></div>
-                    <div class="seat available" data-seat="K4"></div>
-                    <div class="seat available" data-seat="K5"></div>
-                    <br>
-                    <div class="seat available" data-seat="K6"></div>
-                    <div class="seat available" data-seat="K7"></div>
-                    <div class="seat available" data-seat="K8"></div>
-                    <div class="seat available" data-seat="K9"></div>
-                    <div class="seat available" data-seat="K10"></div>
-                    <br>
-                    <div class="seat available" data-seat="K11"></div>
-                    <div class="seat available" data-seat="K12"></div>
-                    <div class="seat available" data-seat="K13"></div>
-                    <div class="seat available" data-seat="K14"></div>
-                    <div class="seat available" data-seat="K15"></div>
-                </div>
-            </div>
-
-
-            <!-- More rows can be added here -->
-        </div>
-
-        <!-- Selected Seats Information -->
-        <div id="selected-seats">
-            <h3>Asientos seleccionados:</h3>
-            <ul id="seats-list"></ul>
-        </div>
-
-        <!-- Este botón será visible solo cuando se seleccione al menos un asiento -->
+        <!-- Botón de continuar -->
         <button id="continue-btn" class="continue-btn" style="display: none;">CONTINUAR</button>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <div class="footer__top">
-            <div class="footer__options">
-                <a href="/FRONT-END/source/html/index.html" class="footer__option"><p class="footer__option-text">PELÍCULAS</p>
-                    <img class="footer__option-image1" src="/FRONT-END/source/images/peli-icono.png" alt="Películas">
-                </a>
-                <a href="#" class="footer__option"><p class="footer__option-text">CINES</p>
-                    <img class="footer__option-image2" src="/FRONT-END/source/images/cine.png" alt="Cines">
-                </a>
-                <a href="#" class="footer__option"><p class="footer__option-text">CUENTA</p>
-                    <img class="footer__option-image" src="/FRONT-END/source/images/user.png" alt="Cuenta">
-                </a>
-            </div>
-        </div>
-      </main>
-  
-
-
-
-
-
 
     </main>
 
-
     <footer class="footer">
-
         <div class="footer__bottom">
             <nav class="footer__nav">
                 <a href="#" class="footer__nav-link">Sobre nosotros</a>
@@ -371,9 +84,9 @@
         <a href="/FRONT-END/source/html/index.html" class="footer__logo-link">
             <img src="/FRONT-END/source/images/logo.png" alt="Logo Muelmo Cines" class="footer__logo">
         </a>
-
     </footer>
 
+    <script src="/FRONT-END/source/js/fetch_butacas.js"></script>
     <script src="/FRONT-END/source/js/sala.js"></script>
 </body>
 

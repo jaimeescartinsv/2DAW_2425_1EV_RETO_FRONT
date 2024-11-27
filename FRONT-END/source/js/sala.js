@@ -10,46 +10,6 @@ document.querySelector('.nav__close-button').addEventListener('click', function 
     document.querySelector('.nav').classList.remove('nav--menu-active');
 });
 
-// Funcionalidad de los asientos
-document.querySelectorAll('.seat').forEach(seat => {
-    seat.addEventListener('click', function () {
-        // Evitar clics en asientos no disponibles
-        if (this.classList.contains('unavailable') || this.classList.contains('blocked')) {
-            alert("Este asiento no está disponible.");
-            return;
-        }
-
-        // Alternar el estado de "seleccionado"
-        if (this.classList.contains('available')) {
-            this.classList.toggle('selected');
-            updateSelectedSeats();
-        }
-    });
-});
-
-// Actualizar la lista de asientos seleccionados
-function updateSelectedSeats() {
-    const selectedSeats = document.querySelectorAll('.seat.selected');
-    const seatsList = document.getElementById('seats-list');
-    const continueBtn = document.getElementById('continue-btn'); // Referencia al botón CONTINUAR
-
-    seatsList.innerHTML = ''; // Limpiar la lista
-
-    selectedSeats.forEach(seat => {
-        const seatName = seat.getAttribute('data-seat');
-        const listItem = document.createElement('li');
-        listItem.textContent = `Asiento: ${seatName}`;
-        seatsList.appendChild(listItem);
-    });
-
-    // Si al menos un asiento está seleccionado, mostrar el botón CONTINUAR
-    if (selectedSeats.length > 0) {
-        continueBtn.style.display = 'block';
-    } else {
-        continueBtn.style.display = 'none'; // Ocultar el botón si no hay asientos seleccionados
-    }
-}
-
 // Funcionalidad del botón "Atrás"
 document.getElementById('back-btn').addEventListener('click', function () {
     window.history.back();
