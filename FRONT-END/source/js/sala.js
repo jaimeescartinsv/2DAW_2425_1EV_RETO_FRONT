@@ -45,5 +45,5 @@ window.addEventListener('scroll', function () {
 // Acción del botón "CONTINUAR"
 document.getElementById('continue-btn').addEventListener('click', function () {
     // Redirigir al usuario a la siguiente página
-    window.location.href = '/FRONT-END/source/html/next-page.html';  // Reemplaza 'next-page.html' con el URL a donde deseas redirigir
+    window.location.href = '/FRONT-END/source/html/resumen-compra.html';
 });
