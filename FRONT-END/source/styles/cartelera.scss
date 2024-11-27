@@ -174,7 +174,7 @@ a {
       width: 100%; /* Móvil por defecto */
   
       @media screen and (min-width: 768px) {
-        width: 45%; /* 45% para tablet y PC */
+        width: 30%;
       }
   
       &:focus {
