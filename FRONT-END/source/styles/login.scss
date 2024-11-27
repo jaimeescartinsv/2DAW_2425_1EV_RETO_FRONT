@@ -146,6 +146,7 @@ $font-title: "Poller One", sans-serif;
 
 // Estilo principal del formulario de login
 .auth {
+  font-family: "Poller One", sans-serif;
   background-color: $primary-color;
   border-radius: 15px; // Bordes redondeados
   padding: 30px;
@@ -153,6 +154,10 @@ $font-title: "Poller One", sans-serif;
   width: 90%;
   margin: 20px auto;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+
+  &__button {
+	font-family: "Poller One", sans-serif;
+  }
 
   &__title {
     font-size: 1.8rem;
@@ -179,6 +184,7 @@ $font-title: "Poller One", sans-serif;
       }
 
       .auth__input {
+		font-family: "Poller One", sans-serif;
         width: 100%;
         padding: 10px;
         border-radius: 10px; // Bordes redondeados para los campos
