@@ -244,4 +244,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 alert("Hubo un problema al procesar los tickets. Inténtalo nuevamente.");
             });
     });
+
+    // Acción del botón "CONTINUAR"
+    document.getElementById('continue-btn').addEventListener('click', function () {
+        // Redirigir al usuario a la siguiente página
+        window.location.href = '/FRONT-END/source/html/resumen-compra.html';
+    });
 });

@@ -41,9 +41,3 @@ window.addEventListener('scroll', function () {
         footerTop.style.top = `${footerOffsetTop - footerTopHeight}px`; // Ajusta justo encima del footer
     }
 });
-
-// Acción del botón "CONTINUAR"
-document.getElementById('continue-btn').addEventListener('click', function () {
-    // Redirigir al usuario a la siguiente página
-    window.location.href = '/FRONT-END/source/html/resumen-compra.html';
-});

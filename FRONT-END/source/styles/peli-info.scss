@@ -201,7 +201,9 @@ a {
 			}
 		}
 		.sesion-card {
-			background-color: lightgray;
+			background-color: #f8f9fa;
+			border: 1px solid #ddd;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 			border-radius: 15px;
 			padding: 1rem;
 			display: flex;
