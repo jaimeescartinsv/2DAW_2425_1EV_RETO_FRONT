@@ -41,6 +41,20 @@ function displayCarousel(peliculas) {
     carouselContent.appendChild(listItem);
   });
 
+  // Añadir eventos para almacenar el ID en localStorage y redirigir
+  document.querySelectorAll('.movie-card__button').forEach(button => {
+    button.addEventListener('click', (e) => {
+      const movieId = e.currentTarget.getAttribute('data-id');
+      if (movieId) {
+        localStorage.setItem('selectedPeliculaId', movieId);
+        console.log(`ID de la película almacenado en localStorage: ${movieId}`);
+        window.location.href = 'peli-info.html'; // Redirigir a la página sin incluir el ID en la URL
+      } else {
+        console.error('No se encontró un ID válido para la película.');
+      }
+    });
+  });
+
   initializeCarousel(); // Inicializamos el carrusel
 }
 
@@ -77,20 +91,3 @@ function initializeCarousel() {
 
 // Llamamos a la función al cargar la página
 document.addEventListener("DOMContentLoaded", fetchPeliculas);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
