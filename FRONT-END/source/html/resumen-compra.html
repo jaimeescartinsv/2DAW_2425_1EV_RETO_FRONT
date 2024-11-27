@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUELMO CINES - Tu Compra</title>
+    <link rel="stylesheet" href="/FRONT-END/dist/resumen-compra.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poller+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header__logo">
+          <a href="/FRONT-END/source/html/index.html" class="header__logo-link">
+            <img src="/FRONT-END/source/images/logo.png" alt="Logo Muelmo Cines" class="header__logo-image">
+            <h1 class="header__title">MUELMO CINES</h1>
+          </a>
+        </div>
+        <div class="header__icons">
+          <!-- Menú hamburguesa (visible en móviles) -->
+          <button class="header__icon-button header__menu-toggle">
+            <img src="/FRONT-END/source/images/menu.svg" alt="Menú hamburguesa" class="header__icon">
+          </button>
+        </div>
+        <!-- Menú de navegación -->
+        <nav class="nav">
+          <button class="nav__close-button" aria-label="Cerrar menú">&times;</button>
+          <a class="nav__link" href="/FRONT-END/source/html/index.html">CARTELERA</a>
+          <a class="nav__link" href="#">DESTACADAS</a>
+          <a class="nav__link" href="#">ENCUÉNTRANOS</a>
+        </nav>
+      </header>
+
+    <main class="main">
+        <!-- Contenido principal aquí -->
+
+        <div class="resumen-compra">
+            <div class="resumen-compra__header">
+            </div>
+            <img src="/FRONT-END/source/images/pelicula.jpg" alt="Imagen de la película" class="resumen-compra__imagen">
+            <h1 class="resumen-compra__titulo">Wicked</h1>
+            <p class="resumen-compra__info">Miércoles, 27 de noviembre, 21:45<br>Puerto Venecia</p>
+        
+            <!-- Datos personales mostrados como texto fijo -->
+            <div class="resumen-compra__datos">
+                <p class="resumen-compra__dato"><strong>Nombre:</strong> Juan Pérez García</p>
+                <p class="resumen-compra__dato"><strong>Correo electrónico:</strong> juan.perez@email.com</p>
+            </div>
+            <br>
+            <div class="resumen-compra__detalle">
+                <p> Entrada 1 <span>6,90 €</span></p>
+                <p> Entrada 2 <span>6,90 €</span></p>
+            </div>
+        
+            <p class="resumen-compra__total">Total: 13,80 €</p>
+        
+            <button class="resumen-compra__boton">Continuar 13,80 €</button>
+        
+            <p class="resumen-compra__footer">
+                Gastos de gestión, IVA/IGIC y recargos incluidos
+            </p>
+        </div>
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="footer__top">
+          <div class="footer__options">
+              <a href="/FRONT-END/source/html/index.html" class="footer__option"><p class="footer__option-text">PELÍCULAS</p>
+                  <img class="footer__option-image1" src="/FRONT-END/source/images/peli-icono.png" alt="Películas">
+              </a>
+              <a href="#" class="footer__option"><p class="footer__option-text">CINES</p>
+                  <img class="footer__option-image2" src="/FRONT-END/source/images/cine.png" alt="Cines">
+              </a>
+              <a href="#" class="footer__option"><p class="footer__option-text">CUENTA</p>
+                  <img class="footer__option-image" src="/FRONT-END/source/images/user.png" alt="Cuenta">
+              </a>
+          </div>
+      </div>
+    </main>
+
+
+    <footer class="footer">
+       
+        <div class="footer__bottom">
+            <nav class="footer__nav">
+                <a href="#" class="footer__nav-link">Sobre nosotros</a>
+                <a href="#" class="footer__nav-link">Aviso legal</a>
+                <a href="#" class="footer__nav-link">Condiciones de compra</a>
+                <a href="#" class="footer__nav-link">Política de privacidad</a>
+            </nav>
+        </div>
+        <a href="/FRONT-END/source/html/index.html" class="footer__logo-link">
+          <img src="/FRONT-END/source/images/logo.png" alt="Logo Muelmo Cines" class="footer__logo">
+      </a>
+
+    </footer>
+    
+    <script src="/FRONT-END/source/js/resumen-compra.js"></script>
+</body>
+
+</html>
