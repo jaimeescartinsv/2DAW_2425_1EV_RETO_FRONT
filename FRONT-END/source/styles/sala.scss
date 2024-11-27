@@ -262,7 +262,7 @@ h1 {
 /* Estilo para la pantalla */
 /* Estilo para la sección de la pantalla */
 .screen {
-    width: 35%; /* Ajusta el ancho de la pantalla */
+    width: 88%; /* Ajusta el ancho de la pantalla */
     height: 30px; /* Altura de la pantalla */
     background-color: #333; /* Color oscuro para simular una pantalla */
     border-radius: 15px; /* Bordes redondeados para dar forma de pantalla */
@@ -290,12 +290,12 @@ h1 {
     .row {
         display: flex;
         justify-content: center;
-        gap: 4px;
+        gap: 1.5px;
 
         .seat {
-            width: 20px;
-            height: 20px;
-            border: 1px solid #ccc;
+            width: 23px;
+            height: 23px;
+            border: 2px solid #ccc;
             border-radius: 4px;
             cursor: pointer;
             transition: all 0.3s;
@@ -512,7 +512,10 @@ h1 {
 	}
 
 
-
+	.screen {
+		width: 55%;
+	
+	}
 
 	.seating-chart {
 		display: flex;
