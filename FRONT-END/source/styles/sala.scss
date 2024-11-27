@@ -580,16 +580,31 @@ h1 {
 
 	.nav__link--dist1{
 
-		display: none;
+
+		margin: 0;
+		text-decoration: none;
+
+		font-size: 20px;
 
 	}
 
 	.nav__link--dist{
 
-		display: none;
+
+		margin: 0;
+		text-decoration: none;
+
+		font-size: 20px;
 
 	}
 	.nav__close-button {
+
+		margin: 0;
+		text-decoration: none;
+
+		font-size: 20px;
+	}
+	.nav__close-button{
 		display: none;
 	}
 	.footer__top {
