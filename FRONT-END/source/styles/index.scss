@@ -148,6 +148,7 @@ a {
 // SCSS para el carrusel
 .carousel {
   display: flex;
+  transition: transform 0.5s ease-in-out;
   align-items: center;
   justify-content: space-between;
   overflow: hidden;
@@ -374,8 +375,7 @@ a {
     }
 
     &__item {
-      flex: 0 0 80%;
-      margin: 0 10px;
+      flex: 0 0 33.33%; // Cada película ocupa un tercio del ancho
     }
 
     &__button {
@@ -849,9 +849,7 @@ a {
       width: 80%;
     }
 
-    &__item {
-      min-width: 100%;
-    }
+
   }
 
   .movie-card {
