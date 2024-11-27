@@ -77,3 +77,20 @@ function initializeCarousel() {
 
 // Llamamos a la función al cargar la página
 document.addEventListener("DOMContentLoaded", fetchPeliculas);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
