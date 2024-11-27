@@ -117,10 +117,13 @@ document.addEventListener("DOMContentLoaded", function () {
         function updateSelectedSeats() {
             const selectedSeats = Array.from(seats)
                 .filter(seat => seat.classList.contains('btn-success'))
-                .map(seat => `B${seat.dataset.butacaId}`);
+                .map(seat => seat.dataset.butacaId);
+    
+            // Guardar los IDs de las butacas seleccionadas en localStorage
+            localStorage.setItem('selectedButacaIds', JSON.stringify(selectedSeats));
     
             // Actualizar texto con las butacas seleccionadas
-            selectedSeatsText.textContent = `Butacas seleccionadas: ${selectedSeats.length ? selectedSeats.join(', ') : 'Ninguna'}`;
+            selectedSeatsText.textContent = `Butacas seleccionadas: ${selectedSeats.length ? selectedSeats.map(id => `B${id}`).join(', ') : 'Ninguna'}`;
     
             // Mostrar u ocultar el botón de continuar
             if (selectedSeats.length > 0) {
