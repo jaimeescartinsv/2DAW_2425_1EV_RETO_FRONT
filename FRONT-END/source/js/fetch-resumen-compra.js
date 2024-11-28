@@ -1,0 +1,97 @@
+document.addEventListener("DOMContentLoaded", function () {
+    const apiUrlPeliculas = "http://localhost:5000/api/peliculas";
+    const apiUrlSesiones = "http://localhost:5000/api/sesiones";
+    const apiUrlTickets = "http://localhost:5000/api/tickets";
+    const continueButton = document.getElementById("continue-btn");
+    const ticketFormContainer = document.getElementById("ticketFormContainer");
+    const ticketForm = document.getElementById("ticketForm");
+
+    // Renderizar título y banner de la película
+    function renderBannerAndTitle(pelicula) {
+        const movieTitle = document.getElementById('movieTitle');
+        const movieBanner = document.querySelector('.movie-banner img');
+
+        if (movieTitle && movieBanner) {
+            movieTitle.textContent = pelicula.title || 'Título no disponible';
+            movieBanner.src = pelicula.cartelUrl || 'https://via.placeholder.com/1920x600';
+        } else {
+            console.error("No se encontraron los elementos del DOM para renderizar el banner y el título.");
+        }
+    }
+
+    // Mostrar los detalles de la sesión
+    function renderSesionDetails(sesion) {
+        const sessionDetailsElement = document.getElementById('sessionDetails');
+
+        if (!sesion) {
+            sessionDetailsElement.textContent = "No se pudieron cargar los detalles de la sesión.";
+            return;
+        }
+
+        // Formatear la fecha y la hora
+        const formattedDate = new Date(sesion.fechaDeSesion).toLocaleDateString("es-ES", {
+            weekday: "long",
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+        });
+
+        const formattedTime = new Date(sesion.horaDeInicio).toLocaleTimeString("es-ES", {
+            hour: "2-digit",
+            minute: "2-digit",
+        });
+
+        // Renderizar los detalles
+        sessionDetailsElement.textContent = `Fecha: ${formattedDate} | Sala: ${sesion.salaId} | Hora: ${formattedTime}`;
+    }
+
+    // Obtener los IDs de película y sesión desde localStorage
+    const selectedPeliculaId = localStorage.getItem('selectedPeliculaId');
+    const selectedSesionId = localStorage.getItem('selectedSesionId');
+
+    if (!selectedSesionId) {
+        console.error("No se encontró ningún ID de sesión en localStorage.");
+        document.getElementById('sessionDetails').textContent = "No se pudieron cargar los detalles de la sesión.";
+        return;
+    }
+
+    if (!selectedPeliculaId) {
+        console.error("No se encontró ningún ID de película en localStorage.");
+        return;
+    }
+
+    // Fetch detalles de la sesión
+    fetch(`${apiUrlSesiones}/${selectedSesionId}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Error al obtener los datos de la sesión.");
+            }
+            return response.json();
+        })
+        .then(sesion => {
+            renderSesionDetails(sesion);
+        })
+        .catch(error => {
+            console.error("Error al cargar los datos de la sesión:", error);
+            document.getElementById('sessionDetails').textContent = "Hubo un error al cargar los detalles de la sesión.";
+        });
+
+    // Fetch para cargar y renderizar el título y el banner de la película
+    fetch(`${apiUrlPeliculas}/${selectedPeliculaId}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error en la solicitud a la API.');
+            }
+            return response.json();
+        })
+        .then(pelicula => {
+            if (pelicula) {
+                renderBannerAndTitle(pelicula);
+            } else {
+                console.error("Película no encontrada en la API.");
+            }
+        })
+        .catch(error => {
+            console.error("Error al obtener los datos de la película:", error);
+        });
+});
