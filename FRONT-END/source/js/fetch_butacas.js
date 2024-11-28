@@ -201,6 +201,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const nombre = document.getElementById("nombre").value;
         const email = document.getElementById("email").value;
 
+        // Guardar el correo electrónico en localStorage
+        localStorage.setItem("emailCompra", email);
+
         // Obtener datos necesarios para crear el ticket
         const selectedSesionId = localStorage.getItem("selectedSesionId");
         const selectedSeats = JSON.parse(localStorage.getItem("selectedButacaIds")) || [];
@@ -230,7 +233,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 alert("¡Tickets creados con éxito!");
-                window.location.href = '/FRONT-END/source/html/resumen-compra.html';
+                //window.location.href = '/FRONT-END/source/html/resumen-compra.html';
                 // Limpiar selección de butacas
                 localStorage.removeItem("selectedButacaIds");
             })
@@ -238,25 +241,5 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.error("Error al crear los tickets:", error);
                 alert("Hubo un problema al procesar los tickets. Inténtalo nuevamente.");
             });
-
-        Promise.all(ticketPromises)
-            .then(responses => {
-                if (responses.some(response => !response.ok)) {
-                    throw new Error("Hubo un error al crear algunos tickets.");
-                }
-                alert("¡Tickets creados con éxito!");
-                // Redirigir o limpiar la selección
-                localStorage.removeItem("selectedButacaIds");
-            })
-            .catch(error => {
-                console.error("Error al crear los tickets:", error);
-                alert("Hubo un problema al procesar los tickets. Inténtalo nuevamente.");
-            });
-    });
-
-    // Acción del botón "CONTINUAR"
-    document.getElementById('continue-btn').addEventListener('click', function () {
-        // Redirigir al usuario a la siguiente página
-        //window.location.href = '/FRONT-END/source/html/resumen-compra.html';
     });
 });
