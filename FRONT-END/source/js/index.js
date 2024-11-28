@@ -109,3 +109,38 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("resize", initializeCarousel);
   });
   
+
+
+
+
+
+
+
+
+
+
+
+  //JS COOKIES
+  document.addEventListener("DOMContentLoaded", () => {
+    const cookieBanner = document.querySelector(".cookie-banner");
+    const overlay = document.querySelector(".overlay");
+    const acceptButton = document.getElementById("acceptCookies");
+    const rejectButton = document.getElementById("rejectCookies");
+  
+    // Mostrar banner de cookies y overlay al cargar la página
+    cookieBanner.style.display = "block";
+    overlay.style.display = "block";
+  
+    // Ocultar banner de cookies y overlay al aceptar o rechazar cookies
+    const handleCookies = (action) => {
+      cookieBanner.style.display = "none";
+      overlay.style.display = "none";
+  
+      // Aquí puedes manejar la lógica de cookies según la elección
+      console.log(`Cookies ${action}`);
+    };
+  
+    acceptButton.addEventListener("click", () => handleCookies("aceptadas"));
+    rejectButton.addEventListener("click", () => handleCookies("rechazadas"));
+  });
+  
