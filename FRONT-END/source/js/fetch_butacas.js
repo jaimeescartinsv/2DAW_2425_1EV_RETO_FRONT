@@ -219,16 +219,24 @@ document.addEventListener("DOMContentLoaded", function () {
             fechaDeCompra: new Date().toISOString(),
         }));
 
-        // Enviar cada ticket a la API
-        const ticketPromises = tickets.map(ticket =>
-            fetch(`${apiUrlTickets}/crear`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(ticket),
+        // Enviar todos los tickets seleccionados en una sola solicitud
+        fetch(`${apiUrlTickets}/crear-tickets`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(tickets),
+        })
+            .then(response => response.json())
+            .then(data => {
+                alert("¡Tickets creados con éxito!");
+                // Limpiar selección de butacas
+                localStorage.removeItem("selectedButacaIds");
             })
-        );
+            .catch(error => {
+                console.error("Error al crear los tickets:", error);
+                alert("Hubo un problema al procesar los tickets. Inténtalo nuevamente.");
+            });
 
         Promise.all(ticketPromises)
             .then(responses => {
@@ -248,6 +256,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Acción del botón "CONTINUAR"
     document.getElementById('continue-btn').addEventListener('click', function () {
         // Redirigir al usuario a la siguiente página
-        window.location.href = '/FRONT-END/source/html/resumen-compra.html';
+        //window.location.href = '/FRONT-END/source/html/resumen-compra.html';
     });
 });
