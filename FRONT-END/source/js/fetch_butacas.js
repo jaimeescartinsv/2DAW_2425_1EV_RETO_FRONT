@@ -230,6 +230,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 alert("¡Tickets creados con éxito!");
+                window.location.href = '/FRONT-END/source/html/resumen-compra.html';
                 // Limpiar selección de butacas
                 localStorage.removeItem("selectedButacaIds");
             })
