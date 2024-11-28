@@ -191,7 +191,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Mostrar formulario al hacer clic en "Continuar"
     continueButton.addEventListener("click", () => {
         ticketFormContainer.style.display = "flex"; // Mostrar el formulario
-        continueButton.style.display = "none"; // Ocultar el botón "Continuar"
     });
 
     // Manejar el envío del formulario
@@ -233,7 +232,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 alert("¡Tickets creados con éxito!");
-                //window.location.href = '/FRONT-END/source/html/resumen-compra.html';
+                window.location.href = '/FRONT-END/source/html/resumen-compra.html';
                 // Limpiar selección de butacas
                 localStorage.removeItem("selectedButacaIds");
             })

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MUELMO CINES - Tu Compra</title>
+    <title>MUELMO CINES - SALA</title>
     <link rel="stylesheet" href="/FRONT-END/dist/resumen-compra.css">
     <link href="https://fonts.googleapis.com/css2?family=Poller+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
@@ -13,15 +13,15 @@
 <body>
     <header class="header">
         <div class="header__logo">
-          <a href="/FRONT-END/source/html/index.html" class="header__logo-link">
-            <img src="/FRONT-END/source/images/logo.png" alt="Logo Muelmo Cines" class="header__logo-image">
-            <h1 class="header__title">MUELMO CINES</h1>
-          </a>
+            <a href="/FRONT-END/source/html/index.html" class="header__logo-link">
+                <img src="/FRONT-END/source/images/logo.png" alt="Logo Muelmo Cines" class="header__logo-image">
+                <h1 class="header__title">MUELMO CINES</h1>
+            </a>
         </div>
         <div class="header__icons">
-          <button class="header__icon-button header__menu-toggle">
-            <img src="/FRONT-END/source/images/menu.svg" alt="Menú hamburguesa" class="header__icon">
-          </button>
+            <button class="header__icon-button header__menu-toggle">
+                <img src="/FRONT-END/source/images/menu.svg" alt="Menú hamburguesa" class="header__icon">
+            </button>
         </div>
         <nav class="nav">
           <button class="nav__close-button" aria-label="Cerrar menú">&times;</button>
@@ -31,27 +31,26 @@
         </nav>
     </header>
 
-    <main class="main">
-        <div class="resumen-compra">
-            <img src="" alt="Imagen de la película" class="resumen-compra__imagen">
-            <div class="resumen-compra__infoCont">
-                <div class="resumen-compra__infoIn">
-                    <h1 class="resumen-compra__titulo"></h1>
-                    <p class="resumen-compra__info"></p>
-                </div>
-                <div class="resumen-compra__datos">
-                    <p class="resumen-compra__dato"><strong>Nombre:</strong> <span id="userName"></span></p>
-                    <p class="resumen-compra__dato"><strong>Correo electrónico:</strong> <span id="userEmail"></span></p>
-                </div>
-            </div>
+    <div class="movie-banner">
+        <img src="https://via.placeholder.com/1920x600" alt="Cartel de la película">
+    </div>
 
-            <div class="resumen-compra__contenido">
-                <div class="resumen-compra__detalle" id="ticketDetails"></div>
-                <p class="resumen-compra__total">Total: <span id="totalPrice"></span></p>
-                <button class="resumen-compra__boton">Continuar</button>
-                <p class="resumen-compra__footer">
-                    Gastos de gestión, IVA/IGIC y recargos incluidos
-                </p>
+    <main class="main">
+
+        <!-- Banner dinámico -->
+
+
+        <!-- Título y detalles de la sesión -->
+        <div class="movie-details">
+            <h1 id="movieTitle">Título de la Película</h1>
+            <p id="sessionDetails"></p>
+        </div>
+
+        <!-- Sección de tickets -->
+        <section class="tickets">
+            <h2>Mis Tickets</h2>
+            <div id="ticketsContainer">
+                <!-- Aquí se renderizarán los tickets dinámicamente -->
             </div>
         </div>
         <div class="footer__top">
@@ -81,11 +80,11 @@
             </nav>
         </div>
         <a href="/FRONT-END/source/html/index.html" class="footer__logo-link">
-          <img src="/FRONT-END/source/images/logo.png" alt="Logo Muelmo Cines" class="footer__logo">
+            <img src="/FRONT-END/source/images/logo.png" alt="Logo Muelmo Cines" class="footer__logo">
         </a>
     </footer>
-    
-    <script src="/FRONT-END/source/js/fetch_resumen-compra.js"></script>
+
+    <script src="/FRONT-END/source/js/fetch-resumen-compra.js"></script>
     <script src="/FRONT-END/source/js/resumen-compra.js"></script>
 </body>
 
