@@ -2,9 +2,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const apiUrlPeliculas = "http://localhost:5000/api/peliculas";
     const apiUrlSesiones = "http://localhost:5000/api/sesiones";
     const apiUrlTickets = "http://localhost:5000/api/tickets";
-    const continueButton = document.getElementById("continue-btn");
-    const ticketFormContainer = document.getElementById("ticketFormContainer");
-    const ticketForm = document.getElementById("ticketForm");
+    const emailCompra = localStorage.getItem("emailCompra");
+    const ticketsContainer = document.getElementById("ticketsContainer");
 
     // Renderizar título y banner de la película
     function renderBannerAndTitle(pelicula) {
@@ -43,6 +42,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Renderizar los detalles
         sessionDetailsElement.textContent = `Fecha: ${formattedDate} | Sala: ${sesion.salaId} | Hora: ${formattedTime}`;
+    }
+
+    // Renderizar tickets asociados al emailCompra
+    function renderTickets(tickets) {
+        if (tickets.length === 0) {
+            ticketsContainer.innerHTML = "<p>No se encontraron tickets asociados a este email.</p>";
+            return;
+        }
+
+        ticketsContainer.innerHTML = tickets.map(ticket => `
+            <div class="ticket">
+                <p><strong>Localizador:</strong> ${ticket.ticketId}</p>
+                <p><strong>Sesión:</strong> ${ticket.sesionId}</p>
+                <p><strong>Nombre:</strong> ${ticket.nombreInvitado}</p>
+                <p><strong>Butaca:</strong> ${ticket.butacaId}</p>
+                <p><strong>Fecha de Compra:</strong> ${new Date(ticket.fechaDeCompra).toLocaleString("es-ES")}</p>
+            </div>
+        `).join('');
     }
 
     // Obtener los IDs de película y sesión desde localStorage
@@ -94,4 +111,25 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(error => {
             console.error("Error al obtener los datos de la película:", error);
         });
+
+    // Fetch para obtener los tickets asociados al emailCompra
+    if (emailCompra) {
+        fetch(`${apiUrlTickets}/emailCompra/${encodeURIComponent(emailCompra)}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Error al obtener los datos de los tickets.");
+                }
+                return response.json();
+            })
+            .then(tickets => {
+                renderTickets(tickets);
+            })
+            .catch(error => {
+                console.error("Error al cargar los datos de los tickets:", error);
+                ticketsContainer.innerHTML = "<p>Hubo un error al cargar los tickets.</p>";
+            });
+    } else {
+        console.error("No se encontró un emailCompra en localStorage.");
+        ticketsContainer.innerHTML = "<p>No se pudo cargar la información de los tickets.</p>";
+    }
 });
