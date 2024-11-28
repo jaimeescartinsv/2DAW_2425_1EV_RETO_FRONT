@@ -18,7 +18,12 @@ html {
 a {
 	text-decoration: none;
 }
-
+.main {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	padding-bottom: 70px
+}
 .header {
 	display: flex;
 	justify-content: space-between;
@@ -117,88 +122,98 @@ a {
 	transition: transform 0.3s ease;
 }
 
+.find-us {
+width: 100%;
+max-width: 1200px;
+padding: 1.5rem;
 
-
-
-
-
-
-
-
-
-
-
-
-
-.main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem;
-    text-align: center;
-}
-
-.encuentranos {
-    &__title {
-        margin-bottom: 1rem;
+ &__header {
+        text-align: center;
+        margin-bottom: 2rem;
     }
 
-    &__description {
-        margin-bottom: 2rem;
-        max-width: 600px;
+    &__title {
+        font-size: 2rem;
+        color: #000000;
+        margin-bottom: 0.5rem;
+    }
+
+    &__subtitle {
+        font-size: 1.2rem;
+        color: #2b2b2b;
     }
 
     &__content {
         display: flex;
-        flex-direction: column; /* Mobile-first: columnas */
-        gap: 1rem;
-        align-items: center;
-    }
+        flex-direction: column;
+        gap: 2rem;
 
-    &__map, &__info {
-        flex: 1; /* Para que ocupen el mismo espacio cuando estén en fila */
-    }
-
-    &__map-container {
-        max-width: 300px;
-        margin: 0 auto;
+        @media (min-width: 768px) {
+            flex-direction: row;
+        }
     }
 
     &__info {
-        text-align: left;
+        flex: 1;
+
+        &__location {
+            background: #000000;
+            color: #fff;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+
+            &-name {
+                font-size: 1.2rem;
+                font-weight: bold;
+            }
+
+            &-address,
+            &-hours {
+                font-size: 0.9rem;
+            }
+        }
     }
 
-    &__map-iframe {
-        width: 100%;
-        height: 200px;
-        border: none;
+    &__map {
+        flex: 1;
+        iframe {
+            width: 100%;
+            height: 300px;
+            border-radius: 8px;
+            border: none;
+        }
     }
 }
+.find-us__location{
 
-/* Vista en tablet y escritorio */
-@media (min-width: 768px) {
-    .encuentranos__content {
-        flex-direction: row; /* Map y contacto en fila */
-        justify-content: center; /* Centrar horizontalmente */
-        align-items: flex-start; /* Alinear desde la parte superior */
-        gap: 2rem; /* Separación entre elementos */
+    background: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-top: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+.encuentranos__info {
+    background: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-top: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+
+    &__subtitle {
+        font-size: 1.5rem;
+        color: #ff4a57;
+        margin-bottom: 1rem;
     }
 
-    .encuentranos__map-container {
-        max-width: 400px; /* Un poco más grande en pantallas grandes */
-    }
-
-    .encuentranos__info {
-        text-align: left;
+    &__text {
+        font-size: 1rem;
+        color: #333;
+        margin: 0.5rem 0;
     }
 }
-
-
-
-
-
-
-
 
 
 
@@ -344,20 +359,6 @@ a {
 
 
 
-    &__title {
-        font-size: 2rem;
-    }
-
-    &__main {
-        display: flex;
-        justify-content: space-between;
-        padding: 2rem;
-    }
-
-    &__map, &__info {
-        flex: 1;
-        margin: 0 1rem;
-    }
 
 
 
@@ -377,18 +378,7 @@ a {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+    
 	.footer__top {
 		padding-top: 10px;
 		padding-bottom: 10px;
