@@ -27,7 +27,6 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        // Formatear la fecha y la hora
         const formattedDate = new Date(sesion.fechaDeSesion).toLocaleDateString("es-ES", {
             weekday: "long",
             day: "numeric",
@@ -40,7 +39,6 @@ document.addEventListener("DOMContentLoaded", function () {
             minute: "2-digit",
         });
 
-        // Renderizar los detalles
         sessionDetailsElement.textContent = `Fecha: ${formattedDate} | Sala: ${sesion.salaId} | Hora: ${formattedTime}`;
     }
 
@@ -60,6 +58,24 @@ document.addEventListener("DOMContentLoaded", function () {
                 <p><strong>Fecha de Compra:</strong> ${new Date(ticket.fechaDeCompra).toLocaleString("es-ES")}</p>
             </div>
         `).join('');
+    }
+
+    // Renderizar precio total desde localStorage
+    function renderPrecioTotal() {
+        const precioTotal = localStorage.getItem("precioTotal");
+
+        if (!precioTotal) {
+            console.error("No se encontró 'precioTotal' en localStorage.");
+            const precioContainer = document.createElement("p");
+            precioContainer.textContent = "Precio total no disponible.";
+            ticketsContainer.appendChild(precioContainer);
+            return;
+        }
+
+        const precioContainer = document.createElement("div");
+        precioContainer.classList.add("precio-total");
+        precioContainer.textContent = `Precio total: €${parseFloat(precioTotal).toFixed(2)}`;
+        ticketsContainer.appendChild(precioContainer);
     }
 
     // Obtener los IDs de película y sesión desde localStorage
@@ -123,6 +139,7 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .then(tickets => {
                 renderTickets(tickets);
+                renderPrecioTotal();
             })
             .catch(error => {
                 console.error("Error al cargar los datos de los tickets:", error);

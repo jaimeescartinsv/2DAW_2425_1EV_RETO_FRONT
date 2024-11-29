@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Función para manejar la selección de butacas
     function handleSeatSelection() {
         const selectedSeatsText = document.getElementById("selectedSeats");
-        const totalPriceText = document.getElementById("totalPrice");
+        const precioTotalText = document.getElementById("totalPrice");
         const ticketFormContainer = document.getElementById("ticketFormContainer");
         const seats = document.querySelectorAll(".seat");
     
@@ -136,16 +136,18 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem("selectedButacaIds", JSON.stringify(selectedSeatIds));
     
             // Calcular el precio total
-            const totalPrice = selectedSeats.reduce((sum, seat) => sum + seat.price, 0);
+            const precioTotal = selectedSeats.reduce((sum, seat) => sum + seat.price, 0);
+    
+            // Guardar el precio total en localStorage
+            localStorage.setItem("precioTotal", precioTotal.toFixed(2));
     
             // Actualizar texto con las butacas seleccionadas
-            selectedSeatsText.textContent = `Butacas seleccionadas: ${selectedSeats.length
-                ? selectedSeats.map(seat => `B${seat.id}`).join(", ")
-                : "Ninguna"
-                }`;
+            selectedSeatsText.textContent = `Butacas seleccionadas: ${
+                selectedSeats.length ? selectedSeats.map(seat => `B${seat.id}`).join(", ") : "Ninguna"
+            }`;
     
             // Mostrar el precio total
-            totalPriceText.textContent = `Precio total: €${totalPrice.toFixed(2)}`;
+            precioTotalText.textContent = `Precio total: €${precioTotal.toFixed(2)}`;
     
             // Mostrar el formulario si hay al menos una butaca seleccionada
             ticketFormContainer.style.display = selectedSeats.length > 0 ? "flex" : "none";
