@@ -49,14 +49,14 @@ document.addEventListener("DOMContentLoaded", function () {
     function renderButacas(sesion) {
         const butacasContainer = document.querySelector('.seating-chart');
         butacasContainer.innerHTML = ""; // Limpiar el contenedor
-
+    
         const rows = 12; // Número de filas
         const cols = 17; // Número de columnas
         const pasillosVerticales = [5, 11]; // Columnas de los pasillos verticales
         const pasillosHorizontales = [5, 10]; // Filas de los pasillos horizontales
-
+    
         let butacaIndex = 0; // Índice de la butaca
-
+    
         for (let row = 0; row < rows; row++) {
             // Comprobar si esta fila es un pasillo horizontal
             if (pasillosHorizontales.includes(row)) {
@@ -65,10 +65,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 butacasContainer.appendChild(pasilloHorizontal);
                 continue; // Pasar a la siguiente fila
             }
-
+    
             const rowContainer = document.createElement('div');
             rowContainer.classList.add('row');
-
+    
             for (let col = 0; col < cols; col++) {
                 // Espacio para pasillos verticales
                 if (pasillosVerticales.includes(col)) {
@@ -77,61 +77,76 @@ document.addEventListener("DOMContentLoaded", function () {
                     rowContainer.appendChild(pasilloVertical);
                     continue;
                 }
-
+    
                 // Crear butaca
                 const butaca = sesion.butacas[butacaIndex];
                 if (!butaca) continue;
-
+    
                 const button = document.createElement('button');
                 button.classList.add('seat');
                 button.dataset.butacaId = butaca.butacaId;
-
+                button.dataset.price = butaca.precioButaca; // Usar el precio de la respuesta del servidor
+    
                 if (butaca.estado === "Disponible") {
                     button.classList.add('btn-outline-secondary');
                 } else {
                     button.classList.add('btn-danger');
                     button.disabled = true;
                 }
-
+    
+                // Mostrar el precio en el tooltip o en el contenido del botón
+                button.title = `Precio: €${butaca.precioButaca.toFixed(2)}`;
+    
                 rowContainer.appendChild(button);
                 butacaIndex++;
             }
-
+    
             butacasContainer.appendChild(rowContainer);
         }
-
+    
         handleSeatSelection();
     }
 
     // Función para manejar la selección de butacas
     function handleSeatSelection() {
         const selectedSeatsText = document.getElementById("selectedSeats");
+        const totalPriceText = document.getElementById("totalPrice");
         const ticketFormContainer = document.getElementById("ticketFormContainer");
         const seats = document.querySelectorAll(".seat");
-
+    
         seats.forEach(seat => {
             seat.addEventListener("click", () => {
                 seat.classList.toggle("btn-success");
                 seat.classList.toggle("btn-outline-secondary");
-
+    
                 updateSelectedSeats();
             });
         });
-
+    
         function updateSelectedSeats() {
             const selectedSeats = Array.from(seats)
                 .filter(seat => seat.classList.contains("btn-success"))
-                .map(seat => seat.dataset.butacaId);
-
+                .map(seat => ({
+                    id: seat.dataset.butacaId,
+                    price: parseFloat(seat.dataset.price),
+                }));
+    
             // Guardar los IDs de las butacas seleccionadas en localStorage
-            localStorage.setItem("selectedButacaIds", JSON.stringify(selectedSeats));
-
+            const selectedSeatIds = selectedSeats.map(seat => seat.id);
+            localStorage.setItem("selectedButacaIds", JSON.stringify(selectedSeatIds));
+    
+            // Calcular el precio total
+            const totalPrice = selectedSeats.reduce((sum, seat) => sum + seat.price, 0);
+    
             // Actualizar texto con las butacas seleccionadas
             selectedSeatsText.textContent = `Butacas seleccionadas: ${selectedSeats.length
-                ? selectedSeats.map(id => `B${id}`).join(", ")
+                ? selectedSeats.map(seat => `B${seat.id}`).join(", ")
                 : "Ninguna"
                 }`;
-
+    
+            // Mostrar el precio total
+            totalPriceText.textContent = `Precio total: €${totalPrice.toFixed(2)}`;
+    
             // Mostrar el formulario si hay al menos una butaca seleccionada
             ticketFormContainer.style.display = selectedSeats.length > 0 ? "flex" : "none";
         }

@@ -249,6 +249,10 @@ h1 {
 	text-align: center;
 }
 
+#totalPrice {
+	text-align: center;
+}
+
 /* Estilo para asientos seleccionados */
 .selected {
     background-color: #4caf50; /* Amarillo para seleccionados */
@@ -386,6 +390,12 @@ h1 {
 
 
 #selectedSeats {
+    margin-bottom: 20px; // Espacio entre el texto y el formulario
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#totalPrice {
     margin-bottom: 20px; // Espacio entre el texto y el formulario
     font-size: 18px;
     font-weight: bold;
