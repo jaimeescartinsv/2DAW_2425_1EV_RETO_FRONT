@@ -20,4 +20,4 @@ gulp.task('watch', function() {
 });
 
 // Tarea por defecto que ejecuta ambas tareas
-gulp.task('default', gulp.series('compilar-sass', 'copiar-html', 'watch'));
+gulp.task('default', gulp.series('compilar-sass', 'copiar-html'));
