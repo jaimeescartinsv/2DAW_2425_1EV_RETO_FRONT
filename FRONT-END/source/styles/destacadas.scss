@@ -2,18 +2,19 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	font-family: "Poller One", sans-serif;
 }
 body {
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
-	font-family: "Lilita One", sans-serif;
+	font-family: "Poller One", sans-serif;
 }
 html {
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
-	font-family: "Lilita One", sans-serif;
+	font-family: "Poller One", sans-serif;
 }
 a {
 	text-decoration: none;
@@ -176,7 +177,7 @@ a {
       &__title {
         font-size: 20px;
         margin: 15px 10px 10px;
-        font-family: "Lilita One", sans-serif;
+        font-family: "Poller One", sans-serif;
         color: #000;
       }
   

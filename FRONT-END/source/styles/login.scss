@@ -2,18 +2,19 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	font-family: "Poller One", sans-serif;
 }
 body {
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
-	font-family: "Lilita One", sans-serif;
+	font-family: "Poller One", sans-serif;
 }
 html {
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
-	font-family: "Lilita One", sans-serif;
+	font-family: "Poller One", sans-serif;
 }
 a {
 	text-decoration: none;
@@ -141,7 +142,7 @@ $primary-color: #000; // Fondo principal (negro)
 $secondary-color: #fff; // Texto (blanco)
 $highlight-color: #1a73e8; // Azul para bordes y botones
 $text-color: $secondary-color; // Texto en blanco
-$font-stack: "Lilita One", sans-serif;
+$font-stack: "Poller One", sans-serif;
 $font-title: "Poller One", sans-serif;
 
 // Estilo principal del formulario de login
