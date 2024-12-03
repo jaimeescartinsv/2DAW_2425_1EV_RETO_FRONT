@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const apiUrlPeliculas = "http://localhost:5000/api/peliculas";
+    const apiUrlPeliculas = "http://35.173.111.3:5000/api/peliculas";
 
     // Función para renderizar los datos de la película
     function renderPeliculas(pelicula) {

@@ -1,6 +1,6 @@
 async function fetchPeliculas() {
   try {
-    const response = await fetch("http://localhost:5000/api/peliculas");
+    const response = await fetch("http://35.173.111.3:5000/api/peliculas");
     const peliculas = await response.json();
 
     if (peliculas.length > 0) {
