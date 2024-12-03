@@ -163,20 +163,20 @@ a {
 
   &__track {
     display: flex;
-    transition: transform 0.5s ease-in-out; // Animación suave para el movimiento
+    transition: transform 0.5s ease-in-out; 
     padding: 0;
     margin: 0;
     list-style: none;
   }
 
   &__item {
-    flex: 0 0 100%; // Cada tarjeta ocupa el 100% del ancho en móvil
+    flex: 0 0 100%; 
     margin: 0;
     box-sizing: border-box;
 
     @media (min-width: 768px) {
-      flex: 0 0 33.33%; // En pantallas grandes, se muestran 3 tarjetas por fila
-      padding: 10px; // Añade espacio entre las tarjetas
+      flex: 0 0 33.33%; 
+      padding: 10px;
     }
 
     article.movie-card {
@@ -190,13 +190,13 @@ a {
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       border-radius: 8px;
       background-color: #fff;
-      max-width: 300px; // Limita el ancho máximo de las tarjetas en escritorio
-      margin: 0 auto; // Centra las tarjetas dentro del carrusel
+      max-width: 300px; 
+      margin: 0 auto; 
 
       &__image {
-        width: 100%; // La imagen ocupa todo el ancho de la tarjeta
-        height: auto; // Ajusta la altura automáticamente
-        object-fit: cover; // Evita distorsión y asegura que la imagen llene el espacio
+        width: 100%; 
+        height: auto; 
+        object-fit: cover; 
         border-radius: 4px;
       }
 
