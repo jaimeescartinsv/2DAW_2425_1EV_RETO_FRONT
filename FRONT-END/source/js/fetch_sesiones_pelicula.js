@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const apiUrlSesiones = "http://localhost:5000/api/sesiones/cine";
+    const apiUrlSesiones = "http://35.173.111.3:5000/api/sesiones/cine";
     const peliculaId = localStorage.getItem("selectedPeliculaId");
     let cinesMap = {}; // Se actualiza desde el evento "cinesCargados"
 
