@@ -1,7 +1,3 @@
-.vscode
-BACK-END/bin
-BACK-END/obj
-BACK-END/Properties
-FRONT-END/node_modules
-FRONT-END/package.json
-FRONT-END/dist
+node_modules
+package.json
+dist
