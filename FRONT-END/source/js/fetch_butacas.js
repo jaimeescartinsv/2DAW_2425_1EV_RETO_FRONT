@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const apiUrlPeliculas = "http://35.173.111.3:5000/api/peliculas";
-    const apiUrlSesiones = "http://35.173.111.3:5000/api/sesiones";
-    const apiUrlTickets = "http://35.173.111.3:5000/api/tickets";
+    const apiUrlPeliculas = "http://localhost:5000/api/peliculas";
+    const apiUrlSesiones = "http://localhost:5000/api/sesiones";
+    const apiUrlTickets = "http://localhost:5000/api/tickets";
     const continueButton = document.getElementById("continue-btn");
     const ticketFormContainer = document.getElementById("ticketFormContainer");
     const ticketForm = document.getElementById("ticketForm");
