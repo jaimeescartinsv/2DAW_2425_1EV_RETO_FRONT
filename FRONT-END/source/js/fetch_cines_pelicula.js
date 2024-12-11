@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const apiUrlCines = "http://localhost:5000/api/cines";
+    const apiUrlCines = "http://localhost:27421/api/cines";
     let cinesMap = {}; // Mapa para almacenar los cines por ID
 
     // Función para renderizar el listado de cines

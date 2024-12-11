@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const apiUrlOpiniones = "http://localhost:5000/api/opiniones";
+    const apiUrlOpiniones = "http://localhost:27421/api/opiniones";
 
     // Función para renderizar las opiniones de la película
     function renderOpiniones(opiniones) {

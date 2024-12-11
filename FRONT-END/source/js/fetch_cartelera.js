@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Función cargar todas las películas desde la API
     async function cargarPeliculas() {
         try {
-            const response = await fetch("http://localhost:5000/api/peliculas");
+            const response = await fetch("http://localhost:27421/api/peliculas");
             const peliculas = await response.json();
             if (peliculas.length > 0) {
                 todasLasPeliculas = peliculas;

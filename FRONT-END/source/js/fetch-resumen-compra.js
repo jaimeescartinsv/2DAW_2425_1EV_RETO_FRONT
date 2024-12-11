@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const apiUrlPeliculas = "http://localhost:5000/api/peliculas";
-    const apiUrlSesiones = "http://localhost:5000/api/sesiones";
-    const apiUrlTickets = "http://localhost:5000/api/tickets";
+    const apiUrlPeliculas = "http://localhost:27421/api/peliculas";
+    const apiUrlSesiones = "http://localhost:27421/api/sesiones";
+    const apiUrlTickets = "http://localhost:27421/api/tickets";
     const emailCompra = localStorage.getItem("emailCompra");
     const ticketsContainer = document.getElementById("ticketsContainer");
 
