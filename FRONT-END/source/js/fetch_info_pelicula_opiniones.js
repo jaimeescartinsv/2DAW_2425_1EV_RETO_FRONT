@@ -3,11 +3,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Función para renderizar las opiniones de la película
     function renderOpiniones(opiniones) {
+        const contenedorOpiniones = document.getElementById("contenedor__opiniones");
         opiniones.forEach((opinion) => {
-            const movieOpiniones = document.querySelector('.movie__opiniones');
-            movieOpiniones.classList.add('.movie__info')
+            console.log(opinion)
+            const movieOpiniones = document.createElement("div");
             
-            movieOpiniones.innerHTML = `<strong>Opiniones:</strong> ${opinion.comentario || 'No disponible.'}`
+            movieOpiniones.innerHTML = `
+                <h2 class="movie-card__title">${opinion.usuario || "Título no disponible"}</h2>
+                <p class="movie-card__description">${opinion.comentario || "Sin descripción disponible."}</p>
+                <p class="movie-card__duration">${opinion.estrellas || "N/A"} estrellas</p>
+            `;
+            console.log(movieOpiniones)
+            console.log(contenedorOpiniones)
+
+            contenedorOpiniones.appendChild(movieOpiniones);
         })
     }
 
