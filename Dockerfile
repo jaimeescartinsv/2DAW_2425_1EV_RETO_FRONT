@@ -34,7 +34,7 @@ COPY --from=build /app/dist ./FRONT-END/dist/
 COPY default.conf /etc/nginx/conf.d/default.conf
 
 # Exposición del puerto para NGINX
-EXPOSE 80
+EXPOSE 27422
 
 # Inicia NGINX
 CMD ["nginx", "-g", "daemon off;"]
